@@ -15,6 +15,7 @@ Table of Contents
 * 8 [Card Details](#8-card-details)
 * 9 [Viewonly Card](#9-viewonly-card)
 * 10 [My Cards](#10-my-cards)
+* 11 [My Info](#11-my-info)
 
 ## 1 Login
 Users can login with email and password
@@ -33,3 +34,5 @@ Canvas with card template, you can switch between pages, change font, color, siz
 View card without ability to edit it.
 ## 10 My Cards
 List all cards that belongs to me
+## 11 My Info
+From here users can see their info and can edit it
