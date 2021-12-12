@@ -1,38 +1,70 @@
-# Group Greeting Card
+# Getting Started with Create React App
 
-> The idea is simple, you can create a greeting card, share it with friends to add wishes and then sent it to the man to whom it belonged.
-You can choose from variety of ocassions: birthday, anniversary, farewell, retirement etc. You can sign the card, style your signature, add photos and stickers and then share it with friends. You can choose an email to whom the card will be sent and choose exact date and time for sending.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Table of Contents
-=================
-* 1 [Login](#1-login)
-* 2 [Register](#2-register)
-* 3 [Forgot Password](#3-forgot-password)
-* 4 [Reset Password](#4-reset-password)
-* 5 [Home](#5-home)
-* 6 [Card Templates](#6-card-templates)
-* 7 [Set Up Card](#7-set-up-card)
-* 8 [Card Details](#8-card-details)
-* 9 [Viewonly Card](#9-viewonly-card)
-* 10 [My Cards](#10-my-cards)
-* 11 [My Info](#11-my-info)
+## Available Scripts
 
-## 1 Login
-Users can login with email and password
-## 2 Register
-Users can sign up with name, email and password
-## 3 Forgot Password
-## 4 Reset Password
-## 5 Home
-## 6 Card Templates
-List all available templates
-## 7 Set Up Card
-Choose recipient name, recipient email, date, time and timezone when you want the card to be sent.
-## 8 Card Details
-Canvas with card template, you can switch between pages, change font, color, size, add photo or emoji.
-## 9 Viewonly Card
-View card without ability to edit it.
-## 10 My Cards
-List all cards that belongs to me
-## 11 My Info
-From here users can see their info and can edit it
+In the project directory, you can run:
+
+### `yarn start`
+
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
+
+### `yarn test`
+
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### `yarn build`
+
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `yarn eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `yarn build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
