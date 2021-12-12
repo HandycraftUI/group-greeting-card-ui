@@ -11,6 +11,10 @@ function App() {
                 <Grid.Column>
                     <Button basic color="red">Have fun! :)</Button>
                 </Grid.Column>
+
+                <Grid.Column>
+                    <Button basic color="red">Have fun! :)</Button>
+                </Grid.Column>
             </Grid.Row>
         </Grid>
     );
