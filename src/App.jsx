@@ -1,4 +1,5 @@
-import {Container, Grid, Button} from 'semantic-ui-react'
+import React from 'react'
+import {Grid, Button} from 'semantic-ui-react'
 
 function App() {
     return (
@@ -17,7 +18,7 @@ function App() {
                 </Grid.Column>
             </Grid.Row>
         </Grid>
-    );
+    )
 }
 
-export default App;
+export default App
