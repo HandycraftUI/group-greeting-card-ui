@@ -1,5 +1,8 @@
-import { createStore } from 'redux'
+import { createStore, applyMiddleware, compose } from 'redux'
 import rootReducer from './reducers'
 
-const index = createStore(rootReducer)
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+
+const index = createStore(rootReducer, composeEnhancers(applyMiddleware()))
+
 export default index
