@@ -5,13 +5,13 @@ import 'semantic-ui-css/semantic.min.css'
 
 import './index.css'
 import App from './App'
-import store from './store/index'
+import index from './store'
 
 ReactDOM.render(
-    <React.StrictMode>
-        <Provider store={store}>
-            <App />
-        </Provider>
-    </React.StrictMode>,
+    <Provider store={index}>
+        <React.StrictMode>
+            <App/>
+        </React.StrictMode>
+    </Provider>,
     document.getElementById('root')
 )

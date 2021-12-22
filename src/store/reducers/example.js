@@ -4,7 +4,7 @@ const initialState = {
     data: 'example Data'
 }
 
-const exampleReducer = () => (state = initialState, action) => {
+const exampleReducer = (state = initialState, action) => {
     switch (action.type) {
     case EXAMPLE_ACTION:
         return {
