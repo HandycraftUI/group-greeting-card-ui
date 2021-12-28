@@ -1,13 +1,16 @@
 const darkTheme = {
+    name: 'dark',
     palette: {
         text: {
-            primary: '',
-            secondary: '',
+            primary: '#fff',
+            secondary: '#858CA2',
         },
         background: {
-            primary: '',
-            secondary: '',
-        }
+            primary: '#1D1F29',
+            secondary: '#323546',
+        },
+        white: '#fff',
+        black: '#000',
     },
 }
 

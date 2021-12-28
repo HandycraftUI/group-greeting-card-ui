@@ -35,6 +35,7 @@
         "react/jsx-filename-extension": ["error"],
         "prefer-const": ["error"],
         "eqeqeq": ["error"],
-        "quotes": ["error", "single", { "avoidEscape": true }]
+        "quotes": ["error", "single", { "avoidEscape": true }],
+        "no-unused-vars": "warn"
     }
 }
