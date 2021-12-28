@@ -3,7 +3,7 @@ import {Grid, Button} from 'semantic-ui-react'
 import {useSelector} from 'react-redux'
 
 function App() {
-    const exampleStoreData = useSelector(state => state.example)
+    const exampleStoreData = useSelector(state => state.common)
 
     return (
         <Grid divided="horizontal" stackable>
