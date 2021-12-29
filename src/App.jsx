@@ -1,21 +1,41 @@
 import React from 'react'
 import {Grid, Button} from 'semantic-ui-react'
-import {useSelector} from 'react-redux'
+import styled from 'styled-components'
+import useTheme from './hooks/use-theme'
+import {useDispatch} from 'react-redux'
+import {toggleThemeAction} from './store/actions/common'
+
+const AppContainer = styled(Grid)`
+  background-color: ${({theme}) => theme.palette.background.primary};
+  color: ${({theme}) => theme.palette.text.primary};
+  min-height: 100vh;
+`
 
 function App() {
-    const exampleStoreData = useSelector(state => state.example)
+    const theme = useTheme()
+    const dispatch = useDispatch()
+
+    const toggleTheme = () => {
+        dispatch(toggleThemeAction())
+    }
 
     return (
-        <Grid divided="horizontal" stackable>
+        <AppContainer
+            theme={theme}
+            divided="horizontal"
+            stackable>
             <Grid.Row columns={2}>
-                <Grid.Column >
-                    <Button basic color="red">Have fun! ;)</Button>
-                </Grid.Column>
                 <Grid.Column>
-                    {exampleStoreData.data}
+                    <Button
+                        basic
+                        color="red"
+                        onClick={toggleTheme}
+                    >Toggle theme
+                    </Button>
+                    Hello its me!
                 </Grid.Column>
             </Grid.Row>
-        </Grid>
+        </AppContainer>
     )
 }
 

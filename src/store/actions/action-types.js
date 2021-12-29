@@ -1,1 +1,1 @@
-export const EXAMPLE_ACTION = 'EXAMPLE_ACTION'
+export const TOGGLE_THEME = 'TOGGLE_THEME'
