@@ -1,6 +1,9 @@
 const darkTheme = {
     name: 'dark',
     palette: {
+        navbar: {
+            primary: 'ff0303',
+        },
         text: {
             primary: '#fff',
             secondary: '#858CA2',
