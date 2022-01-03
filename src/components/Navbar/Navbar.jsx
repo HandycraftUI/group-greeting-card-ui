@@ -1,20 +1,42 @@
 import React from 'react'
-import { Menu, Container } from 'semantic-ui-react'
 import styled from 'styled-components'
+import {
+    MDBContainer,
+    MDBNavbar,
+    MDBNavbarLink,
+    MDBNavbarNav,
+    MDBNavbarItem,
+    MDBNavbarBrand
 
-const NavbarC = styled(Container)`
-   background-color: red;
-   padding: 10px;
-   display:flex;
+} from 'mdb-react-ui-kit'
+
+const NavbarComponent = styled(MDBNavbar)`
+background-color: #116;
+color: white;
+font-size: 1.2rem;
+padding: 0.5rem 1rem; 
+`
+const LogoComponent = styled(MDBNavbarBrand)`
+font-family: 'Twinkle Star', cursive;
+font-size: 1.5rem;
 `
 
-export default function Navbar() {
-
+function Navbar() {
     return (
-        <NavbarC>
-            <Menu.Item name='Greeting Card' />
-            <Menu.Item position='right' name='Login' />
-            <Menu.Item name='Register' />
-        </NavbarC>
+        <NavbarComponent expand='lg' dark>
+            <MDBContainer fluid>
+                <LogoComponent href='/'>Greeting Card</LogoComponent>
+                <MDBNavbarNav right fullWidth={false} className='mb-2 mb-lg-0' >
+                    <MDBNavbarItem>
+                        <MDBNavbarLink href='/auth/login' active>Login</MDBNavbarLink>
+                    </MDBNavbarItem>
+                    <MDBNavbarItem>
+                        <MDBNavbarLink href='/auth/register' active>Register</MDBNavbarLink>
+                    </MDBNavbarItem>
+                </MDBNavbarNav>
+            </MDBContainer>
+        </NavbarComponent>
     )
 }
+
+export default Navbar
