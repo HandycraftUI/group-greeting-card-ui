@@ -5,7 +5,7 @@ import LoggedUserNavigation from './LoggedUserNavigation'
 function Navbar() {
 
     return (
-        <LoggedUserNavigation/> ?? <GuestUserNavigation/>
+        <LoggedUserNavigation /> ?? <GuestUserNavigation />
     )
 }
 
