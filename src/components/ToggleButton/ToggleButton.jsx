@@ -1,24 +1,21 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { toggleThemeAction } from './store/actions/common'
-import { Grid, Button } from 'semantic-ui-react'
+import { toggleThemeAction } from '../../store/actions/common'
+import { MDBBtn } from 'mdb-react-ui-kit'
 
-export default function ToggleButton() {
+const ToggleButton = () => {
     const dispatch = useDispatch()
 
     const toggleTheme = () => {
         dispatch(toggleThemeAction())
     }
     return (
-        <Grid.Row columns={2}>
-            <Grid.Column>
-                <Button
-                    basic
-                    color="red"
-                    onClick={toggleTheme}
-                >Toggle theme
-                </Button>
-            </Grid.Column>
-        </Grid.Row>
+        <MDBBtn
+            color="red"
+            onClick={toggleTheme}
+        >Toggle theme
+        </MDBBtn>
     )
 }
+
+export default ToggleButton

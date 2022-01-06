@@ -4,16 +4,23 @@ import LoggedUserNavigation from './LoggedUserNavigation'
 import Hamburger from '../Hamburger/Hamburger'
 import styled from 'styled-components'
 import lightTheme from '../../themes/light'
+import darkTheme from '../../themes/dark'
+import { useTheme } from 'styled-components'
+import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { toggleThemeAction } from '../../store/actions/common'
 import {
     MDBNavbar,
     MDBContainer,
     MDBNavbarBrand,
     MDBNavbarNav,
+    MDBBtn
 } from 'mdb-react-ui-kit'
+import ToggleButton from '../ToggleButton/ToggleButton'
 
 const NavbarComponent = styled(MDBNavbar)`
-    background-color: ${lightTheme.palette.navbar.primary};
-    color: white;
+    background-color: ${({ theme }) => theme.palette.navbar.primary};
+    color: ${({ theme }) => theme.palette.navbar.primary};
     font-size: 1rem;
     padding: 0.5rem 1rem;
 
@@ -78,17 +85,22 @@ const NavbarComponent = styled(MDBNavbar)`
 
 const Navbar = () => {
     const isAuthenticated = true
-
+    const { themeData } = useSelector(state => state.common)
+    
     return (
-        <NavbarComponent expand='lg' dark>
-            <MDBContainer fluid>
-                <MDBNavbarBrand href='/'>Greeting Card</MDBNavbarBrand>
-                <MDBNavbarNav right fullWidth={false} className='mb-2 mb-lg-0' >
-                    {isAuthenticated ? <LoggedUserNavigation/> : <GuestUserNavigation/>}
-                </MDBNavbarNav>
-                <Hamburger />
-            </MDBContainer>
-        </NavbarComponent>
+        <>
+            <NavbarComponent expand='lg' dark theme={themeData}>
+                <MDBContainer fluid>
+                    <MDBNavbarBrand href='/'>Greeting Card</MDBNavbarBrand>
+                    <MDBNavbarNav right fullWidth={false} className='mb-2 mb-lg-0' >
+                        {isAuthenticated ? <LoggedUserNavigation /> : <GuestUserNavigation />}
+                    </MDBNavbarNav>
+                    <Hamburger />
+                </MDBContainer>
+            </NavbarComponent>
+
+            <ToggleButton />
+        </>
     )
 }
 
