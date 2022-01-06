@@ -18,7 +18,6 @@ export default function ToggleButton() {
                     onClick={toggleTheme}
                 >Toggle theme
                 </Button>
-                Hello its me!
             </Grid.Column>
         </Grid.Row>
     )

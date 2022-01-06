@@ -5,7 +5,7 @@ import {
     MDBIcon,
 } from 'mdb-react-ui-kit'
 
-function LoggedUserNavigation() {
+const LoggedUserNavigation = () => {
 
     return (
         <>

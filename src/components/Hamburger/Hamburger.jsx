@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import lightTheme from '../../themes/light'
 import {
     MDBIcon,
     MDBNavbarToggler,
@@ -33,12 +34,12 @@ const IconComponent = styled(MDBNavbarToggler)`
 const ToggledDivComponent = styled(MDBCollapse)`
     list-style: none;
     text-align: center;
-    color: white;
+    color: ${lightTheme.palette.white};
     width: 100%;
 
     .nav-link{
         font-size: 1rem;
-        color: white;
+        color: ${lightTheme.palette.white};
     }
 
     @media (min-width: 480px) {
@@ -46,20 +47,23 @@ const ToggledDivComponent = styled(MDBCollapse)`
     }
 `
 
-export default function Hamburger() {
-    const [toggle, setToggle] = useState(false)
+const Hamburger = () => {
+    const [toggleMenu, setToggleMenu] = useState(false)
     const isAuthenticated = true
 
     const LoggedUserLinks = (
         <>
             <MDBNavbarItem>
-                <MDBNavbarLink href='/editor' >Create Card<MDBIcon fas icon="plus" size='sm'  /></MDBNavbarLink>
+                <MDBNavbarLink href='/editor' >Create Card<MDBIcon fas icon="plus" size='sm' />
+                </MDBNavbarLink>
             </MDBNavbarItem>
             <MDBNavbarItem>
-                <MDBNavbarLink href='/me' >Hello, $$$<MDBIcon fas icon="user-alt" size='sm' /></MDBNavbarLink>
+                <MDBNavbarLink href='/me' >Hello, $$$<MDBIcon fas icon="user-alt" size='sm' />
+                </MDBNavbarLink>
             </MDBNavbarItem>
             <MDBNavbarItem>
-                <MDBNavbarLink href='/auth/logout' >Logout<MDBIcon fas icon="sign-out-alt" size='sm' /></MDBNavbarLink>
+                <MDBNavbarLink href='/auth/logout' >Logout<MDBIcon fas icon="sign-out-alt" size='sm' />
+                </MDBNavbarLink>
             </MDBNavbarItem>
         </>
     )
@@ -67,10 +71,10 @@ export default function Hamburger() {
     const GuestUserLinks = (
         <>
             <MDBNavbarItem>
-                <MDBNavbarLink href='/auth/login'>Login<MDBIcon fas icon="sign-in-alt" size='sm'/></MDBNavbarLink>
+                <MDBNavbarLink href='/auth/login'>Login<MDBIcon fas icon="sign-in-alt" size='sm' /></MDBNavbarLink>
             </MDBNavbarItem>
             <MDBNavbarItem>
-                <MDBNavbarLink href='/auth/register'>Register<MDBIcon fas icon="users" size='sm'/></MDBNavbarLink>
+                <MDBNavbarLink href='/auth/register'>Register<MDBIcon fas icon="users" size='sm' /></MDBNavbarLink>
             </MDBNavbarItem>
         </>
     )
@@ -78,13 +82,15 @@ export default function Hamburger() {
     return (
         <HamburgerComponent>
             <MDBContainer>
-                <IconComponent type='button' onClick={() => setToggle(!toggle)}>
+                <IconComponent type='button' onClick={() => setToggleMenu(!toggleMenu)}>
                     <MDBIcon icon='bars' />
                 </IconComponent>
             </MDBContainer>
-            <ToggledDivComponent show={toggle}>
+            <ToggledDivComponent show={toggleMenu}>
                 {isAuthenticated ? LoggedUserLinks : GuestUserLinks}
             </ToggledDivComponent>
         </HamburgerComponent>
     )
 }
+
+export default Hamburger

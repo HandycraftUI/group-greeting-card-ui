@@ -3,6 +3,7 @@ import GuestUserNavigation from './GuestUserNavigation'
 import LoggedUserNavigation from './LoggedUserNavigation'
 import Hamburger from '../Hamburger/Hamburger'
 import styled from 'styled-components'
+import lightTheme from '../../themes/light'
 import {
     MDBNavbar,
     MDBContainer,
@@ -11,7 +12,7 @@ import {
 } from 'mdb-react-ui-kit'
 
 const NavbarComponent = styled(MDBNavbar)`
-    background-color: #116;
+    background-color: ${lightTheme.palette.navbar.primary};
     color: white;
     font-size: 1rem;
     padding: 0.5rem 1rem;
@@ -75,7 +76,7 @@ const NavbarComponent = styled(MDBNavbar)`
     }
 `
 
-function Navbar() {
+const Navbar = () => {
     const isAuthenticated = true
 
     return (
