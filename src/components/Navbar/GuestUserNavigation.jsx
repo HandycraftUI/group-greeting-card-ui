@@ -1,7 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import {
     MDBNavbarItem,
-    MDBNavbarLink,
     MDBIcon,
 } from 'mdb-react-ui-kit'
 
@@ -10,10 +10,16 @@ const GuestUserNavigation = () => {
     return (
         <>
             <MDBNavbarItem>
-                <MDBNavbarLink href='/auth/login'>Login<MDBIcon fas icon="sign-in-alt" size='sm'/></MDBNavbarLink>
+                <Link to='/auth/login' className='nav-links'>
+                    <MDBIcon fas icon="sign-in-alt" size='sm' />
+                    Login
+                </Link>
             </MDBNavbarItem>
             <MDBNavbarItem>
-                <MDBNavbarLink href='/auth/register'>Register<MDBIcon fas icon="users" size='sm'/></MDBNavbarLink>
+                <Link to='/auth/register' className='nav-links'>
+                    <MDBIcon fas icon="users" size='sm' />
+                    Register
+                </Link>
             </MDBNavbarItem>
         </>
     )

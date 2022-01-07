@@ -3,18 +3,12 @@ import GuestUserNavigation from './GuestUserNavigation'
 import LoggedUserNavigation from './LoggedUserNavigation'
 import Hamburger from '../Hamburger/Hamburger'
 import styled from 'styled-components'
-import lightTheme from '../../themes/light'
-import darkTheme from '../../themes/dark'
-import { useTheme } from 'styled-components'
-import { useSelector } from 'react-redux'
-import { useDispatch } from 'react-redux'
-import { toggleThemeAction } from '../../store/actions/common'
+import useTheme from '../../hooks/use-theme'
 import {
     MDBNavbar,
     MDBContainer,
     MDBNavbarBrand,
     MDBNavbarNav,
-    MDBBtn
 } from 'mdb-react-ui-kit'
 import ToggleButton from '../ToggleButton/ToggleButton'
 
@@ -35,8 +29,12 @@ const NavbarComponent = styled(MDBNavbar)`
         flex-direction: row;
     }
 
-    .nav-link{
-        font-size: 1.2rem;
+    .fas{
+        padding-right: 0.5rem;
+    }
+
+    .nav-links{
+        color: ${({ theme }) => theme.palette.white};
     }
 
     .nav-item{
@@ -85,11 +83,11 @@ const NavbarComponent = styled(MDBNavbar)`
 
 const Navbar = () => {
     const isAuthenticated = true
-    const { themeData } = useSelector(state => state.common)
-    
+    const theme = useTheme()
+   
     return (
         <>
-            <NavbarComponent expand='lg' dark theme={themeData}>
+            <NavbarComponent expand='lg' dark theme={theme}>
                 <MDBContainer fluid>
                     <MDBNavbarBrand href='/'>Greeting Card</MDBNavbarBrand>
                     <MDBNavbarNav right fullWidth={false} className='mb-2 mb-lg-0' >

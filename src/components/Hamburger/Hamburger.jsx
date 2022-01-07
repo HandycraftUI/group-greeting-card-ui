@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import lightTheme from '../../themes/light'
+import { Link } from 'react-router-dom'
+import useTheme from '../../hooks/use-theme'
 import {
     MDBIcon,
     MDBNavbarToggler,
     MDBNavbarItem,
-    MDBNavbarLink,
     MDBCollapse,
     MDBContainer,
 } from 'mdb-react-ui-kit'
@@ -16,10 +16,13 @@ const HamburgerComponent = styled(MDBContainer)`
     .container{
          justify-content: flex-end;
     }
+
+    .navbar-toggler{
+        color: ${({ theme }) => theme.palette.white};
+    }
 `
 
 const IconComponent = styled(MDBNavbarToggler)`
-    
     @media (min-width: 320px) {
         position: absolute;
         top: 1.4rem;
@@ -34,13 +37,8 @@ const IconComponent = styled(MDBNavbarToggler)`
 const ToggledDivComponent = styled(MDBCollapse)`
     list-style: none;
     text-align: center;
-    color: ${lightTheme.palette.white};
+    color: ${({ theme }) => theme.palette.navbar.primary};
     width: 100%;
-
-    .nav-link{
-        font-size: 1rem;
-        color: ${lightTheme.palette.white};
-    }
 
     @media (min-width: 480px) {
         display: none;
@@ -50,43 +48,60 @@ const ToggledDivComponent = styled(MDBCollapse)`
 const Hamburger = () => {
     const [toggleMenu, setToggleMenu] = useState(false)
     const isAuthenticated = true
+    const theme = useTheme()
 
     const LoggedUserLinks = (
         <>
-            <MDBNavbarItem>
-                <MDBNavbarLink href='/editor' >Create Card<MDBIcon fas icon="plus" size='sm' />
-                </MDBNavbarLink>
+            <MDBNavbarItem theme={theme}>
+                <Link to='/editor' className='nav-links'>
+                    <MDBIcon fas icon="plus" size='sm' />
+                    Create Card
+                </Link>
             </MDBNavbarItem>
             <MDBNavbarItem>
-                <MDBNavbarLink href='/me' >Hello, $$$<MDBIcon fas icon="user-alt" size='sm' />
-                </MDBNavbarLink>
+                <Link to='/me' className='nav-links'>
+                    <MDBIcon fas icon="user-alt" size='sm' />
+                    Hello, $$$
+                </Link>
             </MDBNavbarItem>
             <MDBNavbarItem>
-                <MDBNavbarLink href='/auth/logout' >Logout<MDBIcon fas icon="sign-out-alt" size='sm' />
-                </MDBNavbarLink>
+                <Link to='/auth/logout' className='nav-links'>
+                    <MDBIcon fas icon="sign-out-alt" size='sm' />
+                    Logout
+                </Link>
             </MDBNavbarItem>
         </>
     )
 
     const GuestUserLinks = (
         <>
-            <MDBNavbarItem>
-                <MDBNavbarLink href='/auth/login'>Login<MDBIcon fas icon="sign-in-alt" size='sm' /></MDBNavbarLink>
+            <MDBNavbarItem theme={theme}>
+                <Link to='/auth/login' className='nav-links'>
+                    <MDBIcon fas icon="sign-in-alt" size='sm' />
+                    Login
+                </Link>
             </MDBNavbarItem>
             <MDBNavbarItem>
-                <MDBNavbarLink href='/auth/register'>Register<MDBIcon fas icon="users" size='sm' /></MDBNavbarLink>
+                <Link to='/auth/register' className='nav-links'>
+                    <MDBIcon fas icon="users" size='sm' />
+                    Register
+                </Link>
             </MDBNavbarItem>
         </>
     )
 
     return (
-        <HamburgerComponent>
+        <HamburgerComponent theme={theme}>
             <MDBContainer>
-                <IconComponent type='button' onClick={() => setToggleMenu(!toggleMenu)}>
+                <IconComponent
+                    type='button'
+                    theme={theme}
+                    onClick={() => setToggleMenu(!toggleMenu)}
+                >
                     <MDBIcon icon='bars' />
                 </IconComponent>
             </MDBContainer>
-            <ToggledDivComponent show={toggleMenu}>
+            <ToggledDivComponent show={toggleMenu} theme={theme}>
                 {isAuthenticated ? LoggedUserLinks : GuestUserLinks}
             </ToggledDivComponent>
         </HamburgerComponent>
