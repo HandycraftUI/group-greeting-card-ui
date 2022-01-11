@@ -3,12 +3,16 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import useTheme from '../../hooks/use-theme'
 import {
-    MDBIcon,
     MDBNavbarToggler,
     MDBNavbarItem,
     MDBCollapse,
     MDBContainer,
 } from 'mdb-react-ui-kit'
+import { FaBars, FaSignInAlt, FaUserAlt } from 'react-icons/fa'
+import { IoIosAddCircleOutline } from 'react-icons/io'
+import { BsFillPeopleFill } from 'react-icons/bs'
+import { FiLogOut } from 'react-icons/fi'
+
 
 const HamburgerComponent = styled(MDBContainer)`
     font-family: 'Raleway', sans-serif;
@@ -17,6 +21,10 @@ const HamburgerComponent = styled(MDBContainer)`
          justify-content: flex-end;
     }
 
+    .nav-icon{
+        margin-right: 0.5rem;
+    }
+    
     .navbar-toggler{
         color: ${({ theme }) => theme.palette.white};
     }
@@ -28,7 +36,6 @@ const IconComponent = styled(MDBNavbarToggler)`
         top: 1.4rem;
         right: 1rem;
     }
-
     @media (min-width: 480px) {
         display: none;
     }
@@ -39,7 +46,6 @@ const ToggledDivComponent = styled(MDBCollapse)`
     text-align: center;
     color: ${({ theme }) => theme.palette.navbar.primary};
     width: 100%;
-
     @media (min-width: 480px) {
         display: none;
     }
@@ -54,19 +60,19 @@ const Hamburger = () => {
         <>
             <MDBNavbarItem theme={theme}>
                 <Link to='/editor' className='nav-links'>
-                    <MDBIcon fas icon="plus" size='sm' />
+                    <IoIosAddCircleOutline className='nav-icon'/>
                     Create Card
                 </Link>
             </MDBNavbarItem>
             <MDBNavbarItem>
                 <Link to='/me' className='nav-links'>
-                    <MDBIcon fas icon="user-alt" size='sm' />
+                    <FaUserAlt className='nav-icon'/>
                     Hello, $$$
                 </Link>
             </MDBNavbarItem>
             <MDBNavbarItem>
                 <Link to='/auth/logout' className='nav-links'>
-                    <MDBIcon fas icon="sign-out-alt" size='sm' />
+                    <FiLogOut className='nav-icon'/>
                     Logout
                 </Link>
             </MDBNavbarItem>
@@ -77,13 +83,13 @@ const Hamburger = () => {
         <>
             <MDBNavbarItem theme={theme}>
                 <Link to='/auth/login' className='nav-links'>
-                    <MDBIcon fas icon="sign-in-alt" size='sm' />
+                    <FaSignInAlt className='nav-icon'/>
                     Login
                 </Link>
             </MDBNavbarItem>
             <MDBNavbarItem>
                 <Link to='/auth/register' className='nav-links'>
-                    <MDBIcon fas icon="users" size='sm' />
+                    <BsFillPeopleFill className='nav-icon'/>
                     Register
                 </Link>
             </MDBNavbarItem>
@@ -98,7 +104,7 @@ const Hamburger = () => {
                     theme={theme}
                     onClick={() => setToggleMenu(!toggleMenu)}
                 >
-                    <MDBIcon icon='bars' />
+                    <FaBars />
                 </IconComponent>
             </MDBContainer>
             <ToggledDivComponent show={toggleMenu} theme={theme}>
