@@ -1,42 +1,36 @@
 import React, {Suspense} from 'react'
 import {useRoutes} from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { toggleThemeAction } from './store/actions/common'
+import { MDBBtn } from 'mdb-react-ui-kit'
 import routes from './routes.jsx'
-import styled from 'styled-components'
-import {respondTo} from './style-config/respond-to'
+import EditorNavbar from './components/EditorNavbar/EditorNavbar'
 
-//Example how to use media queries with styled-components
-const Wrapper = styled.div`
-  background-color: purple;
+const ToggleButton = () => {
+    const dispatch = useDispatch()
 
-  ${respondTo.small`
-        background-color: red;
-    `}
-
-  ${respondTo.medium`
-        background-color: blue;
-    `}
-
-  ${respondTo.large`
-        background-color: yellow;
-    `}
-
-  ${respondTo.xlarge`
-        background-color: orange;
-    `}
-
-  ${respondTo.xxlarge`
-        background-color: green;
-    `}
-`
+    const toggleTheme = () => {
+        dispatch(toggleThemeAction())
+    }
+    return (
+        <MDBBtn
+            color="red"
+            onClick={toggleTheme}
+        >Toggle theme
+        </MDBBtn>
+    )
+}
 
 const App = () => {
     const routing = useRoutes(routes)
     return (
-        <Wrapper>
+        <>
             <Suspense fallback={<div>Loading...</div>}>
                 {routing}
+                <EditorNavbar/>
+                <ToggleButton/>
             </Suspense>
-        </Wrapper>
+        </>
     )
 }
 

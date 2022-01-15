@@ -9,6 +9,8 @@ const darkTheme = {
             primary: '#1D1F29',
             secondary: '#323546',
         },
+        primary: '#1D1F29',
+        secondary: '#323546',
         white: '#fff',
         black: '#000',
     },
