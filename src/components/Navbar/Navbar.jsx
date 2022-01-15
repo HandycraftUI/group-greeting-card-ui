@@ -4,6 +4,7 @@ import LoggedUserNavigation from './LoggedUserNavigation'
 import Hamburger from '../Hamburger/Hamburger'
 import styled from 'styled-components'
 import useTheme from '../../hooks/use-theme'
+import useAuth from '../../hooks/use-auth'
 import {
     MDBNavbar,
     MDBContainer,
@@ -11,6 +12,7 @@ import {
     MDBNavbarNav,
 } from 'mdb-react-ui-kit'
 import ToggleButton from '../ToggleButton/ToggleButton'
+import AuthenticateButton from '../AuthenticateButton/AuthenticateButton'
 import { respondTo } from '../../style-config/respond-to'
 
 const NavbarComponent = styled(MDBNavbar)`
@@ -56,7 +58,7 @@ const NavbarComponent = styled(MDBNavbar)`
         }
     `}
 
-    ${ respondTo.small`
+    ${respondTo.small`
         .container-fluid{
             flex-direction: row;
         }
@@ -75,8 +77,8 @@ const NavbarComponent = styled(MDBNavbar)`
 `
 
 const Navbar = () => {
-    const isAuthenticated = true
     const theme = useTheme()
+    const isAuth = useAuth()
 
     return (
         <>
@@ -84,13 +86,14 @@ const Navbar = () => {
                 <MDBContainer fluid>
                     <MDBNavbarBrand href='/'>Greeting Card</MDBNavbarBrand>
                     <MDBNavbarNav right fullWidth={false} className='mb-2 mb-lg-0' >
-                        {isAuthenticated ? <LoggedUserNavigation /> : <GuestUserNavigation />}
+                        {isAuth ? <LoggedUserNavigation /> : <GuestUserNavigation />}
                     </MDBNavbarNav>
                     <Hamburger />
                 </MDBContainer>
             </NavbarComponent>
 
             <ToggleButton />
+            <AuthenticateButton />
         </>
     )
 }

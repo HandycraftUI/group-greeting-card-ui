@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import useTheme from '../../hooks/use-theme'
+import useAuth from '../../hooks/use-auth'
 import {
     MDBNavbarToggler,
     MDBNavbarItem,
@@ -23,6 +24,15 @@ const HamburgerComponent = styled(MDBContainer)`
     
     .navbar-toggler{
         color: ${({ theme }) => theme.palette.white};
+    }
+`
+
+const NavItemsWrapper = styled(MDBContainer)`
+    width: fit-content;
+    margin: 0 auto;
+
+    .nav-item{
+        text-align: left;
     }
 `
 
@@ -51,11 +61,11 @@ const ToggledDivComponent = styled(MDBCollapse)`
 
 const Hamburger = () => {
     const [toggleMenu, setToggleMenu] = useState(false)
-    const isAuthenticated = true
     const theme = useTheme()
+    const isAuth = useAuth()
 
     const LoggedUserLinks = (
-        <>
+        <NavItemsWrapper>
             <MDBNavbarItem theme={theme}>
                 <Link to='/editor' className='nav-links'>
                     <IoIosAddCircleOutline className='nav-icon me-2' />
@@ -68,30 +78,30 @@ const Hamburger = () => {
                     Hello, $$$
                 </Link>
             </MDBNavbarItem>
-            <MDBNavbarItem className='pt-1'> 
+            <MDBNavbarItem className='pt-1'>
                 <Link to='/auth/logout' className='nav-links'>
                     <FiLogOut className='nav-icon me-2' />
                     Logout
                 </Link>
             </MDBNavbarItem>
-        </>
+        </NavItemsWrapper>
     )
 
     const GuestUserLinks = (
-        <>
+        <NavItemsWrapper>
             <MDBNavbarItem theme={theme}>
                 <Link to='/auth/login' className='nav-links mb-2'>
                     <FaSignInAlt className='nav-icon me-2' />
                     Login
                 </Link>
             </MDBNavbarItem>
-            <MDBNavbarItem  className='pt-1'>
+            <MDBNavbarItem className='pt-1'>
                 <Link to='/auth/register' className='nav-links'>
                     <BsFillPeopleFill className='nav-icon me-2' />
                     Register
                 </Link>
             </MDBNavbarItem>
-        </>
+        </NavItemsWrapper>
     )
 
     return (
@@ -106,7 +116,7 @@ const Hamburger = () => {
                 </IconComponent>
             </MDBContainer>
             <ToggledDivComponent show={toggleMenu} theme={theme}>
-                {isAuthenticated ? LoggedUserLinks : GuestUserLinks}
+                {isAuth ? LoggedUserLinks : GuestUserLinks}
             </ToggledDivComponent>
         </HamburgerComponent>
     )

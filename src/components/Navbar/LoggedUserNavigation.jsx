@@ -10,19 +10,19 @@ const LoggedUserNavigation = () => {
     return (
         <>
             <MDBNavbarItem>
-                <Link to='/editor' className='nav-links'>
+                <Link to='/editor' className='nav-links pe-2'>
                     <MDBIcon fas icon="plus" size='sm' />
                     Create Card
                 </Link>
             </MDBNavbarItem>
             <MDBNavbarItem>
-                <Link to='/me' className='nav-links'>
+                <Link to='/me' className='nav-links pe-2'>
                     <MDBIcon fas icon="user-alt" size='sm' />
                     Hello, $$$
                 </Link>
             </MDBNavbarItem>
             <MDBNavbarItem>
-                <Link to='/auth/logout' className='nav-links'>
+                <Link to='/auth/logout' className='nav-links pe-2'>
                     <MDBIcon fas icon="sign-out-alt" size='sm' />
                     Logout
                 </Link>

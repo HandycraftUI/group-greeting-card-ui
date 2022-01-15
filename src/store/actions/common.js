@@ -1,5 +1,5 @@
-import {TOGGLE_THEME} from './action-types'
+import actions from './action-types'
 
 export const toggleThemeAction = () => ({
-    type: TOGGLE_THEME
+    type: actions.TOGGLE_THEME
 })
