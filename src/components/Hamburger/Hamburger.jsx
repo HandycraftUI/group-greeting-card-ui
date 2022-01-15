@@ -12,17 +12,13 @@ import { FaBars, FaSignInAlt, FaUserAlt } from 'react-icons/fa'
 import { IoIosAddCircleOutline } from 'react-icons/io'
 import { BsFillPeopleFill } from 'react-icons/bs'
 import { FiLogOut } from 'react-icons/fi'
-
+import { respondTo } from '../../style-config/respond-to'
 
 const HamburgerComponent = styled(MDBContainer)`
     font-family: 'Raleway', sans-serif;
    
     .container{
          justify-content: flex-end;
-    }
-
-    .nav-icon{
-        margin-right: 0.5rem;
     }
     
     .navbar-toggler{
@@ -31,14 +27,15 @@ const HamburgerComponent = styled(MDBContainer)`
 `
 
 const IconComponent = styled(MDBNavbarToggler)`
-    @media (min-width: 320px) {
+    ${respondTo.xsmall`
         position: absolute;
         top: 1.4rem;
         right: 1rem;
-    }
-    @media (min-width: 480px) {
+    `}
+
+    ${respondTo.small`
         display: none;
-    }
+    `}
 `
 
 const ToggledDivComponent = styled(MDBCollapse)`
@@ -46,9 +43,10 @@ const ToggledDivComponent = styled(MDBCollapse)`
     text-align: center;
     color: ${({ theme }) => theme.palette.navbar.primary};
     width: 100%;
-    @media (min-width: 480px) {
+
+    ${respondTo.small`
         display: none;
-    }
+    `}
 `
 
 const Hamburger = () => {
@@ -60,19 +58,19 @@ const Hamburger = () => {
         <>
             <MDBNavbarItem theme={theme}>
                 <Link to='/editor' className='nav-links'>
-                    <IoIosAddCircleOutline className='nav-icon'/>
+                    <IoIosAddCircleOutline className='nav-icon me-2' />
                     Create Card
                 </Link>
             </MDBNavbarItem>
-            <MDBNavbarItem>
+            <MDBNavbarItem className='pt-1'>
                 <Link to='/me' className='nav-links'>
-                    <FaUserAlt className='nav-icon'/>
+                    <FaUserAlt className='nav-icon me-2' />
                     Hello, $$$
                 </Link>
             </MDBNavbarItem>
-            <MDBNavbarItem>
+            <MDBNavbarItem className='pt-1'> 
                 <Link to='/auth/logout' className='nav-links'>
-                    <FiLogOut className='nav-icon'/>
+                    <FiLogOut className='nav-icon me-2' />
                     Logout
                 </Link>
             </MDBNavbarItem>
@@ -82,14 +80,14 @@ const Hamburger = () => {
     const GuestUserLinks = (
         <>
             <MDBNavbarItem theme={theme}>
-                <Link to='/auth/login' className='nav-links'>
-                    <FaSignInAlt className='nav-icon'/>
+                <Link to='/auth/login' className='nav-links mb-2'>
+                    <FaSignInAlt className='nav-icon me-2' />
                     Login
                 </Link>
             </MDBNavbarItem>
-            <MDBNavbarItem>
+            <MDBNavbarItem  className='pt-1'>
                 <Link to='/auth/register' className='nav-links'>
-                    <BsFillPeopleFill className='nav-icon'/>
+                    <BsFillPeopleFill className='nav-icon me-2' />
                     Register
                 </Link>
             </MDBNavbarItem>

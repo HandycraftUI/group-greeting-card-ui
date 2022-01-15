@@ -11,6 +11,7 @@ import {
     MDBNavbarNav,
 } from 'mdb-react-ui-kit'
 import ToggleButton from '../ToggleButton/ToggleButton'
+import { respondTo } from '../../style-config/respond-to'
 
 const NavbarComponent = styled(MDBNavbar)`
     background-color: ${({ theme }) => theme.palette.navbar.primary};
@@ -29,24 +30,16 @@ const NavbarComponent = styled(MDBNavbar)`
         flex-direction: row;
     }
 
-    .fas{
-        padding-right: 0.5rem;
-    }
-
     .nav-links{
         color: ${({ theme }) => theme.palette.white};
     }
-
-    .nav-item{
-        padding-left: 1rem;
-    }
-
+    
     .navbar .container{
         justify-content: flex-end;
         width: 100%;
     }
 
-    @media (min-width: 320px) {
+    ${respondTo.xsmall`
         flex-wrap: nowrap;
 
         .navbar-brand{
@@ -59,11 +52,11 @@ const NavbarComponent = styled(MDBNavbar)`
         }
 
         .navbar-nav{
-            display: none;
+          display: none;
         }
-    }
+    `}
 
-    @media (min-width: 480px) {
+    ${ respondTo.small`
         .container-fluid{
             flex-direction: row;
         }
@@ -78,13 +71,13 @@ const NavbarComponent = styled(MDBNavbar)`
             width: 100%;
             justify-content: end;
         }
-    }
+    `}
 `
 
 const Navbar = () => {
     const isAuthenticated = true
     const theme = useTheme()
-   
+
     return (
         <>
             <NavbarComponent expand='lg' dark theme={theme}>

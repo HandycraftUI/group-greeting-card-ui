@@ -1,8 +1,9 @@
 // Breakpoints that provide min-width of media queries
 export const breakpoints = {
-    small: '0px',      // 0-720
-    medium: '721px',   // 721-960
-    large: '961px',    // 961-1200
-    xlarge: '1201px',  //1201 - 1600
-    xxlarge: '1601px', // 1601+
+    xsmall: '0px',     // 0-575
+    small: '576px',    // 576-767
+    medium: '768px',   // 768-991
+    large: '992px',    // 992-1199
+    xlarge: '1200px',  // 1200 - 1399
+    xxlarge: '1400px', // 1400+
 }
