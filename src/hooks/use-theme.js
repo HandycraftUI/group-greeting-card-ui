@@ -1,8 +1,8 @@
-import {useSelector} from 'react-redux'
+import { useSelector } from 'react-redux'
 
 const useTheme = () => {
-    const {themeData} = useSelector(state => state.common)
-
+    const { themeData } = useSelector(state => state.common)
+    
     return themeData
 }
 

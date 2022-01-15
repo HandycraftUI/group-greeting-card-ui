@@ -12,7 +12,7 @@ ReactDOM.render(
     <BrowserRouter>
         <Provider store={index}>
             <React.StrictMode>
-                <App/>
+                <App />
             </React.StrictMode>
         </Provider>
     </BrowserRouter>
