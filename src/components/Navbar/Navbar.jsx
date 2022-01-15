@@ -1,16 +1,17 @@
 import React from 'react'
-import GuestUserNavigation from './GuestUserNavigation'
-import LoggedUserNavigation from './LoggedUserNavigation'
-import Hamburger from '../Hamburger/Hamburger'
+import { useSelector } from 'react-redux'
 import styled from 'styled-components'
-import useTheme from '../../hooks/use-theme'
-import useAuth from '../../hooks/use-auth'
 import {
     MDBNavbar,
     MDBContainer,
     MDBNavbarBrand,
     MDBNavbarNav,
 } from 'mdb-react-ui-kit'
+
+import GuestUserNavigation from './GuestUserNavigation'
+import LoggedUserNavigation from './LoggedUserNavigation'
+import Hamburger from '../Hamburger/Hamburger'
+import useTheme from '../../hooks/use-theme'
 import ToggleButton from '../ToggleButton/ToggleButton'
 import AuthenticateButton from '../AuthenticateButton/AuthenticateButton'
 import { respondTo } from '../../style-config/respond-to'
@@ -78,7 +79,7 @@ const NavbarComponent = styled(MDBNavbar)`
 
 const Navbar = () => {
     const theme = useTheme()
-    const isAuth = useAuth()
+    const isAuth = useSelector(state => state.user.isAuth)
 
     return (
         <>

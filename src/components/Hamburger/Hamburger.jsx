@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import useTheme from '../../hooks/use-theme'
-import useAuth from '../../hooks/use-auth'
 import {
     MDBNavbarToggler,
     MDBNavbarItem,
@@ -13,6 +12,9 @@ import { FaBars, FaSignInAlt, FaUserAlt } from 'react-icons/fa'
 import { IoIosAddCircleOutline } from 'react-icons/io'
 import { BsFillPeopleFill } from 'react-icons/bs'
 import { FiLogOut } from 'react-icons/fi'
+
+import useTheme from '../../hooks/use-theme'
+
 import { respondTo } from '../../style-config/respond-to'
 
 const HamburgerComponent = styled(MDBContainer)`
@@ -62,7 +64,7 @@ const ToggledDivComponent = styled(MDBCollapse)`
 const Hamburger = () => {
     const [toggleMenu, setToggleMenu] = useState(false)
     const theme = useTheme()
-    const isAuth = useAuth()
+    const isAuth = useSelector(state => state.user.isAuth)
 
     const LoggedUserLinks = (
         <NavItemsWrapper>

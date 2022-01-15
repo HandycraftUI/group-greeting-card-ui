@@ -1,7 +1,8 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { authenticateAction } from '../../store/actions/user'
 import { MDBBtn } from 'mdb-react-ui-kit'
+
+import { authenticateAction } from '../../store/actions/user'
 
 const AuthenticateButton = () => {
     const dispatch = useDispatch()

@@ -1,7 +1,8 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { toggleThemeAction } from '../../store/actions/common'
 import { MDBBtn } from 'mdb-react-ui-kit'
+
+import { toggleThemeAction } from '../../store/actions/common'
 
 const ToggleButton = () => {
     const dispatch = useDispatch()
