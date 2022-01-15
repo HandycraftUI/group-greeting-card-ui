@@ -129,7 +129,7 @@ const Tooltip = (props) => {
             onMouseLeave={hideTip}
         >
             {props.children}
-            {!active && (
+            {active && (
                 <Tip theme={theme} className={`${props.direction || 'top'}`}>
                     {props.content}
                 </Tip>
