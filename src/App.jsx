@@ -6,22 +6,26 @@ import {respondTo} from './style-config/respond-to'
 
 //Example how to use media queries with styled-components
 const Wrapper = styled.div`
-  background-color: aqua;
+  background-color: purple;
 
-  ${respondTo.xs`
+  ${respondTo.small`
         background-color: red;
     `}
 
-  ${respondTo.sm`
+  ${respondTo.medium`
         background-color: blue;
     `}
 
-  ${respondTo.md`
+  ${respondTo.large`
         background-color: yellow;
     `}
 
-  ${respondTo.lg`
+  ${respondTo.xlarge`
         background-color: orange;
+    `}
+
+  ${respondTo.xxlarge`
+        background-color: green;
     `}
 `
 
