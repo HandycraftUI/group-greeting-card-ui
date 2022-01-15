@@ -1,6 +1,9 @@
 const lightTheme = {
     name: 'light',
     palette: {
+        navbar: {
+            primary: '#116'
+        },
         text: {
             primary: '#050038',
             secondary: '#4262FF',

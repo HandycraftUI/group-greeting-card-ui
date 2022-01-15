@@ -1,7 +1,7 @@
-import {TOGGLE_THEME} from '../actions/action-types'
+import actions from '../actions/action-types'
 import lightTheme from '../../themes/light'
 import darkTheme from '../../themes/dark'
-import {DARK_THEME, LIGHT_THEME} from '../../constants/common'
+import { DARK_THEME, LIGHT_THEME } from '../../constants/common'
 
 const initialState = {
     theme: 'light',
@@ -10,7 +10,7 @@ const initialState = {
 
 const commonReducer = (state = initialState, action) => {
     switch (action.type) {
-    case TOGGLE_THEME:
+    case actions.TOGGLE_THEME:
     {
         const newTheme = state.theme === LIGHT_THEME ? DARK_THEME : LIGHT_THEME
         return {

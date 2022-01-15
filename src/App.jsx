@@ -1,8 +1,11 @@
-import React, {Suspense} from 'react'
-import {useRoutes} from 'react-router-dom'
+import React from 'react'
+import 'mdb-react-ui-kit/dist/css/mdb.min.css'
+import Navbar from './components/Navbar/Navbar'
+import { Suspense } from 'react'
+import { useRoutes } from 'react-router-dom'
 import routes from './routes.jsx'
 import styled from 'styled-components'
-import {respondTo} from './style-config/respond-to'
+import { respondTo } from './style-config/respond-to'
 
 //Example how to use media queries with styled-components
 const Wrapper = styled.div`
@@ -34,6 +37,7 @@ const App = () => {
     return (
         <Wrapper>
             <Suspense fallback={<div>Loading...</div>}>
+                <Navbar />
                 {routing}
             </Suspense>
         </Wrapper>
