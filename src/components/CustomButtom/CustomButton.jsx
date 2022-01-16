@@ -53,7 +53,7 @@ const CustomButton = ({ type, children }) => {
     const theme = useTheme()
 
     return (
-        <Button theme={theme} type={type} id="custom-button">
+        <Button theme={theme} type={type}>
             {children}
         </Button>
     )
