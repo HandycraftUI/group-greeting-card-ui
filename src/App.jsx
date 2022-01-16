@@ -11,7 +11,7 @@ const App = () => {
         <>
             <Suspense fallback={<div>Loading...</div>}>
                 <Navbar />
-                <CustomButton type='outline-secondary'>
+                <CustomButton type='secondary'>
                    Register
                 </CustomButton>
                 {routing}

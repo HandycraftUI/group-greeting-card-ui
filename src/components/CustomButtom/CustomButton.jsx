@@ -26,13 +26,34 @@ const Button = styled(MDBBtn)`
     }};
     cursor: pointer;
     font-weight: 600;
+
+    :hover{
+        ${({ theme, type }) => type === 'primary' && {
+        backgroundColor: theme.palette.white,
+        color: theme.palette.tertiary,
+        border: `2px solid ${theme.palette.tertiary}`,
+    }};
+    ${({ theme, type }) => type === 'secondary' && {
+        backgroundColor: theme.palette.white,
+        color: theme.palette.secondary,
+        border: `2px solid ${theme.palette.secondary}`,
+    }};
+    ${({ theme, type }) => type === 'outline-primary' && {
+        backgroundColor: theme.palette.secondary,
+        color: theme.palette.white,
+    }};
+    ${({ theme, type }) => type === 'outline-secondary' && {
+        backgroundColor: theme.palette.secondary,
+        color: theme.palette.white,
+    }};
+    }
 `
 
 const CustomButton = ({ type, children }) => {
     const theme = useTheme()
 
     return (
-        <Button theme={theme} type={type}>
+        <Button theme={theme} type={type} id="custom-button">
             {children}
         </Button>
     )
