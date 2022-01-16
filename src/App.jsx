@@ -1,8 +1,9 @@
-import React, {Suspense} from 'react'
-import {useRoutes} from 'react-router-dom'
+import React, { Suspense } from 'react'
+import { useRoutes } from 'react-router-dom'
+
 import routes from './routes.jsx'
 import Navbar from './components/Navbar/Navbar'
-import EditorNavbar from './components/EditorNavbar/EditorNavbar'
+import Login from './components/Login/Login.jsx'
 
 const App = () => {
     const routing = useRoutes(routes)
@@ -11,7 +12,7 @@ const App = () => {
             <Suspense fallback={<div>Loading...</div>}>
                 <Navbar />
                 {routing}
-                <EditorNavbar/>
+                <Login />
             </Suspense>
         </>
     )
