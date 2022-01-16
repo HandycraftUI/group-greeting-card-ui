@@ -14,7 +14,6 @@ import { BsFillPeopleFill } from 'react-icons/bs'
 import { FiLogOut } from 'react-icons/fi'
 
 import useTheme from '../../hooks/use-theme'
-
 import { respondTo } from '../../style-config/respond-to'
 
 const HamburgerComponent = styled(MDBContainer)`
