@@ -8,6 +8,8 @@ import {
     MDBContainer,
 } from 'mdb-react-ui-kit'
 
+import CustomButton from '../CustomButtom/CustomButton'
+
 const LoginContainer = styled(MDBContainer)`
 
     
@@ -47,9 +49,9 @@ const Login = () => {
                         </label>
                         <MDBInput label='Repeat Password' id='typePassword' type='password' />
                         <div className="text-center mt-4">
-                            <MDBBtn color="unique" type="submit">
+                            <CustomButton type="primary" >
                                 Register
-                            </MDBBtn>
+                            </CustomButton>
                         </div>
                     </form>
                 </MDBCol>
