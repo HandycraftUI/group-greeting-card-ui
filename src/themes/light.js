@@ -7,7 +7,6 @@ const lightTheme = {
         text: {
             primary: '#050038',
             secondary: '#4262FF',
-            tertiary: ''
         },
         background: {
             primary: '#F0F0F3',
@@ -15,6 +14,7 @@ const lightTheme = {
         },
         primary: '#F0F0F3',
         secondary: '#050038',
+        tertiary: '#4262FF',
         white: '#fff',
         black: '#000',
     },
