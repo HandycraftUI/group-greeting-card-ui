@@ -11,8 +11,13 @@ import CustomButton from '../CustomButtom/CustomButton'
 import { respondTo } from '../../style-config/respond-to'
 
 const LoginContainer = styled(MDBContainer)`
-    
-    .col-md-6{
+    form p{
+        font-size: 1.5rem;
+        text-align: center;
+        margin-bottom: 1.5rem;
+    }
+
+    .col{
         margin: 0 auto;
         padding: 1rem 2rem;
         border:2px solid #050038;
@@ -25,47 +30,48 @@ const LoginContainer = styled(MDBContainer)`
         0 100px 80px rgba(0, 0, 0, 0.12);
     }
 
-    .mt-4{
-        margin-bottom: 0.5rem;
-    }
-    
     label{
         margin-bottom: 0.4rem;
     }
 
+    .btn-div{
+        text-align: center;
+        margin-top: 1.5rem;
+    }
+
     ${respondTo.xsmall`
         padding: 2rem;
-        .col-md-6{
+        .col{
            width: 90vw;
         }    
     `}
 
     ${respondTo.small`
-        .col-md-6{
+        .col{
            width: 80vw;
         }
     `}
 
     ${respondTo.medium`
-        .col-md-6{
+        .col{
             width: 70vw;
         }
     `}
 
     ${respondTo.large`
-        .col-md-6{
+        .col{
             width: 60vw;
         }
     `}
 `
 
-const Login = () => {
+const Register = () => {
     return (
         <LoginContainer>
             <MDBRow>
-                <MDBCol md="6">
+                <MDBCol>
                     <form>
-                        <p className="h3 text-center mb-4">Sign up</p>
+                        <p>Sign up</p>
                         <label htmlFor="defaultFormRegisterNameEx" className="grey-text">
                             Username
                         </label>
@@ -85,7 +91,7 @@ const Login = () => {
                             Repeat Password
                         </label>
                         <MDBInput label='Repeat Password' id='typeRepeatPassword' type='password' />
-                        <div className="text-center mt-4">
+                        <div className="btn-div">
                             <CustomButton styleType="primary" type='submit'>
                                 Register
                             </CustomButton>
@@ -97,4 +103,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default Register
