@@ -8,11 +8,13 @@ import useTheme from '../../hooks/use-theme'
 const Button = styled(MDBBtn)`
     ${({ theme, type }) => type === 'primary' && {
         backgroundColor: theme.palette.tertiary,
-        color: theme.palette.white
+        color: theme.palette.white,
+        border: `2px solid ${theme.palette.tertiary}`,
     }};
     ${({ theme, type }) => type === 'secondary' && {
         backgroundColor: theme.palette.secondary,
-        color: theme.palette.white
+        color: theme.palette.white,
+        border: `2px solid ${theme.palette.secondary}`,
     }};
     ${({ theme, type }) => type === 'outline-primary' && {
         backgroundColor: theme.palette.white,

@@ -12,8 +12,6 @@ import GuestUserNavigation from './GuestUserNavigation'
 import LoggedUserNavigation from './LoggedUserNavigation'
 import Hamburger from '../Hamburger/Hamburger'
 import useTheme from '../../hooks/use-theme'
-import ToggleButton from '../ToggleButton/ToggleButton'
-import AuthenticateButton from '../AuthenticateButton/AuthenticateButton'
 import { respondTo } from '../../style-config/respond-to'
 
 const NavbarComponent = styled(MDBNavbar)`
@@ -92,9 +90,6 @@ const Navbar = () => {
                     <Hamburger />
                 </MDBContainer>
             </NavbarComponent>
-
-            <ToggleButton />
-            <AuthenticateButton />
         </>
     )
 }
