@@ -86,7 +86,7 @@ const Login = () => {
                         </label>
                         <MDBInput label='Repeat Password' id='typeRepeatPassword' type='password' />
                         <div className="text-center mt-4">
-                            <CustomButton type="primary" >
+                            <CustomButton styleType="primary" type='submit'>
                                 Register
                             </CustomButton>
                         </div>
