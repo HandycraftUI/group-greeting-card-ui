@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 import {
     MDBRow,
     MDBCol,
@@ -10,7 +11,7 @@ import {
 import CustomButton from '../CustomButtom/CustomButton'
 import { respondTo } from '../../style-config/respond-to'
 
-const RegisterContainer = styled(MDBContainer)`
+const LoginContainer = styled(MDBContainer)`
     padding: 2rem;
 `
 
@@ -37,6 +38,7 @@ const FormContainer = styled(MDBCol)`
     0 100px 80px rgba(0, 0, 0, 0.12);
 
     ${respondTo.xsmall`
+        padding: 2rem 2rem;
         .col{
            width: 90vw;
         }    
@@ -66,42 +68,45 @@ const DivButton = styled.div`
     margin-top: 1.5rem;
 `
 
-const Register = () => {
+const Div = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+`
+
+const Login = () => {
+
     return (
-        <RegisterContainer>
+        <LoginContainer>
             <MDBRow>
                 <FormContainer>
                     <form>
-                        <Paragraph>Sign up</Paragraph>
-                        <Label htmlFor="defaultFormRegisterNameEx" className="grey-text">
-                            Username
-                        </Label>
-                        <MDBInput label='Username' id='typeUsername' type='email' />
+                        <Paragraph>Sign in</Paragraph>
                         <br />
                         <Label htmlFor="defaultFormRegisterEmailEx" className="grey-text">
                             Email
                         </Label>
                         <MDBInput label='Email' id='typeEmail' type='email' />
                         <br />
-                        <Label htmlFor="defaultFormRegisterConfirmEx" className="grey-text">
-                            Password
-                        </Label>
+                        <Div>
+                            <Label htmlFor="defaultFormRegisterConfirmEx" className="grey-text">
+                                Password
+                            </Label>
+                            <Link to='/auth/forgot-password' className='nav-links' >
+                                Forgot Password?
+                            </Link>
+                        </Div>
                         <MDBInput label='Password' id='typePassword' type='password' />
-                        <br />
-                        <Label htmlFor="defaultFormRegisterPasswordEx" className="grey-text">
-                            Repeat Password
-                        </Label>
-                        <MDBInput label='Repeat Password' id='typeRepeatPassword' type='password' />
                         <DivButton>
                             <CustomButton variant="primary" type='submit'>
-                                Register
+                                Login
                             </CustomButton>
                         </DivButton>
                     </form>
                 </FormContainer>
             </MDBRow>
-        </RegisterContainer>
+        </LoginContainer>
     )
 }
 
-export default Register
+export default Login
