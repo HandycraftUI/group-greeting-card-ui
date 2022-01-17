@@ -6,20 +6,22 @@ import PropTypes from 'prop-types'
 import useTheme from '../../hooks/use-theme'
 
 const Button = styled(MDBBtn)`
-    ${({ theme, type }) => type === 'primary' && {
+    ${({ theme, variant }) => variant === 'primary' && {
         backgroundColor: theme.palette.tertiary,
-        color: theme.palette.white
+        color: theme.palette.white,
+        border: `2px solid ${theme.palette.tertiary}`,
     }};
-    ${({ theme, type }) => type === 'secondary' && {
+    ${({ theme, variant }) => variant === 'secondary' && {
         backgroundColor: theme.palette.secondary,
-        color: theme.palette.white
+        color: theme.palette.white,
+        border: `2px solid ${theme.palette.secondary}`,
     }};
-    ${({ theme, type }) => type === 'outline-primary' && {
+    ${({ theme, variant }) => variant === 'outline-primary' && {
         backgroundColor: theme.palette.white,
         color: theme.palette.tertiary,
         border: `2px solid ${theme.palette.tertiary}`,
     }};
-    ${({ theme, type }) => type === 'outline-secondary' && {
+    ${({ theme, variant }) => variant === 'outline-secondary' && {
         backgroundColor: theme.palette.white,
         color: theme.palette.secondary,
         border: `2px solid ${theme.palette.secondary}`,
@@ -28,39 +30,39 @@ const Button = styled(MDBBtn)`
     font-weight: 600;
 
     :hover{
-        ${({ theme, type }) => type === 'primary' && {
+        ${({ theme, variant }) => variant === 'primary' && {
         backgroundColor: theme.palette.white,
         color: theme.palette.tertiary,
         border: `2px solid ${theme.palette.tertiary}`,
     }};
-    ${({ theme, type }) => type === 'secondary' && {
+    ${({ theme, variant }) => variant === 'secondary' && {
         backgroundColor: theme.palette.white,
         color: theme.palette.secondary,
         border: `2px solid ${theme.palette.secondary}`,
     }};
-    ${({ theme, type }) => type === 'outline-primary' && {
+    ${({ theme, variant }) => variant === 'outline-primary' && {
         backgroundColor: theme.palette.secondary,
         color: theme.palette.white,
     }};
-    ${({ theme, type }) => type === 'outline-secondary' && {
+    ${({ theme, variant }) => variant === 'outline-secondary' && {
         backgroundColor: theme.palette.secondary,
         color: theme.palette.white,
     }};
     }
 `
 
-const CustomButton = ({ type, children }) => {
+const CustomButton = ({ variant, children }) => {
     const theme = useTheme()
 
     return (
-        <Button theme={theme} type={type}>
+        <Button theme={theme} variant={variant}>
             {children}
         </Button>
     )
 }
 
 CustomButton.propTypes = {
-    type: PropTypes.string,
+    variant: PropTypes.string,
     children: PropTypes.string,
 }
 
