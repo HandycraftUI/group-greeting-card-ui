@@ -10,9 +10,26 @@ import {
 
 import CustomButton from '../CustomButtom/CustomButton'
 import { respondTo } from '../../style-config/respond-to'
+import useTheme from '../../hooks/use-theme'
 
 const LoginContainer = styled(MDBContainer)`
     padding: 2rem;
+
+    ${respondTo.xsmall`
+        width: 90vw;  
+    `}
+
+    ${respondTo.small`
+        width: 80vw;
+    `}
+
+    ${respondTo.medium`
+        width: 70vw;
+    `}
+
+    ${respondTo.large`
+        width: 50vw;
+    `}
 `
 
 const Paragraph = styled.p`
@@ -38,28 +55,7 @@ const FormContainer = styled(MDBCol)`
     0 100px 80px rgba(0, 0, 0, 0.12);
 
     ${respondTo.xsmall`
-        padding: 2rem 2rem;
-        .col{
-           width: 90vw;
-        }    
-    `}
-
-    ${respondTo.small`
-        .col{
-           width: 80vw;
-        }
-    `}
-
-    ${respondTo.medium`
-        .col{
-            width: 70vw;
-        }
-    `}
-
-    ${respondTo.large`
-        .col{
-            width: 60vw;
-        }
+        padding: 2rem 2rem;  
     `}
 `
 
@@ -72,9 +68,14 @@ const Div = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    .nav-links{
+        color: ${({theme}) => theme.palette.tertiary}
+    }
 `
 
 const Login = () => {
+    const theme = useTheme()
 
     return (
         <LoginContainer>
@@ -88,11 +89,11 @@ const Login = () => {
                         </Label>
                         <MDBInput label='Email' id='typeEmail' type='email' />
                         <br />
-                        <Div>
+                        <Div theme={theme}>
                             <Label htmlFor="defaultFormRegisterConfirmEx" className="grey-text">
                                 Password
                             </Label>
-                            <Link to='/auth/forgot-password' className='nav-links' >
+                            <Link to='/auth/forgot-password' className='nav-links'>
                                 Forgot Password?
                             </Link>
                         </Div>

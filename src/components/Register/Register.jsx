@@ -12,6 +12,22 @@ import { respondTo } from '../../style-config/respond-to'
 
 const RegisterContainer = styled(MDBContainer)`
     padding: 2rem;
+
+    ${respondTo.xsmall`
+        width: 90vw;
+    `}
+
+    ${respondTo.small`
+        width: 80vw;
+    `}
+
+    ${respondTo.medium`
+        width: 70vw;
+    `}
+
+    ${respondTo.large`
+        width: 50vw;
+    `}
 `
 
 const Paragraph = styled.p`
@@ -36,29 +52,7 @@ const FormContainer = styled(MDBCol)`
     0 41.8px 33.4px rgba(0, 0, 0, 0.086),
     0 100px 80px rgba(0, 0, 0, 0.12);
 
-    ${respondTo.xsmall`
-        .col{
-           width: 90vw;
-        }    
-    `}
-
-    ${respondTo.small`
-        .col{
-           width: 80vw;
-        }
-    `}
-
-    ${respondTo.medium`
-        .col{
-            width: 70vw;
-        }
-    `}
-
-    ${respondTo.large`
-        .col{
-            width: 60vw;
-        }
-    `}
+    
 `
 
 const DivButton = styled.div`
@@ -76,7 +70,7 @@ const Register = () => {
                         <Label htmlFor="defaultFormRegisterNameEx" className="grey-text">
                             Username
                         </Label>
-                        <MDBInput label='Username' id='typeUsername' type='email' />
+                        <MDBInput label='Username' id='typeUsername' type='username' />
                         <br />
                         <Label htmlFor="defaultFormRegisterEmailEx" className="grey-text">
                             Email
