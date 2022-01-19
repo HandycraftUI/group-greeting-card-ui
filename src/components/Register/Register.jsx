@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import {
     MDBRow,
@@ -10,18 +10,34 @@ import {
 import CustomButton from '../CustomButtom/CustomButton'
 import { respondTo } from '../../style-config/respond-to'
 
-const LoginContainer = styled(MDBContainer)`
+const RegisterContainer = styled(MDBContainer)`
     padding: 2rem;
+
+    .form-control{
+        margin-bottom: -0.5rem;
+    }
+
+    ${respondTo.xsmall`
+        width: 90vw;
+    `}
+
+    ${respondTo.small`
+        width: 80vw;
+    `}
+
+    ${respondTo.medium`
+        width: 70vw;
+    `}
+
+    ${respondTo.large`
+        width: 60vw;
+    `}
 `
 
 const Paragraph = styled.p`
     font-size: 1.5rem;
     text-align: center;
     margin-bottom: 1.5rem;
-`
-
-const Label = styled.label`
-    margin-bottom: 0.4rem;
 `
 
 const FormContainer = styled(MDBCol)`
@@ -36,62 +52,117 @@ const FormContainer = styled(MDBCol)`
     0 41.8px 33.4px rgba(0, 0, 0, 0.086),
     0 100px 80px rgba(0, 0, 0, 0.12);
 
-    ${respondTo.xsmall`
-        .col{
-           width: 90vw;
-        }    
-    `}
+    .register-inputs{
+        display: flex;
+    }
 
-    ${respondTo.small`
-        .col{
-           width: 80vw;
+    .div-input{
+        width: 100%;
+    }
+
+    #email-input{
+        width: 92%;
+    }
+
+    ${respondTo.xsmall`
+        .register-inputs{
+           display: block;
+        }
+        #email-input{
+           width: 89%;
         }
     `}
 
     ${respondTo.medium`
-        .col{
-            width: 70vw;
+        .register-inputs{
+            display: flex;
         }
-    `}
-
-    ${respondTo.large`
-        .col{
-            width: 60vw;
+        #email-input{
+           width: 90%;
         }
     `}
 `
 
 const DivButton = styled.div`
     text-align: center;
-    margin-top: 1.5rem;
+    margin-top: 0.5rem;
+
+    ${respondTo.xsmall`
+        margin-top: 1.5rem;
+    `}
+
+    ${respondTo.medium`
+        margin-top: 0.5rem;
+    `}
 `
 
 const Register = () => {
+    const [email, setEmail] = useState('')
+    const [firstName, setFirstName] = useState('')
+    const [lastName, setLastName] = useState('')
+    const [password, setPassword] = useState('')
+    const [confirmPassword, setConfirmPassword] = useState('')
+
+    const onRegister = (e) => {
+        e.preventDefault()
+    }
     return (
-        <LoginContainer>
+        <RegisterContainer>
             <MDBRow>
                 <FormContainer>
-                    <form>
+                    <form id='register-form' onSubmit={onRegister}>
                         <Paragraph>Sign up</Paragraph>
-                        <Label htmlFor="defaultFormRegisterNameEx" className="grey-text">
-                            Username
-                        </Label>
-                        <MDBInput label='Username' id='typeUsername' type='email' />
+
+                        <MDBContainer id='email-input'>
+                            <MDBInput
+                                label='Email'
+                                id='typeEmail'
+                                type='email'
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
+                        </MDBContainer>
                         <br />
-                        <Label htmlFor="defaultFormRegisterEmailEx" className="grey-text">
-                            Email
-                        </Label>
-                        <MDBInput label='Email' id='typeEmail' type='email' />
-                        <br />
-                        <Label htmlFor="defaultFormRegisterConfirmEx" className="grey-text">
-                            Password
-                        </Label>
-                        <MDBInput label='Password' id='typePassword' type='password' />
-                        <br />
-                        <Label htmlFor="defaultFormRegisterPasswordEx" className="grey-text">
-                            Repeat Password
-                        </Label>
-                        <MDBInput label='Repeat Password' id='typeRepeatPassword' type='password' />
+
+                        <MDBContainer className='register-inputs'>
+                            <MDBContainer className='div-input'>
+                                <MDBInput
+                                    label='Firstname'
+                                    id='typeFirstname'
+                                    type='text'
+                                    value={firstName}
+                                    onChange={(e) => setFirstName(e.target.value)}
+                                />
+                                <br />
+                                <MDBInput
+                                    label='Lastname'
+                                    id='typeLastname'
+                                    type='text'
+                                    value={lastName}
+                                    onChange={(e) => setLastName(e.target.value)}
+                                />
+                                <br />
+                            </MDBContainer>
+
+                            <MDBContainer className='div-input'>
+                                <MDBInput
+                                    label='Password'
+                                    id='typePassword'
+                                    type='password'
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                />
+                                <br />
+                                <MDBInput
+                                    label='Repeat Password'
+                                    id='typeRepeatPassword'
+                                    type='password'
+                                    value={confirmPassword}
+                                    onChange={(e) => setConfirmPassword(e.target.value)}
+                                />
+                            </MDBContainer>
+                        </MDBContainer>
+
                         <DivButton>
                             <CustomButton variant="primary" type='submit'>
                                 Register
@@ -100,7 +171,7 @@ const Register = () => {
                     </form>
                 </FormContainer>
             </MDBRow>
-        </LoginContainer>
+        </RegisterContainer>
     )
 }
 
