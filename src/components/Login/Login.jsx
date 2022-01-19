@@ -16,7 +16,7 @@ const LoginContainer = styled(MDBContainer)`
     padding: 2rem;
 
     ${respondTo.xsmall`
-        width: 90vw;  
+        width: 100vw;  
     `}
 
     ${respondTo.small`
@@ -35,7 +35,6 @@ const LoginContainer = styled(MDBContainer)`
 const Paragraph = styled.p`
     font-size: 1.5rem;
     text-align: center;
-    margin-bottom: 1.5rem;
 `
 
 const Label = styled.label`
@@ -56,6 +55,16 @@ const FormContainer = styled(MDBCol)`
 
     ${respondTo.xsmall`
         padding: 2rem 2rem;  
+        
+        .container{
+           width: 100%;
+        }
+    `}
+
+    ${respondTo.medium`
+        .container{
+           width: 80%;
+        }
     `}
 `
 
@@ -70,8 +79,21 @@ const Div = styled.div`
     justify-content: space-between;
 
     .nav-links{
-        color: ${({theme}) => theme.palette.tertiary}
+        color: ${({ theme }) => theme.palette.tertiary};
+        margin-bottom: 0.4rem;
     }
+
+    ${respondTo.xsmall`
+       .nav-links{
+           font-size: 0.9rem;
+       }
+    `}
+
+    ${respondTo.medium`
+       .nav-links{
+           font-size: 1rem;
+       }
+    `}
 `
 
 const Login = () => {
@@ -83,26 +105,28 @@ const Login = () => {
                 <FormContainer>
                     <form>
                         <Paragraph>Sign in</Paragraph>
-                        <br />
-                        <Label htmlFor="defaultFormRegisterEmailEx" className="grey-text">
-                            Email
-                        </Label>
-                        <MDBInput label='Email' id='typeEmail' type='email' />
-                        <br />
-                        <Div theme={theme}>
-                            <Label htmlFor="defaultFormRegisterConfirmEx" className="grey-text">
-                                Password
+
+                        <MDBContainer>
+                            <Label htmlFor="defaultFormRegisterEmailEx" className="grey-text">
+                                Email
                             </Label>
-                            <Link to='/auth/forgot-password' className='nav-links'>
-                                Forgot Password?
-                            </Link>
-                        </Div>
-                        <MDBInput label='Password' id='typePassword' type='password' />
-                        <DivButton>
-                            <CustomButton variant="primary" type='submit'>
-                                Login
-                            </CustomButton>
-                        </DivButton>
+                            <MDBInput label='Email' id='typeEmail' type='email' />
+                            <br />
+                            <Div theme={theme}>
+                                <Label htmlFor="defaultFormRegisterConfirmEx" className="grey-text">
+                                    Password
+                                </Label>
+                                <Link to='/auth/forgot-password' className='nav-links'>
+                                    Forgot Password?
+                                </Link>
+                            </Div>
+                            <MDBInput label='Password' id='typePassword' type='password' />
+                            <DivButton>
+                                <CustomButton variant="primary" type='submit'>
+                                    Login
+                                </CustomButton>
+                            </DivButton>
+                        </MDBContainer>
                     </form>
                 </FormContainer>
             </MDBRow>
