@@ -73,27 +73,34 @@ const DivButton = styled.div`
     margin-top: 1.5rem;
 `
 
+const LoginForm = styled(MDBContainer)`
+     ${respondTo.xsmall`
+        width: 100%; 
+    `}
+
+    ${respondTo.medium`
+        width: 80%;
+    `}
+`
+
+const ForgotPasswordLink = styled(Link)`
+    color: ${({ theme }) => theme.palette.tertiary};
+    margin-bottom: 0.4rem;
+    
+
+    ${respondTo.xsmall`
+        font-size: 0.9rem;
+    `}
+
+    ${respondTo.medium`
+        font-size: 1rem;
+    `}
+`
+
 const Div = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-    .nav-links{
-        color: ${({ theme }) => theme.palette.tertiary};
-        margin-bottom: 0.4rem;
-    }
-
-    ${respondTo.xsmall`
-       .nav-links{
-           font-size: 0.9rem;
-       }
-    `}
-
-    ${respondTo.medium`
-       .nav-links{
-           font-size: 1rem;
-       }
-    `}
 `
 
 const Login = () => {
@@ -106,7 +113,7 @@ const Login = () => {
                     <form>
                         <Paragraph>Sign in</Paragraph>
 
-                        <MDBContainer>
+                        <LoginForm>
                             <Label htmlFor="defaultFormRegisterEmailEx" className="grey-text">
                                 Email
                             </Label>
@@ -116,9 +123,9 @@ const Login = () => {
                                 <Label htmlFor="defaultFormRegisterConfirmEx" className="grey-text">
                                     Password
                                 </Label>
-                                <Link to='/auth/forgot-password' className='nav-links'>
+                                <ForgotPasswordLink to='/auth/forgot-password' className='nav-links' theme={theme}>
                                     Forgot Password?
-                                </Link>
+                                </ForgotPasswordLink>
                             </Div>
                             <MDBInput label='Password' id='typePassword' type='password' />
                             <DivButton>
@@ -126,7 +133,7 @@ const Login = () => {
                                     Login
                                 </CustomButton>
                             </DivButton>
-                        </MDBContainer>
+                        </LoginForm>
                     </form>
                 </FormContainer>
             </MDBRow>
