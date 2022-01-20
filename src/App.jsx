@@ -1,9 +1,9 @@
 import React, { Suspense } from 'react'
 import { useRoutes } from 'react-router-dom'
 
-import Register from './components/Register/Register.jsx'
 import routes from './routes.jsx'
 import Navbar from './components/Navbar/Navbar'
+import Login from './components/Login/Login.jsx'
 
 const App = () => {
     const routing = useRoutes(routes)
@@ -12,7 +12,7 @@ const App = () => {
             <Suspense fallback={<div>Loading...</div>}>
                 <Navbar />
                 {routing}
-                <Register />
+                <Login />
             </Suspense>
         </>
     )
