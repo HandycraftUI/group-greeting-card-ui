@@ -79,6 +79,7 @@ const NavbarComponent = styled(MDBNavbar)`
 const Navbar = () => {
     const theme = useTheme()
     const isAuth = useSelector(state => state.user.isAuth)
+    const firstname = useSelector(state => state.user.userData.firstName)
 
     return (
         <>
@@ -86,7 +87,7 @@ const Navbar = () => {
                 <MDBContainer fluid>
                     <Link to='/' className='navbar-brand'>Greeting Card</Link>
                     <MDBNavbarNav right fullWidth={false} className='mb-2 mb-lg-0' >
-                        {isAuth ? <LoggedUserNavigation /> : <GuestUserNavigation />}
+                        {isAuth ? <LoggedUserNavigation firstname={firstname} /> : <GuestUserNavigation />}
                     </MDBNavbarNav>
                     <Hamburger />
                 </MDBContainer>

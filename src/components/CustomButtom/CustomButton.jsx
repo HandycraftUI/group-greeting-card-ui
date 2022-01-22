@@ -51,11 +51,11 @@ const Button = styled(MDBBtn)`
     }
 `
 
-const CustomButton = ({ variant, children }) => {
+const CustomButton = ({ variant, children, onClick, type }) => {
     const theme = useTheme()
 
     return (
-        <Button theme={theme} variant={variant}>
+        <Button theme={theme} variant={variant} onClick={onClick} type={type}>
             {children}
         </Button>
     )
@@ -64,6 +64,8 @@ const CustomButton = ({ variant, children }) => {
 CustomButton.propTypes = {
     variant: PropTypes.string,
     children: PropTypes.string,
+    type: PropTypes.string,
+    onClick: PropTypes.func
 }
 
 export default CustomButton
