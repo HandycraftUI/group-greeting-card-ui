@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import { useNavigate } from 'react-router-dom'
+import { useDispatch, connect } from 'react-redux'
 import {
     MDBRow,
     MDBCol,
@@ -9,6 +11,8 @@ import {
 
 import CustomButton from '../CustomButtom/CustomButton'
 import { respondTo } from '../../style-config/respond-to'
+import { register } from '../../services/authService'
+import { registerUser } from '../../store/actions/registerUser'
 
 const RegisterContainer = styled(MDBContainer)`
     padding: 2rem;
@@ -60,10 +64,6 @@ const FormContainer = styled(MDBCol)`
         width: 100%;
     }
 
-    #email-input{
-        width: 92%;
-    }
-
     ${respondTo.xsmall`
         .register-inputs{
            display: block;
@@ -79,6 +79,12 @@ const FormContainer = styled(MDBCol)`
         }
         #email-input{
            width: 90%;
+        }
+    `}
+
+    ${respondTo.large`
+        #email-input{
+           width: 93%;
         }
     `}
 `
@@ -102,15 +108,29 @@ const Register = () => {
     const [lastName, setLastName] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
+    const dispatch = useDispatch()
 
-    const onRegister = (e) => {
-        e.preventDefault()
+    const authData = {
+        email,
+        firstName,
+        lastName,
+        password,
+        confirmPassword
     }
+
+    const registrateUser = async (e) => {
+        e.preventDefault()
+
+        const userData = await register(authData)
+
+        dispatch(registerUser(userData))
+    }
+
     return (
         <RegisterContainer>
             <MDBRow>
                 <FormContainer>
-                    <form id='register-form' onSubmit={onRegister}>
+                    <form id='register-form' onSubmit={() => dispatch(registrateUser(event))}>
                         <Paragraph>Sign up</Paragraph>
 
                         <MDBContainer id='email-input'>
@@ -175,4 +195,8 @@ const Register = () => {
     )
 }
 
-export default Register
+const mapStateToProps = state => ({
+    userData: state.userData
+})
+
+export default connect(mapStateToProps)(Register)
