@@ -31,7 +31,7 @@ const RegisterContainer = styled(MDBContainer)`
     `}
 
     ${respondTo.large`
-        width: 60vw;
+        width: 50vw;
     `}
 `
 
@@ -56,18 +56,10 @@ const FormContainer = styled(MDBCol)`
 
 const InputsWrapper = styled(MDBContainer)`
     display: flex;
-
-    ${respondTo.xsmall`
-        display: block;
-    `}
-
-    ${respondTo.medium`
-        display: flex;
-    `}
 `
 
 const Input = styled(MDBInput)`
-     margin-bottom: -0.5rem;
+    margin-bottom: -0.5rem;
 `
 
 const DivButton = styled.div`
