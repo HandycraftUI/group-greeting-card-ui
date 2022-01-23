@@ -12,7 +12,6 @@ const App = () => {
             <Suspense fallback={<div>Loading...</div>}>
                 <Navbar />
                 {routing}
-                <Login />
             </Suspense>
         </>
     )
