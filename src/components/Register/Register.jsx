@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { useNavigate } from 'react-router-dom'
-import { useDispatch, connect } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import {
     MDBRow,
     MDBCol,
@@ -76,21 +76,15 @@ const DivButton = styled.div`
 `
 
 const Register = () => {
-    const [email, setEmail] = useState('')
-    const [firstName, setFirstName] = useState('')
-    const [lastName, setLastName] = useState('')
-    const [password, setPassword] = useState('')
-    const [confirmPassword, setConfirmPassword] = useState('')
+    const [authData, setAuthData] = useState({
+        email: '',
+        firstName: '',
+        lastName: '',
+        password: '',
+        confirmPassword: ''
+    })
     const dispatch = useDispatch()
     const navigate = useNavigate()
-
-    const authData = {
-        email,
-        firstName,
-        lastName,
-        password,
-        confirmPassword
-    }
 
     const registrateUser = async (e) => {
         e.preventDefault()
@@ -119,8 +113,8 @@ const Register = () => {
                                     label='Email'
                                     id='typeEmail'
                                     type='email'
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
+                                    value={authData.email}
+                                    onChange={(e) => setAuthData({ ...authData, email: e.target.value })}
                                 />
                             </MDBContainer>
 
@@ -133,16 +127,16 @@ const Register = () => {
                                     label='Firstname'
                                     id='typeFirstname'
                                     type='text'
-                                    value={firstName}
-                                    onChange={(e) => setFirstName(e.target.value)}
+                                    value={authData.firstName}
+                                    onChange={(e) => setAuthData({ ...authData, firstName: e.target.value })}
                                 />
                                 <br />
                                 <Input
                                     label='Lastname'
                                     id='typeLastname'
                                     type='text'
-                                    value={lastName}
-                                    onChange={(e) => setLastName(e.target.value)}
+                                    value={authData.lastName}
+                                    onChange={(e) => setAuthData({ ...authData, lastName: e.target.value })}
                                 />
                                 <br />
                             </MDBContainer>
@@ -152,16 +146,16 @@ const Register = () => {
                                     label='Password'
                                     id='typePassword'
                                     type='password'
-                                    value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
+                                    value={authData.password}
+                                    onChange={(e) => setAuthData({ ...authData, password: e.target.value })}
                                 />
                                 <br />
                                 <Input
                                     label='Repeat Password'
                                     id='typeRepeatPassword'
                                     type='password'
-                                    value={confirmPassword}
-                                    onChange={(e) => setConfirmPassword(e.target.value)}
+                                    value={authData.confirmPassword}
+                                    onChange={(e) => setAuthData({ ...authData, confirmPassword: e.target.value })}
                                 />
                             </MDBContainer>
                         </InputsWrapper>
@@ -178,8 +172,4 @@ const Register = () => {
     )
 }
 
-const mapStateToProps = state => ({
-    userData: state.userData
-})
-
-export default connect(mapStateToProps)(Register)
+export default Register

@@ -2,7 +2,11 @@ import actions from '../actions/action-types'
 
 const initialState = {
     isAuth: false,
-    userData: {}
+    userData: {
+        firstName: '',
+        lastName: '',
+        email: ''
+    }
 }
 
 const userReducer = (state = initialState, action) => {

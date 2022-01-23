@@ -7,7 +7,7 @@ const Home = lazy(() => import('./pages/Home'))
 
 const routeConfig = [
     {
-        path: '/home',
+        path: '/',
         element: <Home />
     },
     {

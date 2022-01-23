@@ -1,10 +1,8 @@
-const BASE_URL = 'http://localhost:3000/auth'
-
 export const register = async (authData) => {
-    const response = await fetch(`${BASE_URL}/register`, {
+    const response = await fetch(`${process.env.REACT_APP_BASE_AUTH_URL}/register`, {
         method: 'POST',
         headers: {
-            'content-type': 'application/json'
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify(authData)
     })
