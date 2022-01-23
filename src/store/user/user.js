@@ -27,6 +27,15 @@ const userReducer = (state = initialState, action) => {
             }
         }
     }
+    case actions.LOGIN_USER:
+    {
+        return {
+            ...state,
+            userData: {
+                ...action.payload
+            }
+        }
+    }
     default:
         return state
     }

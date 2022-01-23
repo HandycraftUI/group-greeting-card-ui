@@ -10,6 +10,7 @@
     "fabric": "4.6.0",
     "fabricjs-react": "1.0.8",
     "husky": "7.0.4",
+    "jsonwebtoken": "8.5.1",
     "mdb-react-ui-kit": "2.2.0",
     "prop-types": "15.8.1",
     "react": "17.0.2",
