@@ -1,10 +1,10 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 import {
     MDBNavbar,
     MDBContainer,
-    MDBNavbarBrand,
     MDBNavbarNav,
 } from 'mdb-react-ui-kit'
 
@@ -13,6 +13,7 @@ import LoggedUserNavigation from './LoggedUserNavigation'
 import Hamburger from '../Hamburger/Hamburger'
 import useTheme from '../../hooks/use-theme'
 import { respondTo } from '../../style-config/respond-to'
+import ToggleButton from '../ToggleButton/ToggleButton'
 
 const NavbarComponent = styled(MDBNavbar)`
     background-color: ${({ theme }) => theme.palette.navbar.primary};
@@ -77,19 +78,28 @@ const NavbarComponent = styled(MDBNavbar)`
 
 const Navbar = () => {
     const theme = useTheme()
-    const isAuth = useSelector(state => state.user.isAuth)
+    const user = JSON.parse(localStorage.getItem('userData'))
+    let { isAuth } = useSelector(state => state.user)
+    let firstName
+
+    if (user) {
+        isAuth = user.success
+        firstName = user.firstName
+    }
 
     return (
         <>
             <NavbarComponent expand='lg' dark theme={theme}>
                 <MDBContainer fluid>
-                    <MDBNavbarBrand href='/'>Greeting Card</MDBNavbarBrand>
+                    <Link to='/' className='navbar-brand'>Greeting Card</Link>
                     <MDBNavbarNav right fullWidth={false} className='mb-2 mb-lg-0' >
-                        {isAuth ? <LoggedUserNavigation /> : <GuestUserNavigation />}
+                        {isAuth ? <LoggedUserNavigation firstname={firstName} /> : <GuestUserNavigation />}
                     </MDBNavbarNav>
                     <Hamburger />
                 </MDBContainer>
             </NavbarComponent>
+
+            <ToggleButton />
         </>
     )
 }

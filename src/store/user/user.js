@@ -1,16 +1,30 @@
 import actions from '../actions/action-types'
 
 const initialState = {
-    isAuth: false
+    isAuth: false,
+    userData: {
+        firstName: '',
+        lastName: '',
+        email: ''
+    }
 }
 
 const userReducer = (state = initialState, action) => {
     switch (action.type) {
     case actions.IS_AUTHENTICATED:
     {
-        const newState = state.isAuth === false ? true : false
         return {
-            isAuth: newState
+            ...state,
+            isAuth: !state.isAuth
+        }
+    }
+    case actions.REGISTER_USER:
+    {
+        return {
+            ...state,
+            userData: {
+                ...action.payload
+            }
         }
     }
     default:

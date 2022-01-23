@@ -3,7 +3,6 @@ import { useRoutes } from 'react-router-dom'
 
 import routes from './routes.jsx'
 import Navbar from './components/Navbar/Navbar'
-import Login from './components/Login/Login.jsx'
 
 const App = () => {
     const routing = useRoutes(routes)

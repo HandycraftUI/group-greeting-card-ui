@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
+import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 import {
     MDBRow,
     MDBCol,
@@ -9,6 +11,9 @@ import {
 
 import CustomButton from '../CustomButtom/CustomButton'
 import { respondTo } from '../../style-config/respond-to'
+import { register } from '../../services/authService'
+import { registerUser } from '../../store/actions/registerUser'
+import { authenticateAction } from '../../store/actions/user'
 
 const RegisterContainer = styled(MDBContainer)`
     padding: 2rem;
@@ -36,10 +41,6 @@ const Paragraph = styled.p`
     margin-bottom: 1.5rem;
 `
 
-const Label = styled.label`
-    margin-bottom: 0.4rem;
-`
-
 const FormContainer = styled(MDBCol)`
     margin: 0 auto;
     padding: 1rem 2rem;
@@ -51,43 +52,118 @@ const FormContainer = styled(MDBCol)`
     0 22.3px 17.9px rgba(0, 0, 0, 0.072),
     0 41.8px 33.4px rgba(0, 0, 0, 0.086),
     0 100px 80px rgba(0, 0, 0, 0.12);
+`
 
-    
+const InputsWrapper = styled(MDBContainer)`
+    display: flex;
+`
+
+const Input = styled(MDBInput)`
+    margin-bottom: -0.5rem;
 `
 
 const DivButton = styled.div`
     text-align: center;
-    margin-top: 1.5rem;
+    margin-top: 0.5rem;
+
+    ${respondTo.xsmall`
+        margin-top: 1.5rem;
+    `}
+
+    ${respondTo.medium`
+        margin-top: 0.5rem;
+    `}
 `
 
 const Register = () => {
+    const [authData, setAuthData] = useState({
+        email: '',
+        firstName: '',
+        lastName: '',
+        password: '',
+        confirmPassword: ''
+    })
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+    const saveUserData = async (e) => {
+        e.preventDefault()
+
+        const userData = await register(authData)
+        userData.email = authData.email
+        userData.firstName = authData.firstName
+        userData.lastName = authData.lastName
+
+        dispatch(authenticateAction())
+        dispatch(registerUser(userData))
+
+        localStorage.setItem(`${process.env.REACT_APP_LOCAL_STORAGE_USER}`, JSON.stringify(userData))
+
+        navigate('/')
+    }
+
     return (
         <RegisterContainer>
             <MDBRow>
                 <FormContainer>
                     <form>
                         <Paragraph>Sign up</Paragraph>
-                        <Label htmlFor="defaultFormRegisterNameEx" className="grey-text">
-                            Username
-                        </Label>
-                        <MDBInput label='Username' id='typeUsername' type='username' />
+
+                        <InputsWrapper>
+                            <MDBContainer>
+                                <Input
+                                    label='Email'
+                                    id='typeEmail'
+                                    type='email'
+                                    value={authData.email}
+                                    onChange={(e) => setAuthData({ ...authData, email: e.target.value })}
+                                />
+                            </MDBContainer>
+
+                        </InputsWrapper>
                         <br />
-                        <Label htmlFor="defaultFormRegisterEmailEx" className="grey-text">
-                            Email
-                        </Label>
-                        <MDBInput label='Email' id='typeEmail' type='email' />
-                        <br />
-                        <Label htmlFor="defaultFormRegisterConfirmEx" className="grey-text">
-                            Password
-                        </Label>
-                        <MDBInput label='Password' id='typePassword' type='password' />
-                        <br />
-                        <Label htmlFor="defaultFormRegisterPasswordEx" className="grey-text">
-                            Repeat Password
-                        </Label>
-                        <MDBInput label='Repeat Password' id='typeRepeatPassword' type='password' />
+
+                        <InputsWrapper>
+                            <MDBContainer>
+                                <Input
+                                    label='Firstname'
+                                    id='typeFirstname'
+                                    type='text'
+                                    value={authData.firstName}
+                                    onChange={(e) => setAuthData({ ...authData, firstName: e.target.value })}
+                                />
+                                <br />
+                                <Input
+                                    label='Lastname'
+                                    id='typeLastname'
+                                    type='text'
+                                    value={authData.lastName}
+                                    onChange={(e) => setAuthData({ ...authData, lastName: e.target.value })}
+                                />
+                                <br />
+                            </MDBContainer>
+
+                            <MDBContainer className='div-input'>
+                                <Input
+                                    label='Password'
+                                    id='typePassword'
+                                    type='password'
+                                    value={authData.password}
+                                    onChange={(e) => setAuthData({ ...authData, password: e.target.value })}
+                                />
+                                <br />
+                                <Input
+                                    label='Repeat Password'
+                                    id='typeRepeatPassword'
+                                    type='password'
+                                    value={authData.confirmPassword}
+                                    onChange={(e) => setAuthData({ ...authData, confirmPassword: e.target.value })}
+                                />
+                            </MDBContainer>
+                        </InputsWrapper>
+
                         <DivButton>
-                            <CustomButton variant="primary" type='submit'>
+                            <CustomButton variant="primary" type="button" onClick={() => saveUserData(event)}>
                                 Register
                             </CustomButton>
                         </DivButton>

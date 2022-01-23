@@ -1,18 +1,23 @@
 import { lazy } from 'react'
 import React from 'react'
-import Login from './components/Login/Login'
 
+const Login = lazy(() => import('./components/Login/Login'))
+const Register = lazy(() => import('./components/Register/Register'))
 const Home = lazy(() => import('./pages/Home'))
 const Editor = lazy(() => import('./pages/Editor/Editor'))
 
 const routeConfig = [
     {
-        path: '/home',
+        path: '/',
         element: <Home />
     },
     {
         path: '/auth/login',
         element: <Login />
+    },
+    {
+        path: '/auth/register',
+        element: <Register />
     },
     {
         path: '/editor',

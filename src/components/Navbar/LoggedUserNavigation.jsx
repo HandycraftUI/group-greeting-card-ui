@@ -1,12 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import {
     MDBNavbarItem,
     MDBIcon,
 } from 'mdb-react-ui-kit'
 
-const LoggedUserNavigation = () => {
-
+const LoggedUserNavigation = ({ firstname }) => {
     return (
         <>
             <MDBNavbarItem>
@@ -18,7 +18,7 @@ const LoggedUserNavigation = () => {
             <MDBNavbarItem>
                 <Link to='/me' className='nav-links pe-2'>
                     <MDBIcon fas icon="user-alt" size='sm' />
-                    Hello, $$$
+                    Hello, {firstname}
                 </Link>
             </MDBNavbarItem>
             <MDBNavbarItem>
@@ -29,6 +29,10 @@ const LoggedUserNavigation = () => {
             </MDBNavbarItem>
         </>
     )
+}
+
+LoggedUserNavigation.propTypes = {
+    firstname: PropTypes.string
 }
 
 export default LoggedUserNavigation
