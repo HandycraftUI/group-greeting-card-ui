@@ -97,6 +97,8 @@ const Register = () => {
         dispatch(authenticateAction())
         dispatch(registerUser(userData))
 
+        localStorage.setItem('userData', JSON.stringify(userData))
+
         navigate('/')
     }
 

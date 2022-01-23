@@ -78,7 +78,14 @@ const NavbarComponent = styled(MDBNavbar)`
 
 const Navbar = () => {
     const theme = useTheme()
-    const { isAuth, userData } = useSelector(state => state.user)
+    const user = JSON.parse(localStorage.getItem('userData'))
+    let { isAuth } = useSelector(state => state.user)
+    let firstName
+
+    if (user) {
+        isAuth = user.success
+        firstName = user.firstName
+    }
 
     return (
         <>
@@ -86,7 +93,7 @@ const Navbar = () => {
                 <MDBContainer fluid>
                     <Link to='/' className='navbar-brand'>Greeting Card</Link>
                     <MDBNavbarNav right fullWidth={false} className='mb-2 mb-lg-0' >
-                        {isAuth ? <LoggedUserNavigation firstname={userData.firstName} /> : <GuestUserNavigation />}
+                        {isAuth ? <LoggedUserNavigation firstname={firstName} /> : <GuestUserNavigation />}
                     </MDBNavbarNav>
                     <Hamburger />
                 </MDBContainer>
