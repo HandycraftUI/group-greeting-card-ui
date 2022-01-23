@@ -97,7 +97,7 @@ const Register = () => {
         dispatch(authenticateAction())
         dispatch(registerUser(userData))
 
-        localStorage.setItem('userData', JSON.stringify(userData))
+        localStorage.setItem(`${process.env.REACT_APP_LOCAL_STORAGE_USER}`, JSON.stringify(userData))
 
         navigate('/')
     }
