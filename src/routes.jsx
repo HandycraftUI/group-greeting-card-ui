@@ -3,6 +3,7 @@ import React from 'react'
 import Login from './components/Login/Login'
 
 const Home = lazy(() => import('./pages/Home'))
+const Editor = lazy(() => import('./pages/Editor/Editor'))
 
 const routeConfig = [
     {
@@ -12,6 +13,10 @@ const routeConfig = [
     {
         path: '/auth/login',
         element: <Login />
+    },
+    {
+        path: '/editor',
+        element: <Editor />
     }
 ]
 
