@@ -86,7 +86,7 @@ const Register = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
-    const registrateUser = async (e) => {
+    const saveUserData = async (e) => {
         e.preventDefault()
 
         const userData = await register(authData)
@@ -163,7 +163,7 @@ const Register = () => {
                         </InputsWrapper>
 
                         <DivButton>
-                            <CustomButton variant="primary" type="button" onClick={() => registrateUser(event)}>
+                            <CustomButton variant="primary" type="button" onClick={() => saveUserData(event)}>
                                 Register
                             </CustomButton>
                         </DivButton>
