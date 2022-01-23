@@ -1,9 +1,10 @@
 import { lazy } from 'react'
 import React from 'react'
-import Login from './components/Login/Login'
-import Register from './components/Register/Register'
 
+const Login = lazy(() => import('./components/Login/Login'))
+const Register = lazy(() => import('./components/Register/Register'))
 const Home = lazy(() => import('./pages/Home'))
+const Editor = lazy(() => import('./pages/Editor/Editor'))
 
 const routeConfig = [
     {
@@ -17,6 +18,10 @@ const routeConfig = [
     {
         path: '/auth/register',
         element: <Register />
+    },
+    {
+        path: '/editor',
+        element: <Editor />
     }
 ]
 

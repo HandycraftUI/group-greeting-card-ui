@@ -7,6 +7,8 @@
     "@commitlint/cli": "15.0.0",
     "@commitlint/config-conventional": "15.0.0",
     "cra-template": "1.1.2",
+    "fabric": "4.6.0",
+    "fabricjs-react": "1.0.8",
     "husky": "7.0.4",
     "mdb-react-ui-kit": "2.2.0",
     "prop-types": "15.8.1",
