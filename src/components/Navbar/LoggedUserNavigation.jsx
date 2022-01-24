@@ -19,9 +19,9 @@ const LoggedUserNavigation = ({ firstname }) => {
         dispatch(authenticateAction())
         dispatch(logoutUser())
 
-        localStorage.removeItem('userData')
+        localStorage.removeItem(process.env.REACT_APP_LOCAL_STORAGE_USER)
 
-        navigate('/')
+        navigate('/auth/login')
     }
 
     return (
@@ -39,7 +39,7 @@ const LoggedUserNavigation = ({ firstname }) => {
                 </Link>
             </MDBNavbarItem>
             <MDBNavbarItem>
-                <Link to='/' className='nav-links pe-2' onClick={() => logout()}>
+                <Link to='/' className='nav-links pe-2' onClick={logout}>
                     <MDBIcon fas icon="sign-out-alt" size='sm' />
                     Logout
                 </Link>
