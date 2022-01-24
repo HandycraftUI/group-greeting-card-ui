@@ -9,6 +9,7 @@ import {
     MDBInput,
     MDBContainer,
 } from 'mdb-react-ui-kit'
+const jwt = require('jsonwebtoken')
 
 import CustomButton from '../CustomButtom/CustomButton'
 import { respondTo } from '../../style-config/respond-to'
@@ -102,7 +103,6 @@ const Login = () => {
     })
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const jwt = require('jsonwebtoken')
 
     const saveUserData = async (e) => {
         e.preventDefault()

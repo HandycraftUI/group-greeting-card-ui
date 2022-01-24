@@ -64,7 +64,7 @@ const ToggledDivComponent = styled(MDBCollapse)`
 const Hamburger = ({ firstName }) => {
     const [toggleMenu, setToggleMenu] = useState(false)
     const theme = useTheme()
-    const user = JSON.parse(localStorage.getItem('userData'))
+    const user = JSON.parse(localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE_USER))
     let isAuth = useSelector(state => state.user.isAuth)
 
     if (user) {
