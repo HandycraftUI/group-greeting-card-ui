@@ -27,6 +27,13 @@ const userReducer = (state = initialState, action) => {
             }
         }
     }
+    case actions.LOGIN_USER:
+    {
+        return {
+            ...state,
+            userData: {
+                ...action.payload
+            }
     case actions.LOGOUT_USER:
     {
         return {

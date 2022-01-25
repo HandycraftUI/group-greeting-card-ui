@@ -12,6 +12,7 @@ import { FaBars, FaSignInAlt, FaUserAlt } from 'react-icons/fa'
 import { IoIosAddCircleOutline } from 'react-icons/io'
 import { BsFillPeopleFill } from 'react-icons/bs'
 import { FiLogOut } from 'react-icons/fi'
+import PropTypes from 'prop-types'
 
 import useTheme from '../../hooks/use-theme'
 import { respondTo } from '../../style-config/respond-to'
@@ -60,10 +61,16 @@ const ToggledDivComponent = styled(MDBCollapse)`
     `}
 `
 
-const Hamburger = () => {
+const Hamburger = ({ firstName }) => {
     const [toggleMenu, setToggleMenu] = useState(false)
     const theme = useTheme()
-    const isAuth = useSelector(state => state.user.isAuth)
+    const user = JSON.parse(localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE_USER))
+    let isAuth = useSelector(state => state.user.isAuth)
+
+    if (user) {
+        isAuth = user.success
+        firstName = user.firstName
+    }
 
     const LoggedUserLinks = (
         <NavItemsWrapper>
@@ -76,7 +83,7 @@ const Hamburger = () => {
             <MDBNavbarItem className='pt-1'>
                 <Link to='/me' className='nav-links'>
                     <FaUserAlt className='nav-icon me-2' />
-                    Hello, $$$
+                    Hello, {firstName}
                 </Link>
             </MDBNavbarItem>
             <MDBNavbarItem className='pt-1'>
@@ -121,6 +128,10 @@ const Hamburger = () => {
             </ToggledDivComponent>
         </HamburgerComponent>
     )
+}
+
+Hamburger.propTypes = {
+    firstName: PropTypes.string
 }
 
 export default Hamburger

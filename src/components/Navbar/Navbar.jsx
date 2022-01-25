@@ -95,7 +95,7 @@ const Navbar = () => {
                     <MDBNavbarNav right fullWidth={false} className='mb-2 mb-lg-0' >
                         {isAuth ? <LoggedUserNavigation firstname={firstName} /> : <GuestUserNavigation />}
                     </MDBNavbarNav>
-                    <Hamburger />
+                    <Hamburger firstname={firstName}/>
                 </MDBContainer>
             </NavbarComponent>
 

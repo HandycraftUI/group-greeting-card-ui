@@ -1,16 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 import {
     MDBRow,
     MDBCol,
     MDBInput,
     MDBContainer,
 } from 'mdb-react-ui-kit'
+const jwt = require('jsonwebtoken')
 
 import CustomButton from '../CustomButtom/CustomButton'
 import { respondTo } from '../../style-config/respond-to'
 import useTheme from '../../hooks/use-theme'
+import { login } from '../../services/authService'
+import { loginUser } from '../../store/actions/loginUser'
+import { authenticateAction } from '../../store/actions/user'
 
 const LoginContainer = styled(MDBContainer)`
     padding: 2rem;
@@ -91,6 +97,30 @@ const Div = styled.div`
 
 const Login = () => {
     const theme = useTheme()
+    const [authData, setAuthData] = useState({
+        email: '',
+        password: '',
+    })
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+    const saveUserData = async (e) => {
+        e.preventDefault()
+
+        const userData = await login(authData)
+        const decoded = jwt.decode(userData.data, { complete: true })
+        
+        const [firstName] = decoded.payload.data.name.split(' ')
+
+        Object.assign(decoded.payload.data, { firstName, success: true })
+
+        dispatch(authenticateAction())
+        dispatch(loginUser(decoded.payload.data))
+
+        localStorage.setItem(`${process.env.REACT_APP_LOCAL_STORAGE_USER}`, JSON.stringify(decoded.payload.data))
+
+        navigate('/')
+    }
 
     return (
         <LoginContainer>
@@ -103,7 +133,12 @@ const Login = () => {
                             <Label htmlFor="defaultFormRegisterEmailEx" className="grey-text">
                                 Email
                             </Label>
-                            <MDBInput label='Email' id='typeEmail' type='email' />
+                            <MDBInput
+                                label='Email'
+                                id='typeEmail'
+                                type='email'
+                                onChange={(e) => setAuthData({ ...authData, email: e.target.value })}
+                            />
                             <br />
                             <Div theme={theme}>
                                 <Label htmlFor="defaultFormRegisterConfirmEx" className="grey-text">
@@ -113,9 +148,14 @@ const Login = () => {
                                     Forgot Password?
                                 </ForgotPasswordLink>
                             </Div>
-                            <MDBInput label='Password' id='typePassword' type='password' />
+                            <MDBInput
+                                label='Password'
+                                id='typePassword'
+                                type='password'
+                                onChange={(e) => setAuthData({ ...authData, password: e.target.value })}
+                            />
                             <DivButton>
-                                <CustomButton variant="primary" type='submit'>
+                                <CustomButton variant="primary" type='button' onClick={() => saveUserData(event)}>
                                     Login
                                 </CustomButton>
                             </DivButton>
