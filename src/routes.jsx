@@ -3,6 +3,7 @@ import React from 'react'
 
 const Login = lazy(() => import('./components/Login/Login'))
 const Register = lazy(() => import('./components/Register/Register'))
+const ChangePassword = lazy(() => import('./components/ChangePassword/ChangePassword'))
 const Home = lazy(() => import('./pages/Home'))
 const Editor = lazy(() => import('./pages/Editor/Editor'))
 
@@ -22,6 +23,10 @@ const routeConfig = [
     {
         path: '/editor',
         element: <Editor />
+    },
+    {
+        path: '/auth/change-password',
+        element: <ChangePassword />
     }
 ]
 
