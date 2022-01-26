@@ -34,6 +34,7 @@ const userReducer = (state = initialState, action) => {
             userData: {
                 ...action.payload
             }
+        }
     case actions.LOGOUT_USER:
     {
         return {
