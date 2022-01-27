@@ -14,7 +14,7 @@ const jwt = require('jsonwebtoken')
 import CustomButton from '../CustomButtom/CustomButton'
 import { respondTo } from '../../style-config/respond-to'
 import useTheme from '../../hooks/use-theme'
-import { login } from '../../services/authService'
+import { login, forgottedPassword } from '../../services/authService'
 import { loginUser } from '../../store/actions/loginUser'
 import { authenticateAction } from '../../store/actions/user'
 
@@ -108,11 +108,12 @@ const Login = () => {
         e.preventDefault()
 
         const userData = await login(authData)
-        const decoded = jwt.decode(userData.data, { complete: true })
-        
+        const token = userData.data.token
+
+        const decoded = jwt.decode(token, { complete: true })
         const [firstName] = decoded.payload.data.name.split(' ')
 
-        Object.assign(decoded.payload.data, { firstName, success: true })
+        Object.assign(decoded.payload.data, { firstName, success: true, token })
 
         dispatch(authenticateAction())
         dispatch(loginUser(decoded.payload.data))
@@ -120,6 +121,14 @@ const Login = () => {
         localStorage.setItem(`${process.env.REACT_APP_LOCAL_STORAGE_USER}`, JSON.stringify(decoded.payload.data))
 
         navigate('/')
+    }
+
+    const generateToken = async (e) => {
+        e.preventDefault()
+        
+        const data = await forgottedPassword(authData.email) 
+
+        console.log(data)
     }
 
     return (
@@ -144,7 +153,12 @@ const Login = () => {
                                 <Label htmlFor="defaultFormRegisterConfirmEx" className="grey-text">
                                     Password
                                 </Label>
-                                <ForgotPasswordLink to='/auth/forgot-password' className='nav-links' theme={theme}>
+                                <ForgotPasswordLink
+                                    to='/auth/forgotten-password'
+                                    className='nav-links'
+                                    theme={theme}
+                                    onClick={() => generateToken(event)}
+                                >
                                     Forgot Password?
                                 </ForgotPasswordLink>
                             </Div>

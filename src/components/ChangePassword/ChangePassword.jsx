@@ -11,6 +11,7 @@ import {
 import CustomButton from '../CustomButtom/CustomButton'
 import { respondTo } from '../../style-config/respond-to'
 import useTheme from '../../hooks/use-theme'
+import { changePassword, login } from '../../services/authService'
 
 const ChangePasswordContainer = styled(MDBContainer)`
     padding: 2rem;
@@ -69,20 +70,27 @@ const ChangePasswordForm = styled(MDBContainer)`
     `}
 `
 
-const Login = () => {
+const ChangePassword = () => {
     const [authData, setAuthData] = useState({
-        email: '',
-        password: '',
-        confirmNewPassword: ''
+        newPassword: '',
+        confirmPassword: ''
     })
     const theme = useTheme()
     const navigate = useNavigate()
 
-    const saveUserData = async (e) => {
+    const changePasswordHandler = async (e) => {
         e.preventDefault()
 
-        console.log(authData)
+        if (authData.newPassword !== authData.confirmPassword) {
+            return navigate(location.url)
+        }
 
+        const token = location.search.slice(3)
+        authData.token = token
+        
+        const userData = await changePassword(authData)
+
+        console.log(userData)
     }
 
     return (
@@ -93,37 +101,21 @@ const Login = () => {
                         <Paragraph>Change Password</Paragraph>
 
                         <ChangePasswordForm>
-                            <Label htmlFor="defaultFormRegisterEmailEx" className="grey-text">
-                                Email
-                            </Label>
                             <MDBInput
-                                label='Email'
-                                id='typeEmail'
-                                type='email'
-                                onChange={(e) => setAuthData({ ...authData, email: e.target.value })}
-                            />
-                            <br />
-                            <Label htmlFor="defaultFormRegisterEmailEx" className="grey-text">
-                                New Password
-                            </Label>
-                            <MDBInput
-                                label='Password'
+                                label='New Password'
                                 id='typePassword'
                                 type='password'
                                 onChange={(e) => setAuthData({ ...authData, newPassword: e.target.value })}
                             />
                             <br />
-                            <Label htmlFor="defaultFormRegisterEmailEx" className="grey-text">
-                                Confirm New Password
-                            </Label>
                             <MDBInput
-                                label='Password'
+                                label='Confirm Password'
                                 id='typePassword'
                                 type='password'
-                                onChange={(e) => setAuthData({ ...authData, confirmNewPassword: e.target.value })}
+                                onChange={(e) => setAuthData({ ...authData, confirmPassword: e.target.value })}
                             />
                             <DivButton>
-                                <CustomButton variant="primary" type='button' onClick={() => saveUserData(event)} theme={theme}>
+                                <CustomButton variant="primary" type='button' onClick={() => changePasswordHandler(event)} theme={theme}>
                                     Change Password
                                 </CustomButton>
                             </DivButton>
@@ -135,5 +127,5 @@ const Login = () => {
     )
 }
 
-export default Login
+export default ChangePassword
 
