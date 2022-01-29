@@ -11,7 +11,7 @@ import {
 import CustomButton from '../CustomButtom/CustomButton'
 import { respondTo } from '../../style-config/respond-to'
 import useTheme from '../../hooks/use-theme'
-import { changePassword, login } from '../../services/authService'
+import { changePassword } from '../../services/authService'
 
 const ChangePasswordContainer = styled(MDBContainer)`
     padding: 2rem;
@@ -36,10 +36,6 @@ const ChangePasswordContainer = styled(MDBContainer)`
 const Paragraph = styled.p`
     font-size: 1.5rem;
     text-align: center;
-`
-
-const Label = styled.label`
-    margin-bottom: 0.4rem;
 `
 
 const FormContainer = styled(MDBCol)`
@@ -87,7 +83,7 @@ const ChangePassword = () => {
 
         const token = location.search.slice(3)
         authData.token = token
-        
+        console.log(authData)
         const userData = await changePassword(authData)
 
         console.log(userData)

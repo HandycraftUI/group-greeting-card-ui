@@ -14,7 +14,7 @@ const jwt = require('jsonwebtoken')
 import CustomButton from '../CustomButtom/CustomButton'
 import { respondTo } from '../../style-config/respond-to'
 import useTheme from '../../hooks/use-theme'
-import { login, forgottedPassword } from '../../services/authService'
+import { login } from '../../services/authService'
 import { loginUser } from '../../store/actions/loginUser'
 import { authenticateAction } from '../../store/actions/user'
 
@@ -123,14 +123,6 @@ const Login = () => {
         navigate('/')
     }
 
-    const generateToken = async (e) => {
-        e.preventDefault()
-        
-        const data = await forgottedPassword(authData.email) 
-
-        console.log(data)
-    }
-
     return (
         <LoginContainer>
             <MDBRow>
@@ -157,7 +149,6 @@ const Login = () => {
                                     to='/auth/forgotten-password'
                                     className='nav-links'
                                     theme={theme}
-                                    onClick={() => generateToken(event)}
                                 >
                                     Forgot Password?
                                 </ForgotPasswordLink>

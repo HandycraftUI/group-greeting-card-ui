@@ -88,7 +88,9 @@ const ForgotPassword = () => {
     const [text, setText] = useState('')
     const theme = useTheme()
 
-    const ForgottenPasswordHandler = async () => {
+    const ForgottenPasswordHandler = async (e) => {
+        e.preventDefault()
+
         const data = await forgottedPassword(email)
 
         setSentEmail(true)
@@ -97,11 +99,10 @@ const ForgotPassword = () => {
         if (data.success) {
             setIsSuccessed(true)
         }
-
-        return data
+        console.log(data)
     }
-    return (
 
+    return (
         <ForgottenPasswordContainer>
             <MDBRow>
                 <FormContainer>
@@ -133,8 +134,6 @@ const ForgotPassword = () => {
                 </FormContainer>
             </MDBRow>
         </ForgottenPasswordContainer>
-
-
     )
 }
 
