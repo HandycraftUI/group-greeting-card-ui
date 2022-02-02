@@ -99,7 +99,8 @@ const ForgotPassword = () => {
         if (data.success) {
             setIsSuccessed(true)
         }
-        console.log(data)
+        
+        return data
     }
 
     return (

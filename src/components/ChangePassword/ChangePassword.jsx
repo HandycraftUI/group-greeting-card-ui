@@ -83,10 +83,12 @@ const ChangePassword = () => {
 
         const token = location.search.slice(3)
         authData.token = token
-        console.log(authData)
+
         const userData = await changePassword(authData)
 
-        console.log(userData)
+        navigate('/')
+        
+        return userData
     }
 
     return (
