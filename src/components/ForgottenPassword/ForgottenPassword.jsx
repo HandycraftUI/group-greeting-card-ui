@@ -84,7 +84,7 @@ const ChangePasswordForm = styled(MDBContainer)`
 const ForgotPassword = () => {
     const [email, setEmail] = useState('')
     const [sentEmail, setSentEmail] = useState(false)
-    const [isSuccessed, setIsSuccessed] = useState(false)
+    const [isSuccessful, setIsSuccessful] = useState(false)
     const [text, setText] = useState('')
     const theme = useTheme()
 
@@ -97,7 +97,7 @@ const ForgotPassword = () => {
         setText(data.message)
 
         if (data.success) {
-            setIsSuccessed(true)
+            setIsSuccessful(true)
         }
         
         return data
@@ -114,7 +114,7 @@ const ForgotPassword = () => {
                             {
                                 sentEmail
                                     ? < MDBContainer >
-                                        {isSuccessed ? <SuccessIcon /> : <ErrorIcon />}
+                                        {isSuccessful ? <SuccessIcon /> : <ErrorIcon />}
 
                                         {text}
                                     </MDBContainer >

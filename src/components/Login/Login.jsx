@@ -111,6 +111,10 @@ const Login = () => {
         const token = userData.data.token
 
         const decoded = jwt.decode(token, { complete: true })
+        
+        if(!decoded) {
+            return navigate('/auth/login')
+        }
         const [firstName] = decoded.payload.data.name.split(' ')
 
         Object.assign(decoded.payload.data, { firstName, success: true, token })
