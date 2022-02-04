@@ -14,6 +14,7 @@ import { respondTo } from '../../style-config/respond-to'
 import { register } from '../../services/authService'
 import { registerUser } from '../../store/actions/registerUser'
 import { authenticateAction } from '../../store/actions/user'
+import { isAuth } from '../../hoc/isAuth.jsx'
 
 const RegisterContainer = styled(MDBContainer)`
     padding: 2rem;
@@ -174,4 +175,4 @@ const Register = () => {
     )
 }
 
-export default Register
+export default isAuth(Register)

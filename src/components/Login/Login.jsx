@@ -17,6 +17,7 @@ import useTheme from '../../hooks/use-theme'
 import { login } from '../../services/authService'
 import { loginUser } from '../../store/actions/loginUser'
 import { authenticateAction } from '../../store/actions/user'
+import { isAuth } from '../../hoc/isAuth.jsx'
 
 const LoginContainer = styled(MDBContainer)`
     padding: 2rem;
@@ -108,8 +109,8 @@ const Login = () => {
         e.preventDefault()
 
         const userData = await login(authData)
-        const decoded = jwt.decode(userData.data, { complete: true })
         
+        const decoded = jwt.decode(userData.data.token, { complete: true })
         const [firstName] = decoded.payload.data.name.split(' ')
 
         Object.assign(decoded.payload.data, { firstName, success: true })
@@ -167,4 +168,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default isAuth(Login)
