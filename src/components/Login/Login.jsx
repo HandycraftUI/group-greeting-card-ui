@@ -17,7 +17,7 @@ import useTheme from '../../hooks/use-theme'
 import { login } from '../../services/authService'
 import { loginUser } from '../../store/actions/loginUser'
 import { authenticateAction } from '../../store/actions/user'
-import { isAuth } from '../../hoc/isAuth.jsx'
+import { ProtectedRoute } from '../../hoc/isAuth.jsx'
 
 const LoginContainer = styled(MDBContainer)`
     padding: 2rem;
@@ -109,16 +109,16 @@ const Login = () => {
         e.preventDefault()
 
         const userData = await login(authData)
-        
+        console.log(userData)
         const decoded = jwt.decode(userData.data.token, { complete: true })
         const [firstName] = decoded.payload.data.name.split(' ')
 
-        Object.assign(decoded.payload.data, { firstName, success: true })
+        Object.assign(userData, { firstName, success: true, email: decoded.payload.email })
 
         dispatch(authenticateAction())
         dispatch(loginUser(decoded.payload.data))
 
-        localStorage.setItem(`${process.env.REACT_APP_LOCAL_STORAGE_USER}`, JSON.stringify(decoded.payload.data))
+        localStorage.setItem(`${process.env.REACT_APP_LOCAL_STORAGE_USER}`, JSON.stringify(userData))
 
         navigate('/')
     }
@@ -168,4 +168,4 @@ const Login = () => {
     )
 }
 
-export default isAuth(Login)
+export default ProtectedRoute(Login)
