@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import { useNavigate } from 'react-router-dom'
 import {
     MDBRow,
     MDBCol,
@@ -42,7 +43,7 @@ const Paragraph = styled.p`
 const FormContainer = styled(MDBCol)`
     margin: 0 auto;
     padding: 1rem 2rem;
-    border:2px solid #050038;
+    border: 2px solid ${({ theme }) => theme.palette.text.primary};
     box-shadow:
     0 2.8px 2.2px rgba(0, 0, 0, 0.034),
     0 6.7px 5.3px rgba(0, 0, 0, 0.048),
@@ -53,13 +54,13 @@ const FormContainer = styled(MDBCol)`
 `
 
 const SuccessIcon = styled(BsFillCheckCircleFill)`
-    color: green;
+    color: ${({ theme }) => theme.palette.iconSuccess};
     margin-right: 0.4rem;
     margin-bottom: 0.2rem;
 `
 
 const ErrorIcon = styled(BiErrorCircle)`
-    color: red;
+    color: ${({ theme }) => theme.palette.iconError};
     margin-right: 0.4rem;
     margin-bottom: 0.2rem;
 `
@@ -70,8 +71,6 @@ const DivButton = styled.div`
 `
 
 const ChangePasswordForm = styled(MDBContainer)`
-    text-align: center;
-
      ${respondTo.xsmall`
         width: 100%; 
     `}
@@ -87,9 +86,14 @@ const ForgotPassword = () => {
     const [isSuccessful, setIsSuccessful] = useState(false)
     const [text, setText] = useState('')
     const theme = useTheme()
+    const navigate = useNavigate()
 
-    const ForgottenPasswordHandler = async (e) => {
+    const forgottenPasswordHandler = async (e) => {
         e.preventDefault()
+
+        if (email === '') {
+            return navigate('/auth/forgotten-password')
+        }
 
         const data = await forgottedPassword(email)
 
@@ -99,34 +103,45 @@ const ForgotPassword = () => {
         if (data.success) {
             setIsSuccessful(true)
         }
-        
+
         return data
+    }
+
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter') {
+            forgottenPasswordHandler(event)
+        }
     }
 
     return (
         <ForgottenPasswordContainer>
             <MDBRow>
-                <FormContainer>
+                <FormContainer theme={theme}>
                     <form>
                         <Paragraph>Forgotten Password</Paragraph>
 
-                        <ChangePasswordForm>
+                        <ChangePasswordForm className="text-center">
                             {
                                 sentEmail
                                     ? < MDBContainer >
-                                        {isSuccessful ? <SuccessIcon /> : <ErrorIcon />}
+                                        {isSuccessful ? <SuccessIcon theme={theme} /> : <ErrorIcon theme={theme} />}
 
                                         {text}
                                     </MDBContainer >
                                     : <MDBInput
                                         label='Email'
-                                        id='typeEmail'
                                         type='email'
+                                        onKeyPress={(e) => handleKeyDown(e)}
                                         onChange={(e) => setEmail(e.target.value)}
                                     />
                             }
                             <DivButton>
-                                <CustomButton variant="primary" type='button' onClick={() => ForgottenPasswordHandler(event)} theme={theme}>
+                                <CustomButton
+                                    variant="primary"
+                                    type='button'
+                                    onClick={() => forgottenPasswordHandler(event)}
+                                    theme={theme}
+                                >
                                     Send Email
                                 </CustomButton>
                             </DivButton>

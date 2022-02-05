@@ -73,9 +73,14 @@ const ChangePassword = () => {
     })
     const theme = useTheme()
     const navigate = useNavigate()
+    const buttonRef = React.useRef()
 
     const changePasswordHandler = async (e) => {
         e.preventDefault()
+
+        if (authData.newPassword === '' || authData.confirmPassword === '') {
+            return navigate('/auth/confirm-password')
+        }
 
         if (authData.newPassword !== authData.confirmPassword) {
             return navigate(location.url)
@@ -87,8 +92,14 @@ const ChangePassword = () => {
         const userData = await changePassword(authData)
 
         navigate('/')
-        
+
         return userData
+    }
+
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter') {
+            changePasswordHandler(event)
+        }
     }
 
     return (
@@ -100,6 +111,7 @@ const ChangePassword = () => {
 
                         <ChangePasswordForm>
                             <MDBInput
+                                onKeyPress={(e) => handleKeyDown(e)}
                                 label='New Password'
                                 id='typePassword'
                                 type='password'
@@ -107,13 +119,19 @@ const ChangePassword = () => {
                             />
                             <br />
                             <MDBInput
+                                onKeyPress={(e) => handleKeyDown(e)}
                                 label='Confirm Password'
                                 id='typePassword'
                                 type='password'
                                 onChange={(e) => setAuthData({ ...authData, confirmPassword: e.target.value })}
                             />
                             <DivButton>
-                                <CustomButton variant="primary" type='button' onClick={() => changePasswordHandler(event)} theme={theme}>
+                                <CustomButton
+                                    variant="primary"
+                                    type='button'
+                                    onClick={() => changePasswordHandler(event)}
+                                    ref={buttonRef}
+                                    theme={theme}>
                                     Change Password
                                 </CustomButton>
                             </DivButton>

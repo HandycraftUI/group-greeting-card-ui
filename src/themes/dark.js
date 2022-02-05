@@ -17,6 +17,8 @@ const darkTheme = {
         tertiary: '#050038',
         white: '#fff',
         black: '#000',
+        iconSuccess: '#008000',
+        iconError: '#ff0000'
     },
 }
 

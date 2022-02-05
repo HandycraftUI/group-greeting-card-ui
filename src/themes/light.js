@@ -17,6 +17,8 @@ const lightTheme = {
         tertiary: '#4262FF',
         white: '#fff',
         black: '#000',
+        iconSuccess: '#008000',
+        iconError: '#ff0000'
     },
 }
 

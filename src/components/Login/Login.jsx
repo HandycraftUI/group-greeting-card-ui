@@ -127,6 +127,12 @@ const Login = () => {
         navigate('/')
     }
 
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter') {
+            saveUserData(event)
+        }
+    }
+
     return (
         <LoginContainer>
             <MDBRow>
@@ -142,6 +148,7 @@ const Login = () => {
                                 label='Email'
                                 id='typeEmail'
                                 type='email'
+                                onKeyPress={(e) => handleKeyDown(e)}
                                 onChange={(e) => setAuthData({ ...authData, email: e.target.value })}
                             />
                             <br />
@@ -161,6 +168,7 @@ const Login = () => {
                                 label='Password'
                                 id='typePassword'
                                 type='password'
+                                onKeyPress={(e) => handleKeyDown(e)}
                                 onChange={(e) => setAuthData({ ...authData, password: e.target.value })}
                             />
                             <DivButton>

@@ -89,6 +89,17 @@ const Register = () => {
     const saveUserData = async (e) => {
         e.preventDefault()
 
+        if (authData.email === '' ||
+            authData.firstName === '' ||
+            authData.lastName === '' ||
+            authData.password === '' ||
+            authData.confirmPassword === ''
+        ) {
+            // notification with text like : 
+            // Please enter all input before register!
+            return navigate('/auth/login')
+        }
+
         const userData = await register(authData)
         userData.email = authData.email
         userData.firstName = authData.firstName
@@ -100,6 +111,12 @@ const Register = () => {
         localStorage.setItem(`${process.env.REACT_APP_LOCAL_STORAGE_USER}`, JSON.stringify(userData))
 
         navigate('/')
+    }
+
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter') {
+            saveUserData(event)
+        }
     }
 
     return (
@@ -116,6 +133,7 @@ const Register = () => {
                                     id='typeEmail'
                                     type='email'
                                     value={authData.email}
+                                    onKeyPress={(e) => handleKeyDown(e)}
                                     onChange={(e) => setAuthData({ ...authData, email: e.target.value })}
                                 />
                             </MDBContainer>
@@ -130,6 +148,7 @@ const Register = () => {
                                     id='typeFirstname'
                                     type='text'
                                     value={authData.firstName}
+                                    onKeyPress={(e) => handleKeyDown(e)}
                                     onChange={(e) => setAuthData({ ...authData, firstName: e.target.value })}
                                 />
                                 <br />
@@ -138,6 +157,7 @@ const Register = () => {
                                     id='typeLastname'
                                     type='text'
                                     value={authData.lastName}
+                                    onKeyPress={(e) => handleKeyDown(e)}
                                     onChange={(e) => setAuthData({ ...authData, lastName: e.target.value })}
                                 />
                                 <br />
@@ -149,6 +169,7 @@ const Register = () => {
                                     id='typePassword'
                                     type='password'
                                     value={authData.password}
+                                    onKeyPress={(e) => handleKeyDown(e)}
                                     onChange={(e) => setAuthData({ ...authData, password: e.target.value })}
                                 />
                                 <br />
@@ -156,6 +177,7 @@ const Register = () => {
                                     label='Repeat Password'
                                     id='typeRepeatPassword'
                                     type='password'
+                                    onKeyPress={(e) => handleKeyDown(e)}
                                     value={authData.confirmPassword}
                                     onChange={(e) => setAuthData({ ...authData, confirmPassword: e.target.value })}
                                 />
@@ -163,7 +185,11 @@ const Register = () => {
                         </InputsWrapper>
 
                         <DivButton>
-                            <CustomButton variant="primary" type="button" onClick={() => saveUserData(event)}>
+                            <CustomButton
+                                variant="primary"
+                                type="button"
+                                onClick={() => saveUserData(event)}
+                            >
                                 Register
                             </CustomButton>
                         </DivButton>
