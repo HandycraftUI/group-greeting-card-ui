@@ -50,7 +50,7 @@ const Label = styled.label`
 const FormContainer = styled(MDBCol)`
     margin: 0 auto;
     padding: 1rem 2rem;
-    border:2px solid #050038;
+    border:2px solid ${({ theme }) => theme.palette.text.primary};
     box-shadow:
     0 2.8px 2.2px rgba(0, 0, 0, 0.034),
     0 6.7px 5.3px rgba(0, 0, 0, 0.048),
@@ -111,8 +111,8 @@ const Login = () => {
         const token = userData.data.token
 
         const decoded = jwt.decode(token, { complete: true })
-        
-        if(!decoded) {
+
+        if (!decoded) {
             return navigate('/auth/login')
         }
         const [firstName] = decoded.payload.data.name.split(' ')
@@ -146,7 +146,6 @@ const Login = () => {
                             </Label>
                             <MDBInput
                                 label='Email'
-                                id='typeEmail'
                                 type='email'
                                 onKeyPress={(e) => handleKeyDown(e)}
                                 onChange={(e) => setAuthData({ ...authData, email: e.target.value })}
@@ -166,7 +165,6 @@ const Login = () => {
                             </Div>
                             <MDBInput
                                 label='Password'
-                                id='typePassword'
                                 type='password'
                                 onKeyPress={(e) => handleKeyDown(e)}
                                 onChange={(e) => setAuthData({ ...authData, password: e.target.value })}

@@ -54,13 +54,13 @@ const FormContainer = styled(MDBCol)`
 `
 
 const SuccessIcon = styled(BsFillCheckCircleFill)`
-    color: ${({ theme }) => theme.palette.iconSuccess};
+    color: ${({ theme }) => theme.palette.icon.success};
     margin-right: 0.4rem;
     margin-bottom: 0.2rem;
 `
 
 const ErrorIcon = styled(BiErrorCircle)`
-    color: ${({ theme }) => theme.palette.iconError};
+    color: ${({ theme }) => theme.palette.icon.error};
     margin-right: 0.4rem;
     margin-bottom: 0.2rem;
 `
@@ -125,7 +125,6 @@ const ForgotPassword = () => {
                                 sentEmail
                                     ? < MDBContainer >
                                         {isSuccessful ? <SuccessIcon theme={theme} /> : <ErrorIcon theme={theme} />}
-
                                         {text}
                                     </MDBContainer >
                                     : <MDBInput

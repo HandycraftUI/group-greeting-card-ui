@@ -44,7 +44,7 @@ const Paragraph = styled.p`
 const FormContainer = styled(MDBCol)`
     margin: 0 auto;
     padding: 1rem 2rem;
-    border:2px solid #050038;
+    border:2px solid ${({ theme }) => theme.palette.text.primary};
     box-shadow:
     0 2.8px 2.2px rgba(0, 0, 0, 0.034),
     0 6.7px 5.3px rgba(0, 0, 0, 0.048),
@@ -130,7 +130,6 @@ const Register = () => {
                             <MDBContainer>
                                 <Input
                                     label='Email'
-                                    id='typeEmail'
                                     type='email'
                                     value={authData.email}
                                     onKeyPress={(e) => handleKeyDown(e)}
@@ -145,7 +144,6 @@ const Register = () => {
                             <MDBContainer>
                                 <Input
                                     label='Firstname'
-                                    id='typeFirstname'
                                     type='text'
                                     value={authData.firstName}
                                     onKeyPress={(e) => handleKeyDown(e)}
@@ -154,7 +152,6 @@ const Register = () => {
                                 <br />
                                 <Input
                                     label='Lastname'
-                                    id='typeLastname'
                                     type='text'
                                     value={authData.lastName}
                                     onKeyPress={(e) => handleKeyDown(e)}
@@ -166,7 +163,6 @@ const Register = () => {
                             <MDBContainer className='div-input'>
                                 <Input
                                     label='Password'
-                                    id='typePassword'
                                     type='password'
                                     value={authData.password}
                                     onKeyPress={(e) => handleKeyDown(e)}
@@ -175,7 +171,6 @@ const Register = () => {
                                 <br />
                                 <Input
                                     label='Repeat Password'
-                                    id='typeRepeatPassword'
                                     type='password'
                                     onKeyPress={(e) => handleKeyDown(e)}
                                     value={authData.confirmPassword}

@@ -41,7 +41,7 @@ const Paragraph = styled.p`
 const FormContainer = styled(MDBCol)`
     margin: 0 auto;
     padding: 1rem 2rem;
-    border:2px solid #050038;
+    border:2px solid ${({ theme }) => theme.palette.text.primary};
     box-shadow:
     0 2.8px 2.2px rgba(0, 0, 0, 0.034),
     0 6.7px 5.3px rgba(0, 0, 0, 0.048),
@@ -97,7 +97,7 @@ const ChangePassword = () => {
     }
 
     const handleKeyDown = (event) => {
-        if (event.key === 'Enter') {
+        if (event.keyCode === 13) {
             changePasswordHandler(event)
         }
     }
@@ -105,7 +105,7 @@ const ChangePassword = () => {
     return (
         <ChangePasswordContainer>
             <MDBRow>
-                <FormContainer>
+                <FormContainer theme={theme}>
                     <form>
                         <Paragraph>Change Password</Paragraph>
 
@@ -113,7 +113,6 @@ const ChangePassword = () => {
                             <MDBInput
                                 onKeyPress={(e) => handleKeyDown(e)}
                                 label='New Password'
-                                id='typePassword'
                                 type='password'
                                 onChange={(e) => setAuthData({ ...authData, newPassword: e.target.value })}
                             />
@@ -121,7 +120,6 @@ const ChangePassword = () => {
                             <MDBInput
                                 onKeyPress={(e) => handleKeyDown(e)}
                                 label='Confirm Password'
-                                id='typePassword'
                                 type='password'
                                 onChange={(e) => setAuthData({ ...authData, confirmPassword: e.target.value })}
                             />
