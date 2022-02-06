@@ -1,8 +1,10 @@
+import { constants } from '../common/global-constants'
+
 export const register = async (authData) => {
     const response = await fetch(`${process.env.REACT_APP_BASE_AUTH_URL}/auth/register`, {
         method: 'POST',
         headers: {
-            'Content-Type': `${process.env.REACT_APP_CONTENT_TYPE}`
+            'Content-Type': `${constants.ContentType}`
         },
         body: JSON.stringify(authData)
     })
@@ -16,7 +18,7 @@ export const login = async (authData) => {
     const response = await fetch(`${process.env.REACT_APP_BASE_AUTH_URL}/auth/login`, {
         method: 'POST',
         headers: {
-            'Content-Type': `${process.env.REACT_APP_CONTENT_TYPE}`
+            'Content-Type': `${constants.ContentType}`
         },
         body: JSON.stringify(authData)
     })
@@ -30,7 +32,7 @@ export const changePassword = async (userData) => {
     const response = await fetch(`${process.env.REACT_APP_BASE_AUTH_URL}/auth/change-password`, {
         method: 'POST',
         headers: {
-            'Content-Type': `${process.env.REACT_APP_CONTENT_TYPE}`
+            'Content-Type': `${constants.ContentType}`
         },
         body: JSON.stringify(userData)
     })
@@ -42,7 +44,7 @@ export const forgottedPassword = async (email) => {
     const response = await fetch(`${process.env.REACT_APP_BASE_AUTH_URL}/auth/forgotten-password`, {
         method: 'POST',
         headers: {
-            'Content-Type': `${process.env.REACT_APP_CONTENT_TYPE}`
+            'Content-Type': `${constants.ContentType}`
         },
         body: JSON.stringify({ email })
     })
