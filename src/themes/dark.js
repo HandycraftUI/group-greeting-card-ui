@@ -12,6 +12,10 @@ const darkTheme = {
             primary: '#1D1F29',
             secondary: '#323546',
         },
+        icon: {
+            success: '#008000',
+            error: '#ff0000'
+        },
         primary: '#1D1F29',
         secondary: '#323546',
         tertiary: '#050038',

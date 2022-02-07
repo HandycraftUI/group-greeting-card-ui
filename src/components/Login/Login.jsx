@@ -50,7 +50,7 @@ const Label = styled.label`
 const FormContainer = styled(MDBCol)`
     margin: 0 auto;
     padding: 1rem 2rem;
-    border:2px solid #050038;
+    border:2px solid ${({ theme }) => theme.palette.text.primary};
     box-shadow:
     0 2.8px 2.2px rgba(0, 0, 0, 0.034),
     0 6.7px 5.3px rgba(0, 0, 0, 0.048),
@@ -108,11 +108,16 @@ const Login = () => {
         e.preventDefault()
 
         const userData = await login(authData)
-        const decoded = jwt.decode(userData.data, { complete: true })
-        
+        const token = userData.data.token
+
+        const decoded = jwt.decode(token, { complete: true })
+
+        if (!decoded) {
+            return navigate('/auth/login')
+        }
         const [firstName] = decoded.payload.data.name.split(' ')
 
-        Object.assign(decoded.payload.data, { firstName, success: true })
+        Object.assign(decoded.payload.data, { firstName, success: true, token })
 
         dispatch(authenticateAction())
         dispatch(loginUser(decoded.payload.data))
@@ -120,6 +125,12 @@ const Login = () => {
         localStorage.setItem(`${process.env.REACT_APP_LOCAL_STORAGE_USER}`, JSON.stringify(decoded.payload.data))
 
         navigate('/')
+    }
+
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter') {
+            saveUserData(event)
+        }
     }
 
     return (
@@ -135,8 +146,8 @@ const Login = () => {
                             </Label>
                             <MDBInput
                                 label='Email'
-                                id='typeEmail'
                                 type='email'
+                                onKeyPress={(e) => handleKeyDown(e)}
                                 onChange={(e) => setAuthData({ ...authData, email: e.target.value })}
                             />
                             <br />
@@ -144,14 +155,18 @@ const Login = () => {
                                 <Label htmlFor="defaultFormRegisterConfirmEx" className="grey-text">
                                     Password
                                 </Label>
-                                <ForgotPasswordLink to='/auth/forgot-password' className='nav-links' theme={theme}>
+                                <ForgotPasswordLink
+                                    to='/auth/forgotten-password'
+                                    className='nav-links'
+                                    theme={theme}
+                                >
                                     Forgot Password?
                                 </ForgotPasswordLink>
                             </Div>
                             <MDBInput
                                 label='Password'
-                                id='typePassword'
                                 type='password'
+                                onKeyPress={(e) => handleKeyDown(e)}
                                 onChange={(e) => setAuthData({ ...authData, password: e.target.value })}
                             />
                             <DivButton>

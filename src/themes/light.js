@@ -12,6 +12,10 @@ const lightTheme = {
             primary: '#F0F0F3',
             secondary: '#050038',
         },
+        icon: {
+            success: '#008000',
+            error: '#ff0000'
+        },
         primary: '#F0F0F3',
         secondary: '#050038',
         tertiary: '#4262FF',
