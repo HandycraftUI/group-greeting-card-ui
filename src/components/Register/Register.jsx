@@ -45,7 +45,7 @@ const Paragraph = styled.p`
 const FormContainer = styled(MDBCol)`
     margin: 0 auto;
     padding: 1rem 2rem;
-    border:2px solid #050038;
+    border:2px solid ${({ theme }) => theme.palette.text.primary};
     box-shadow:
     0 2.8px 2.2px rgba(0, 0, 0, 0.034),
     0 6.7px 5.3px rgba(0, 0, 0, 0.048),
@@ -90,6 +90,17 @@ const Register = () => {
     const saveUserData = async (e) => {
         e.preventDefault()
 
+        if (authData.email === '' ||
+            authData.firstName === '' ||
+            authData.lastName === '' ||
+            authData.password === '' ||
+            authData.confirmPassword === ''
+        ) {
+            // notification with text like : 
+            // Please enter all input before register!
+            return navigate('/auth/login')
+        }
+
         const userData = await register(authData)
         userData.email = authData.email
         userData.firstName = authData.firstName
@@ -103,6 +114,12 @@ const Register = () => {
         navigate('/')
     }
 
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter') {
+            saveUserData(event)
+        }
+    }
+
     return (
         <RegisterContainer>
             <MDBRow>
@@ -114,9 +131,9 @@ const Register = () => {
                             <MDBContainer>
                                 <Input
                                     label='Email'
-                                    id='typeEmail'
                                     type='email'
                                     value={authData.email}
+                                    onKeyPress={(e) => handleKeyDown(e)}
                                     onChange={(e) => setAuthData({ ...authData, email: e.target.value })}
                                 />
                             </MDBContainer>
@@ -128,17 +145,17 @@ const Register = () => {
                             <MDBContainer>
                                 <Input
                                     label='Firstname'
-                                    id='typeFirstname'
                                     type='text'
                                     value={authData.firstName}
+                                    onKeyPress={(e) => handleKeyDown(e)}
                                     onChange={(e) => setAuthData({ ...authData, firstName: e.target.value })}
                                 />
                                 <br />
                                 <Input
                                     label='Lastname'
-                                    id='typeLastname'
                                     type='text'
                                     value={authData.lastName}
+                                    onKeyPress={(e) => handleKeyDown(e)}
                                     onChange={(e) => setAuthData({ ...authData, lastName: e.target.value })}
                                 />
                                 <br />
@@ -147,16 +164,16 @@ const Register = () => {
                             <MDBContainer className='div-input'>
                                 <Input
                                     label='Password'
-                                    id='typePassword'
                                     type='password'
                                     value={authData.password}
+                                    onKeyPress={(e) => handleKeyDown(e)}
                                     onChange={(e) => setAuthData({ ...authData, password: e.target.value })}
                                 />
                                 <br />
                                 <Input
                                     label='Repeat Password'
-                                    id='typeRepeatPassword'
                                     type='password'
+                                    onKeyPress={(e) => handleKeyDown(e)}
                                     value={authData.confirmPassword}
                                     onChange={(e) => setAuthData({ ...authData, confirmPassword: e.target.value })}
                                 />
@@ -164,7 +181,11 @@ const Register = () => {
                         </InputsWrapper>
 
                         <DivButton>
-                            <CustomButton variant="primary" type="button" onClick={() => saveUserData(event)}>
+                            <CustomButton
+                                variant="primary"
+                                type="button"
+                                onClick={() => saveUserData(event)}
+                            >
                                 Register
                             </CustomButton>
                         </DivButton>
