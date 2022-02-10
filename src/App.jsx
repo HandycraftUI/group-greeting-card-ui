@@ -11,7 +11,7 @@ const App = () => {
     if(userData) {
         isAuth = userData.success
     }
-    console.log(isAuth)
+    
     const routing = useRoutes(routes(isAuth))
 
     return (
