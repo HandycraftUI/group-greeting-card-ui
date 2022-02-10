@@ -17,7 +17,6 @@ import useTheme from '../../hooks/use-theme'
 import { login } from '../../services/authService'
 import { loginUser } from '../../store/actions/loginUser'
 import { authenticateAction } from '../../store/actions/user'
-import { ProtectedRoute } from '../../hoc/isAuth.jsx'
 
 const LoginContainer = styled(MDBContainer)`
     padding: 2rem;
@@ -123,7 +122,7 @@ const Login = () => {
         dispatch(authenticateAction())
         dispatch(loginUser(decoded.payload.data))
 
-        localStorage.setItem(`${process.env.REACT_APP_LOCAL_STORAGE_USER}`, JSON.stringify(userData))
+        localStorage.setItem(`${process.env.REACT_APP_LOCAL_STORAGE_USER}`, JSON.stringify(decoded.payload.data))
 
         navigate('/')
     }
@@ -137,7 +136,7 @@ const Login = () => {
     return (
         <LoginContainer>
             <MDBRow>
-                <FormContainer>
+                <FormContainer theme={theme}>
                     <form>
                         <Paragraph>Sign in</Paragraph>
 
@@ -183,4 +182,4 @@ const Login = () => {
     )
 }
 
-export default ProtectedRoute(Login)
+export default Login

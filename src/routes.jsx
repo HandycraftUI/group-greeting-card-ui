@@ -1,5 +1,6 @@
 import { lazy } from 'react'
 import React from 'react'
+import { Navigate } from 'react-router-dom'
 
 const Login = lazy(() => import('./components/Login/Login'))
 const Register = lazy(() => import('./components/Register/Register'))
@@ -8,18 +9,18 @@ const ForgottenPassword = lazy(() => import('./components/ForgottenPassword/Forg
 const Home = lazy(() => import('./pages/Home'))
 const Editor = lazy(() => import('./pages/Editor/Editor'))
 
-const routeConfig = [
+const routeConfig = (isLoggedIn) => [
     {
         path: '/',
         element: <Home />
     },
     {
         path: '/auth/login',
-        element: <Login />
+        element: isLoggedIn ? <Navigate to='/' /> : <Login />
     },
     {
         path: '/auth/register',
-        element: <Register />
+        element: isLoggedIn ? <Navigate to='/' /> : <Register />
     },
     {
         path: '/editor',
