@@ -3,16 +3,10 @@ import { useRoutes } from 'react-router-dom'
 
 import routes from './routes.jsx'
 import Navbar from './components/Navbar/Navbar'
+import { decodeToken } from './services/decodeToken.js'
 
 const App = () => {
-    let isAuth = false
-    const userData = JSON.parse(localStorage.getItem('userData'))
-
-    if(userData) {
-        isAuth = userData.success
-    }
-    
-    const routing = useRoutes(routes(isAuth))
+    const routing = useRoutes(routes(decodeToken()))
 
     return (
         <>

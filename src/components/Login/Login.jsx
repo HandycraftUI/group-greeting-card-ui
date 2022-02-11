@@ -117,7 +117,7 @@ const Login = () => {
         }
         const [firstName] = decoded.payload.data.name.split(' ')
 
-        Object.assign(decoded.payload.data, { firstName, success: true, token })
+        Object.assign(decoded.payload.data, { firstName, success: true }, userData)
 
         dispatch(authenticateAction())
         dispatch(loginUser(decoded.payload.data))
