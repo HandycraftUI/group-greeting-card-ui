@@ -12,7 +12,7 @@ const Editor = lazy(() => import('./pages/Editor/Editor'))
 const routeConfig = (isLoggedIn) => [
     {
         path: '/',
-        element: <Home />
+        element: isLoggedIn ? <Home /> : <Navigate to='/auth/login' />
     },
     {
         path: '/auth/login',
@@ -24,15 +24,15 @@ const routeConfig = (isLoggedIn) => [
     },
     {
         path: '/editor',
-        element: <Editor />
+        element: isLoggedIn ? <Editor /> : <Navigate to='/auth/login' />
     },
     {
         path: '/auth/change-password',
-        element: <ChangePassword />
+        element: isLoggedIn ? <ChangePassword /> : <Navigate to='/auth/login' />
     },
     {
         path: '/auth/forgotten-password',
-        element: <ForgottenPassword />
+        element: isLoggedIn ? <ForgottenPassword /> : <Navigate to='/auth/login' />
     }
 ]
 
