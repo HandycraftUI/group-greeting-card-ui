@@ -14,6 +14,7 @@ import { respondTo } from '../../style-config/respond-to'
 import { register } from '../../services/authService'
 import { registerUser } from '../../store/actions/registerUser'
 import { authenticateAction } from '../../store/actions/user'
+import useTheme from '../../hooks/use-theme'
 
 const RegisterContainer = styled(MDBContainer)`
     padding: 2rem;
@@ -76,6 +77,7 @@ const DivButton = styled.div`
 `
 
 const Register = () => {
+    const theme = useTheme()
     const [authData, setAuthData] = useState({
         email: '',
         firstName: '',
@@ -122,7 +124,7 @@ const Register = () => {
     return (
         <RegisterContainer>
             <MDBRow>
-                <FormContainer>
+                <FormContainer theme={theme}>
                     <form>
                         <Paragraph>Sign up</Paragraph>
 
