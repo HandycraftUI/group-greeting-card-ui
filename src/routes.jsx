@@ -16,11 +16,11 @@ const routeConfig = (isLoggedIn) => [
     },
     {
         path: '/auth/login',
-        element: isLoggedIn ? <Navigate to='/' /> : <Login />
+        element: !isLoggedIn ? <Login /> : <Navigate to='/' />
     },
     {
         path: '/auth/register',
-        element: isLoggedIn ? <Navigate to='/' /> : <Register />
+        element: !isLoggedIn ? <Register /> : <Navigate to='/' />
     },
     {
         path: '/editor',
