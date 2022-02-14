@@ -118,7 +118,7 @@ const Login = () => {
         const [firstName] = decoded.payload.data.name.split(' ')
 
         Object.assign(decoded.payload.data, { firstName, success: true }, userData)
-        
+
         dispatch(authenticateAction())
         dispatch(loginUser(decoded.payload.data))
 
@@ -136,23 +136,13 @@ const Login = () => {
     return (
         <LoginContainer>
             <MDBRow>
-                <FormContainer theme={theme}>                    <form>
-                    <Paragraph>Sign in</Paragraph>
+                <FormContainer theme={theme}>
+                    <form>
+                        <Paragraph>Sign in</Paragraph>
 
-                    <LoginForm>
-                        <Label htmlFor="defaultFormRegisterEmailEx" className="grey-text">
-                            Email
-                        </Label>
-                        <MDBInput
-                            label='Email'
-                            type='email'
-                            onKeyPress={(e) => handleKeyDown(e)}
-                            onChange={(e) => setAuthData({ ...authData, email: e.target.value })}
-                        />
-                        <br />
-                        <Div theme={theme}>
-                            <Label htmlFor="defaultFormRegisterConfirmEx" className="grey-text">
-                                Password
+                        <LoginForm>
+                            <Label htmlFor="defaultFormRegisterEmailEx" className="grey-text">
+                                Email
                             </Label>
                             <ForgotPasswordLink
                                 to='/auth/forgotten-password'

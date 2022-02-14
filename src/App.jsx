@@ -7,11 +7,14 @@ import { decodeToken } from './services/decodeToken.js'
 
 const App = () => {
     const routing = useRoutes(routes(decodeToken()))
+
     return (
         <>
             <Suspense fallback={<div>Loading...</div>}>
                 <Navbar />
-                {routing}
+                <>
+                    {routing}
+                </>
             </Suspense>
         </>
     )
