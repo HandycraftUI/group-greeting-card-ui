@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import DateFnsUtils from '@date-io/date-fns'
 import {
@@ -151,6 +151,19 @@ const ButtonDiv = styled(MDBContainer)`
 `
 
 const SetupCard = () => {
+    const [recipientName, setRecipientName] = useState('')
+    const [recipientEmail, setRecipientEmail] = useState('')
+    const [dateToBeSent, setDateToBeSent] = useState(new Date())
+
+    const setUpCardHandler = () => {
+        const data = {
+            recipientName,
+            recipientEmail,
+            dateToBeSent
+        }
+
+        return data
+    }
 
     return (
         <MDBContainer>
@@ -162,20 +175,33 @@ const SetupCard = () => {
                         <MDBContainer>
                             <Heading>1. Who is this card for?</Heading>
                             <Label>Recipient Name:</Label>
-                            <MDBInput label='Not you :-)' />
+                            <MDBInput
+                                label='Not you :-)'
+                                onChange={(e) => setRecipientName(e.target.value)}
+                            />
                             <Label>Recipient Email:</Label>
-                            <MDBInput label='Card will be sent to this email' />
+                            <MDBInput
+                                label='Card will be sent to this email'
+                                onChange={(e) => setRecipientEmail(e.target.value)}
+                            />
                         </MDBContainer>
                         <MDBContainer>
                             <Heading>2. When would you like us to email the card to the Recipient?</Heading>
                             <MuiPickersUtilsProvider utils={DateFnsUtils}>
                                 <ThemeProvider theme={materialTheme}>
-                                    <DateTime />
+                                    <DateTime
+                                        value={dateToBeSent}
+                                        onChange={(e) => setDateToBeSent(e.target.value)}
+                                    />
                                 </ThemeProvider>
                             </MuiPickersUtilsProvider>
                         </MDBContainer>
                         <ButtonDiv>
-                            <CustomButton variant="primary">
+                            <CustomButton
+                                variant="primary"
+                                type='button'
+                                onClick={(e) => setUpCardHandler(event)}
+                            >
                                 Continue
                             </CustomButton>
                         </ButtonDiv>
