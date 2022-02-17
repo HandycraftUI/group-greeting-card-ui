@@ -1,65 +1,166 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import DateFnsUtils from '@date-io/date-fns'
 import {
     DateTimePicker,
     MuiPickersUtilsProvider,
 } from '@material-ui/pickers'
-
+import { createTheme } from '@material-ui/core'
+import { ThemeProvider } from '@material-ui/styles'
 import {
     MDBInput,
     MDBContainer,
 } from 'mdb-react-ui-kit'
 
 import CustomButton from '../CustomButtom/CustomButton'
+import { respondTo } from '../../style-config/respond-to'
+
+const materialTheme = createTheme({
+    overrides: {
+        MuiPickersToolbar: {
+            toolbar: {
+                backgroundColor: '#116',
+            },
+        },
+        MuiPickersCalendarHeader: {
+            switchHeader: {
+                backgroundColor: 'white',
+                color: '#116',
+            },
+        },
+        MuiPickerDTTabs: {
+            tabs: {
+                backgroundColor: '#116',
+            }
+        },
+        MuiPickersDay: {
+            daySelected: {
+                backgroundColor: '#116',
+            }
+        },
+        MuiButton: {
+            textPrimary: {
+                color: '#050038',
+            },
+        },
+        MuiTabs: {
+            indicator: {
+                backgroundColor: '#fff',
+            },
+        },
+        MuiPickersClockPointer: {
+            pointer: {
+                backgroundColor: '#050038',
+            },
+            thumb: {
+                border: '14px solid #116',
+            }
+        },
+        MuiPickersClockNumber: {
+            clockNumber: {
+                color: '#050038',
+            },
+        },
+        MuiPickersClock: {
+            pin: {
+                backgroundColor: '#116',
+            },
+        },
+    },
+})
 
 const SetupCardForm = styled.form`
-    padding: 2rem;
+    width: 100%;
+    ${respondTo.xsmall`
+        margin: 0.7rem;
+    `}
+
+    ${respondTo.medium`
+        margin: 2rem;
+    `}
+`
+
+const Title = styled.h1`
+    ${respondTo.xsmall`
+        text-align: center;
+    `}
+
+    ${respondTo.small`
+        text-align: left;
+        margin-left: 1.5rem;
+    `}
 `
 
 const Container = styled(MDBContainer)`
-    display: flex;
+    ${respondTo.xsmall`
+        display: block;
+    `}
+
+    ${respondTo.medium`
+        display: flex;
+    `}
 `
 
 const Heading = styled.h3`
     padding-top: 1.5rem;
+    margin-bottom: 1rem;
 `
 
-const ImageContainer = styled(MDBContainer)`
+const TemplateContainer = styled(MDBContainer)`
     text-align: center;
 `
 
+const ImageContainer = styled(MDBContainer)`
+    ${respondTo.xsmall`
+        display: flex;
+        justify-content: center;
+    `}
+
+    ${respondTo.xsmall`
+        display: block;
+    `}
+`
+
 const Image = styled.img`
-    width: 300px;
-    height: 400px;
-    padding-bottom: 1rem;
+    padding: 1rem 0rem;
+    align-items: center;
+
+    ${respondTo.xsmall`
+        width: 240px;
+        height: 370px;
+    `}
+
+    ${respondTo.small`
+        width: 290px;
+        height: 390px;
+    `}
 `
 
 const Label = styled.label`
     margin-top: 0.5rem;
     margin-bottom: 0.4rem;
+    font-size: 1.2rem;
 `
 
-const DateTime = styled(MuiPickersUtilsProvider)`
-    margin-bottom: 5rem;
-    background-color: red;
+const DateTime = styled(DateTimePicker)`
+    margin-top: 1rem;
 `
 
 const ButtonDiv = styled(MDBContainer)`
-    margin-top: 1.5rem;
+    margin-top: 2rem;
 `
 
 const SetupCard = () => {
 
     return (
         <MDBContainer>
-            <h1>Set up Card</h1>
+            <Title>Set up Card</Title>
 
             <SetupCardForm>
                 <Container>
                     <MDBContainer>
                         <MDBContainer>
-                            <h3>1. Who is this card for?</h3>
+                            <Heading>1. Who is this card for?</Heading>
                             <Label>Recipient Name:</Label>
                             <MDBInput label='Not you :-)' />
                             <Label>Recipient Email:</Label>
@@ -67,26 +168,27 @@ const SetupCard = () => {
                         </MDBContainer>
                         <MDBContainer>
                             <Heading>2. When would you like us to email the card to the Recipient?</Heading>
-                            <DateTime utils={DateFnsUtils}>
-                                <DateTimePicker />
-                            </DateTime>
+                            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                                <ThemeProvider theme={materialTheme}>
+                                    <DateTime />
+                                </ThemeProvider>
+                            </MuiPickersUtilsProvider>
                         </MDBContainer>
                         <ButtonDiv>
                             <CustomButton variant="primary">
                                 Continue
                             </CustomButton>
                         </ButtonDiv>
-
                     </MDBContainer>
 
-                    <ImageContainer>
-                        <MDBContainer>
+                    <TemplateContainer>
+                        <ImageContainer>
                             <Image src="https://i.pinimg.com/originals/a7/47/18/a74718565f52769898ac2361c8260cf0.jpg" />
-                        </MDBContainer>
+                        </ImageContainer>
                         <MDBContainer>
                             <CustomButton variant="primary">Choose another template</CustomButton>
                         </MDBContainer>
-                    </ImageContainer>
+                    </TemplateContainer>
                 </Container>
             </SetupCardForm>
         </MDBContainer>
@@ -94,6 +196,3 @@ const SetupCard = () => {
 }
 
 export default SetupCard
-
-
-

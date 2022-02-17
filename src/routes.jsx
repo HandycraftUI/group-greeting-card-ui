@@ -25,15 +25,15 @@ const routeConfig = (isLoggedIn) => [
     },
     {
         path: '/editor',
-        element: isLoggedIn ? <Editor /> : <Navigate to='/auth/login' />
+        element: !isLoggedIn ? <Editor /> : <Navigate to='/auth/login' />
     },
     {
         path: '/auth/change-password',
-        element: isLoggedIn ? <ChangePassword /> : <Navigate to='/auth/login' />
+        element: !isLoggedIn ? <ChangePassword /> : <Navigate to='/auth/login' />
     },
     {
         path: '/auth/forgotten-password',
-        element: isLoggedIn ? <ForgottenPassword /> : <Navigate to='/auth/login' />
+        element: !isLoggedIn ? <ForgottenPassword /> : <Navigate to='/auth/login' />
     },
     {
         path: '/card',
