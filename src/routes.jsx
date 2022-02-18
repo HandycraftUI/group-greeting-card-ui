@@ -13,7 +13,7 @@ const SetupCard = lazy(() => import('./components/SetupCard/SetupCard'))
 const routeConfig = (isLoggedIn) => [
     {
         path: '/',
-        element: !isLoggedIn ? <Home /> : <Navigate to='/auth/login' />
+        element: <Home />
     },
     {
         path: '/auth/login',
@@ -25,19 +25,19 @@ const routeConfig = (isLoggedIn) => [
     },
     {
         path: '/editor',
-        element: !isLoggedIn ? <Editor /> : <Navigate to='/auth/login' />
+        element: isLoggedIn ? <Editor /> : <Navigate to='/auth/login' />
     },
     {
         path: '/auth/change-password',
-        element: !isLoggedIn ? <ChangePassword /> : <Navigate to='/auth/login' />
+        element: isLoggedIn ? <ChangePassword /> : <Navigate to='/' />
     },
     {
         path: '/auth/forgotten-password',
-        element: !isLoggedIn ? <ForgottenPassword /> : <Navigate to='/auth/login' />
+        element: isLoggedIn ? <ForgottenPassword /> : <Navigate to='/auth/login' />
     },
     {
         path: '/card',
-        element: <SetupCard/>
+        element: isLoggedIn ? <SetupCard /> : <Navigate to='/auth/login' />
     }
 ]
 

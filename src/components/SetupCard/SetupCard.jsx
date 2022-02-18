@@ -146,16 +146,14 @@ const DateTime = styled(DateTimePicker)`
     margin-top: 1rem;
 `
 
-const ButtonDiv = styled(MDBContainer)`
-    margin-top: 2rem;
-`
-
 const SetupCard = () => {
     const [recipientName, setRecipientName] = useState('')
     const [recipientEmail, setRecipientEmail] = useState('')
     const [dateToBeSent, setDateToBeSent] = useState(new Date())
 
-    const setUpCardHandler = () => {
+    const setUpCardHandler = (e) => {
+        e.preventDefault()
+
         const data = {
             recipientName,
             recipientEmail,
@@ -196,15 +194,15 @@ const SetupCard = () => {
                                 </ThemeProvider>
                             </MuiPickersUtilsProvider>
                         </MDBContainer>
-                        <ButtonDiv>
+                        <MDBContainer class='mt-4 ms-2'>
                             <CustomButton
                                 variant="primary"
                                 type='button'
-                                onClick={(e) => setUpCardHandler(event)}
+                                onClick={() => setUpCardHandler(event)}
                             >
                                 Continue
                             </CustomButton>
-                        </ButtonDiv>
+                        </MDBContainer>
                     </MDBContainer>
 
                     <TemplateContainer>
