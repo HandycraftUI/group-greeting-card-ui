@@ -11,6 +11,7 @@ import {
     MDBInput,
     MDBContainer,
 } from 'mdb-react-ui-kit'
+import { useSelector } from 'react-redux'
 
 import CustomButton from '../CustomButtom/CustomButton'
 import { respondTo } from '../../style-config/respond-to'
@@ -150,6 +151,7 @@ const SetupCard = () => {
     const [recipientName, setRecipientName] = useState('')
     const [recipientEmail, setRecipientEmail] = useState('')
     const [dateToBeSent, setDateToBeSent] = useState(new Date())
+    const { cardImage } = useSelector(state => state.card)
 
     const setUpCardHandler = (e) => {
         e.preventDefault()
@@ -207,7 +209,7 @@ const SetupCard = () => {
 
                     <TemplateContainer>
                         <ImageContainer>
-                            <Image src="https://i.pinimg.com/originals/a7/47/18/a74718565f52769898ac2361c8260cf0.jpg" />
+                            <Image src={cardImage} />
                         </ImageContainer>
                         <MDBContainer>
                             <CustomButton variant="primary">Choose another template</CustomButton>
