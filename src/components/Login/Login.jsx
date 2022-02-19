@@ -144,27 +144,38 @@ const Login = () => {
                             <Label htmlFor="defaultFormRegisterEmailEx" className="grey-text">
                                 Email
                             </Label>
-                            <ForgotPasswordLink
-                                to='/auth/forgotten-password'
-                                className='nav-links'
-                                theme={theme}
-                            >
-                                Forgot Password?
-                            </ForgotPasswordLink>
-                        </Div>
-                        <MDBInput
-                            label='Password'
-                            type='password'
-                            onKeyPress={(e) => handleKeyDown(e)}
-                            onChange={(e) => setAuthData({ ...authData, password: e.target.value })}
-                        />
-                        <DivButton>
-                            <CustomButton variant="primary" type='button' onClick={() => saveUserData(event)}>
-                                Login
-                            </CustomButton>
-                        </DivButton>
-                    </LoginForm>
-                </form>
+                            <MDBInput
+                                label='Email'
+                                type='email'
+                                onKeyPress={(e) => handleKeyDown(e)}
+                                onChange={(e) => setAuthData({ ...authData, email: e.target.value })}
+                            />
+                            <br />
+                            <Div theme={theme}>
+                                <Label htmlFor="defaultFormRegisterConfirmEx" className="grey-text">
+                                    Password
+                                </Label>
+                                <ForgotPasswordLink
+                                    to='/auth/forgotten-password'
+                                    className='nav-links'
+                                    theme={theme}
+                                >
+                                    Forgot Password?
+                                </ForgotPasswordLink>
+                            </Div>
+                            <MDBInput
+                                label='Password'
+                                type='password'
+                                onKeyPress={(e) => handleKeyDown(e)}
+                                onChange={(e) => setAuthData({ ...authData, password: e.target.value })}
+                            />
+                            <DivButton>
+                                <CustomButton variant="primary" type='button' onClick={() => saveUserData(event)}>
+                                    Login
+                                </CustomButton>
+                            </DivButton>
+                        </LoginForm>
+                    </form>
                 </FormContainer>
             </MDBRow>
         </LoginContainer>
