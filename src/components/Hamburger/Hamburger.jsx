@@ -16,6 +16,7 @@ import PropTypes from 'prop-types'
 
 import useTheme from '../../hooks/use-theme'
 import { respondTo } from '../../style-config/respond-to'
+import ToggleButton from '../ToggleButton/ToggleButton'
 
 const HamburgerComponent = styled(MDBContainer)`
     font-family: 'Raleway', sans-serif;
@@ -45,7 +46,7 @@ const IconComponent = styled(MDBNavbarToggler)`
         right: 1rem;
     `}
 
-    ${respondTo.small`
+    ${respondTo.medium`
         display: none;
     `}
 `
@@ -56,7 +57,7 @@ const ToggledDivComponent = styled(MDBCollapse)`
     color: ${({ theme }) => theme.palette.navbar.primary};
     width: 100%;
 
-    ${respondTo.small`
+    ${respondTo.medium`
         display: none;
     `}
 `
@@ -92,6 +93,9 @@ const Hamburger = ({ firstName }) => {
                     Logout
                 </Link>
             </MDBNavbarItem>
+            <MDBNavbarItem>
+                <ToggleButton />
+            </MDBNavbarItem>
         </NavItemsWrapper>
     )
 
@@ -108,6 +112,9 @@ const Hamburger = ({ firstName }) => {
                     <BsFillPeopleFill className='nav-icon me-2' />
                     Register
                 </Link>
+            </MDBNavbarItem>
+            <MDBNavbarItem>
+                <ToggleButton />
             </MDBNavbarItem>
         </NavItemsWrapper>
     )
