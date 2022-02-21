@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import { toggleThemeAction } from '../../store/actions/common'
 import useTheme from '../../hooks/use-theme'
 import { respondTo } from '../../style-config/respond-to'
+import { SLIDER_LIGHT, SLIDER_DARK } from '../../constants/common'
 
 const Container = styled.div`
   display: flex;
@@ -26,8 +27,8 @@ const Container = styled.div`
 const SwitchLabel = styled.label`
     position: relative;
     display: inline-block;
-    width: 60px;
-    height: 34px;
+    width: 40px;
+    height: 15px;
 `
 
 const Input = styled.input`
@@ -43,9 +44,8 @@ const Input = styled.input`
     -webkit-transform: translateX(24px);
     -ms-transform: translateX(24px);
     transform: translateX(24px);
-    background: ${({theme}) => theme.palette.tertiary} url('https://i.ibb.co/FxzBYR9/night.png');
-    background-repeat: no-repeat;
-    background-position: center;
+    background: ${({ theme }) => theme.palette.tertiary} url(${SLIDER_DARK}) no-repeat center;
+    background-size: 15px;
   }
 `
 
@@ -65,8 +65,8 @@ const SliderSpan = styled.span`
        border-radius: 50%;
        position: absolute;
        content: "";
-       height: 40px;
-       width: 40px;
+       height: 23px;
+       width: 23px;
        left: 0px;
        bottom: 4px;
        top: 0;
@@ -74,10 +74,9 @@ const SliderSpan = styled.span`
        margin: auto 0;
        -webkit-transition: 0.4s;
        transition: 0.4s;
-       box-shadow: 0 0px 15px ${({theme}) => theme.palette.slider};
-       background: ${({theme}) => theme.palette.tertiary} url('https://i.ibb.co/7JfqXxB/sunny.png');
-       background-repeat: no-repeat;
-       background-position: center; 
+       box-shadow: 0 0px 15px ${({ theme }) => theme.palette.slider};
+       background: ${({ theme }) => theme.palette.tertiary} url(${SLIDER_LIGHT}) no-repeat center;
+       background-size: 15px;
     }
 `
 
@@ -88,7 +87,7 @@ const ToggleButton = () => {
     const toggleTheme = () => {
         dispatch(toggleThemeAction())
     }
-    
+
     return (
         <Container className='ps-2'>
             <SwitchLabel>
