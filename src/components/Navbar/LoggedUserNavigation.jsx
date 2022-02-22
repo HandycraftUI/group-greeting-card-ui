@@ -27,7 +27,7 @@ const LoggedUserNavigation = ({ firstname }) => {
     return (
         <>
             <MDBNavbarItem>
-                <Link to='/editor' className='nav-links pe-2'>
+                <Link to='/create-card' className='nav-links pe-2'>
                     <MDBIcon fas icon="plus" size='sm' />
                     Create Card
                 </Link>
