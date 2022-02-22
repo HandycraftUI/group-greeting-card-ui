@@ -12,15 +12,25 @@ import {
 import TemplateCard from './TemplateCard'
 import useTheme from '../../hooks/use-theme'
 
+const TitleDiv = styled(MDBContainer)`
+    display: flex;
+    padding: 1rem 2rem;
+`
+
 const DropdownDiv = styled(MDBContainer)`
     text-align: end;
 `
-const Dropdown = styled(MDBDropdown)`
-    justify-content: end;
-`
 
 const DropdownToggle = styled(MDBDropdownToggle)`
-    background-color: ${({theme}) => theme.palette.navbar.primary};
+    background-color: ${({ theme }) => theme.palette.navbar.primary};
+
+    :focus{
+        background-color: ${({ theme }) => theme.palette.navbar.primary};
+    }
+
+    :hover{
+        background-color: ${({ theme }) => theme.palette.navbar.primary};
+    }
 `
 
 const AllTemplates = styled(MDBContainer)`
@@ -38,23 +48,28 @@ const TemplateCards = () => {
 
     return (
         <MDBContainer>
-            <DropdownDiv>
-                <Dropdown group>
-                    <DropdownToggle size='lg' theme={theme}>Sort by data of creation:</DropdownToggle>
-                    <MDBDropdownMenu>
-                        <MDBDropdownItem>
-                            <MDBDropdownLink href="#">Acsending</MDBDropdownLink>
-                        </MDBDropdownItem>
-                        <MDBDropdownItem>
-                            <MDBDropdownLink href="#">Descending</MDBDropdownLink>
-                        </MDBDropdownItem>
-                    </MDBDropdownMenu>
-                </Dropdown>
-            </DropdownDiv>
-
+            <TitleDiv>
+                <MDBContainer>
+                    <h1>Our Greeting Cards</h1>
+                </MDBContainer>
+                <MDBContainer>
+                    <DropdownDiv>
+                        <MDBDropdown group>
+                            <DropdownToggle size='lg' theme={theme}>Sort by data of creation:</DropdownToggle>
+                            <MDBDropdownMenu>
+                                <MDBDropdownItem>
+                                    <MDBDropdownLink href="#">Acsending</MDBDropdownLink>
+                                </MDBDropdownItem>
+                                <MDBDropdownItem>
+                                    <MDBDropdownLink href="#">Descending</MDBDropdownLink>
+                                </MDBDropdownItem>
+                            </MDBDropdownMenu>
+                        </MDBDropdown>
+                    </DropdownDiv>
+                </MDBContainer>
+            </TitleDiv>
 
             <AllTemplates>
-
                 {
                     list.map(x => (
                         <TemplateCard key={x} />
@@ -62,7 +77,6 @@ const TemplateCards = () => {
                 }
             </AllTemplates>
         </MDBContainer>
-
     )
 }
 
