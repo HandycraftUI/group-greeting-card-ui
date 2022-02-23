@@ -11,14 +11,51 @@ import {
 
 import TemplateCard from './TemplateCard'
 import useTheme from '../../hooks/use-theme'
+import { respondTo } from '../../style-config/respond-to'
 
 const TitleDiv = styled(MDBContainer)`
-    display: flex;
-    padding: 1rem 2rem;
+    ${respondTo.xsmall`
+        display: inline;
+        text-align: center;
+    `}
+
+    ${respondTo.medium`
+        display: flex;
+        padding: 1rem 0;
+    `}
+`
+
+const Title = styled.h1`
+    ${respondTo.xsmall`
+        font-size: 1.5rem;    
+    `}
+
+    ${respondTo.small`
+        font-size: 1.8rem;
+    `}
+
+    ${respondTo.medium`
+        font-size: 2rem;
+        text-align: start;
+    `}
+
+    ${respondTo.large`
+        font-size: 2.2rem;
+    `}
 `
 
 const DropdownDiv = styled(MDBContainer)`
     text-align: end;
+
+    ${respondTo.xsmall`
+        text-align: center;
+        margin-top: 1rem;
+    `}
+
+    ${respondTo.medium`
+        text-align: end;
+        margin-top: 0;
+    `}
 `
 
 const DropdownToggle = styled(MDBDropdownToggle)`
@@ -27,7 +64,6 @@ const DropdownToggle = styled(MDBDropdownToggle)`
     :focus{
         background-color: ${({ theme }) => theme.palette.navbar.primary};
     }
-
     :hover{
         background-color: ${({ theme }) => theme.palette.navbar.primary};
     }
@@ -50,7 +86,7 @@ const TemplateCards = () => {
         <MDBContainer>
             <TitleDiv>
                 <MDBContainer>
-                    <h1>Our Greeting Cards</h1>
+                    <Title>Our Greeting Cards</Title>
                 </MDBContainer>
                 <MDBContainer>
                     <DropdownDiv>
