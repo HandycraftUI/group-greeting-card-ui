@@ -42,7 +42,7 @@ const routeConfig = (isLoggedIn) => [
     },
     {
         path: '/create-card',
-        element: isLoggedIn ? <TemplateCards /> : <Navigate to='/auth/login' />
+        element: !isLoggedIn ? <TemplateCards /> : <Navigate to='/auth/login' />
     }
 ]
 

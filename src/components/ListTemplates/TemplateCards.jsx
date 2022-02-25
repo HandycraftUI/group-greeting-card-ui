@@ -69,14 +69,6 @@ const DropdownToggle = styled(MDBDropdownToggle)`
     }
 `
 
-const AllTemplates = styled(MDBContainer)`
-    margin-top: 2rem;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-`
-
 const list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
 
 const TemplateCards = () => {
@@ -105,13 +97,13 @@ const TemplateCards = () => {
                 </MDBContainer>
             </TitleDiv>
 
-            <AllTemplates>
+            <MDBContainer className='d-flex flex-wrap justify-content-center mt-4'>
                 {
                     list.map(x => (
                         <TemplateCard key={x} />
                     ))
                 }
-            </AllTemplates>
+            </MDBContainer>
         </MDBContainer>
     )
 }
