@@ -5,6 +5,8 @@ import {
     MDBIcon,
 } from 'mdb-react-ui-kit'
 
+import ToggleButton from '../ToggleButton/ToggleButton'
+
 const GuestUserNavigation = () => {
 
     return (
@@ -20,6 +22,9 @@ const GuestUserNavigation = () => {
                     <MDBIcon fas icon="users" size='sm' />
                     Register
                 </Link>
+            </MDBNavbarItem>
+            <MDBNavbarItem>
+                <ToggleButton />
             </MDBNavbarItem>
         </>
     )

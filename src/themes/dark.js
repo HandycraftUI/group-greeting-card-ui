@@ -18,9 +18,10 @@ const darkTheme = {
         },
         primary: '#1D1F29',
         secondary: '#323546',
-        tertiary: '#050038',
+        tertiary: '#17171A',
         white: '#fff',
         black: '#000',
+        slider: '#ccc'
     },
 }
 

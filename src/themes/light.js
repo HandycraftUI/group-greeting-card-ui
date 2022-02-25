@@ -18,9 +18,10 @@ const lightTheme = {
         },
         primary: '#F0F0F3',
         secondary: '#050038',
-        tertiary: '#4262FF',
+        tertiary: '#116',
         white: '#fff',
         black: '#000',
+        slider: '#ccc'
     },
 }
 

@@ -13,7 +13,6 @@ import LoggedUserNavigation from './LoggedUserNavigation'
 import Hamburger from '../Hamburger/Hamburger'
 import useTheme from '../../hooks/use-theme'
 import { respondTo } from '../../style-config/respond-to'
-import ToggleButton from '../ToggleButton/ToggleButton'
 
 const NavbarComponent = styled(MDBNavbar)`
     background-color: ${({ theme }) => theme.palette.navbar.primary};
@@ -58,7 +57,7 @@ const NavbarComponent = styled(MDBNavbar)`
         }
     `}
 
-    ${respondTo.small`
+    ${respondTo.medium`
         .container-fluid{
             flex-direction: row;
         }
@@ -92,14 +91,12 @@ const Navbar = () => {
             <NavbarComponent expand='lg' dark theme={theme}>
                 <MDBContainer fluid>
                     <Link to='/' className='navbar-brand'>Greeting Card</Link>
-                    <MDBNavbarNav right fullWidth={false} className='mb-2 mb-lg-0' >
+                    <MDBNavbarNav right fullWidth={false} className='mb-lg-0' >
                         {isAuth ? <LoggedUserNavigation firstname={firstName} /> : <GuestUserNavigation />}
                     </MDBNavbarNav>
-                    <Hamburger firstname={firstName}/>
+                    <Hamburger firstname={firstName} />
                 </MDBContainer>
             </NavbarComponent>
-
-            <ToggleButton />
         </>
     )
 }
