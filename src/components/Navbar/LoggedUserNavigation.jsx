@@ -10,6 +10,7 @@ import {
 
 import { logoutUser } from '../../store/actions/logoutUser'
 import { authenticateAction } from '../../store/actions/user'
+import ToggleButton from '../ToggleButton/ToggleButton'
 
 const LoggedUserNavigation = ({ firstname }) => {
     const navigate = useNavigate()
@@ -43,6 +44,9 @@ const LoggedUserNavigation = ({ firstname }) => {
                     <MDBIcon fas icon="sign-out-alt" size='sm' />
                     Logout
                 </Link>
+            </MDBNavbarItem>
+            <MDBNavbarItem>
+                <ToggleButton />
             </MDBNavbarItem>
         </>
     )
