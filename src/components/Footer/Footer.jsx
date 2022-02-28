@@ -6,27 +6,54 @@ import { RiFacebookBoxFill, RiLinkedinBoxFill } from 'react-icons/ri'
 import { GrInstagram, GrGoogle } from 'react-icons/gr'
 
 import useTheme from '../../hooks/use-theme'
+import { respondTo } from '../../style-config/respond-to'
 
 const FooterWrapper = styled.div`
     background-color: ${({ theme }) => theme.palette.navbar.primary};
     color: ${({ theme }) => theme.palette.white};
     padding: 1rem 2rem;
-    position: absolute;
     width: 100%;
     left: 0;
     bottom: 0;
+
+    ${respondTo.xsmall`
+        position: relative;
+    `}
+
+    ${respondTo.small`
+        position: absolute;
+    `}
 `
 
 const FooterItems = styled(MDBContainer)`
-    display: flex;
+     
+    ${respondTo.xsmall`
+        display: block;
+    `} 
+
+    ${respondTo.small`
+        display: flex;
+    `}
 `
 
 const LinksContainer = styled(MDBContainer)`
     width: 30%;
+
+    ${respondTo.xsmall`
+        width: 100%;
+    `}
+
+    ${respondTo.small`
+        width: 50%;
+    `}
+
+    ${respondTo.medium`
+        width: 30%;
+    `}
 `
 
 const LinksList = styled.ul`
-list-style-type: none;
+    list-style-type: none;
 `
 
 const Links = styled(Link)`
@@ -36,11 +63,39 @@ const Links = styled(Link)`
     :hover {
         color: ${({ theme }) => theme.palette.white};
     }
+
+    ${respondTo.xsmall`
+        font-size: 0.9rem;
+    `}
+
+    ${respondTo.small`
+        font-size: 1rem;
+    `}
+`
+
+const MediaContainer = styled(MDBContainer)`
+    display: flex;
+    margin-top: 1rem;
+
+    ${respondTo.xsmall`
+        display: block;
+    `}
+
+    ${respondTo.small`
+        display: flex;
+    `}
 `
 
 const IconContainer = styled.div`
     display: flex;
-    width: 30%;
+
+    ${respondTo.small`
+        width: 50%;
+    `}
+
+    ${respondTo.medium`
+       width: 30%;
+    `}
 `
 
 const IconDiv = styled(MDBContainer)`
@@ -51,20 +106,80 @@ const IconDiv = styled(MDBContainer)`
     }
 `
 
+const Title = styled.h2`
+    ${respondTo.xsmall`
+        font-size: 1.1rem;
+    `}
+
+    ${respondTo.small`
+        font-size: 1.4rem;
+    `}
+`
+
+const Paragraph = styled.p`
+    ${respondTo.xsmall`
+        font-size: 0.9rem;
+    `}
+
+    ${respondTo.small`
+        font-size: 1.1rem;
+    `}
+`
+
 const Facebook = styled(RiFacebookBoxFill)`
-    font-size: 30px;
+    ${respondTo.xsmall`
+        font-size: 20px;
+    `}
+
+    ${respondTo.small`
+        font-size: 25px;
+    `}
+
+    ${respondTo.medium`
+        font-size: 30px;
+    `}
 `
 
 const Instagram = styled(GrInstagram)`
-    font-size: 27px;
+    ${respondTo.xsmall`
+        font-size: 20px;
+    `}
+
+    ${respondTo.small`
+        font-size: 23px;
+    `}
+
+    ${respondTo.medium`
+        font-size: 27px;
+    `}
 `
 
 const LinkedIn = styled(RiLinkedinBoxFill)`
-    font-size: 30px;
+    ${respondTo.xsmall`
+        font-size: 20px;
+    `}
+
+    ${respondTo.small`
+        font-size: 25px;
+    `}
+
+    ${respondTo.medium`
+        font-size: 30px;
+    `}
 `
 
 const Google = styled(GrGoogle)`
-    font-size: 25px;
+    ${respondTo.xsmall`
+        font-size: 20px;
+    `}
+
+    ${respondTo.small`
+        font-size: 23px;
+    `}
+
+    ${respondTo.medium`
+        font-size: 27px;
+    `}
 `
 
 const Footer = () => {
@@ -73,11 +188,11 @@ const Footer = () => {
         <FooterWrapper theme={theme}>
             <FooterItems>
                 <MDBContainer>
-                    <h2>GroupGreeting</h2>
-                    <p>Sending appreciation cards at any time.</p>
+                    <Title>GroupGreeting</Title>
+                    <Paragraph>Sending appreciation cards at any time.</Paragraph>
                 </MDBContainer>
                 <LinksContainer>
-                    <h2>Company</h2>
+                    <Title>Company</Title>
                     <LinksList>
                         <li>
                             <Links theme={theme} to='/'>Home</Links>
@@ -95,7 +210,7 @@ const Footer = () => {
                 </LinksContainer>
             </FooterItems>
 
-            <MDBContainer className='d-flex mt-3'>
+            <MediaContainer>
                 <MDBContainer>
                     <p>&copy; 2022 Blagoevgrad, Bulgaria</p>
                 </MDBContainer>
@@ -121,7 +236,7 @@ const Footer = () => {
                         </Links>
                     </IconDiv>
                 </IconContainer>
-            </MDBContainer>
+            </MediaContainer>
         </FooterWrapper>
     )
 }

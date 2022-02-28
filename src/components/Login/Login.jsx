@@ -22,7 +22,7 @@ const LoginContainer = styled(MDBContainer)`
     padding: 2rem;
 
     ${respondTo.xsmall`
-        width: 100vw;  
+        width: 95vw;
     `}
 
     ${respondTo.small`
@@ -49,8 +49,8 @@ const Label = styled.label`
 
 const FormContainer = styled(MDBCol)`
     margin: 0 auto;
-    padding: 1rem 2rem;
-    border:2px solid ${({ theme }) => theme.palette.text.primary};
+    padding: 1rem;
+    border: 2px solid ${({ theme }) => theme.palette.navbar.primary};
     box-shadow:
     0 2.8px 2.2px rgba(0, 0, 0, 0.034),
     0 6.7px 5.3px rgba(0, 0, 0, 0.048),
@@ -79,7 +79,6 @@ const ForgotPasswordLink = styled(Link)`
     color: ${({ theme }) => theme.palette.tertiary};
     margin-bottom: 0.4rem;
     
-
     ${respondTo.xsmall`
         font-size: 0.9rem;
     `}

@@ -24,7 +24,7 @@ const RegisterContainer = styled(MDBContainer)`
     `}
 
     ${respondTo.small`
-        width: 80vw;
+        width: 85vw;
     `}
 
     ${respondTo.medium`
@@ -39,13 +39,13 @@ const RegisterContainer = styled(MDBContainer)`
 const Paragraph = styled.p`
     font-size: 1.5rem;
     text-align: center;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 `
 
 const FormContainer = styled(MDBCol)`
     margin: 0 auto;
-    padding: 1rem 2rem;
-    border:2px solid ${({ theme }) => theme.palette.text.primary};
+    padding: 1rem;
+    border: 2px solid ${({ theme }) => theme.palette.navbar.primary};
     box-shadow:
     0 2.8px 2.2px rgba(0, 0, 0, 0.034),
     0 6.7px 5.3px rgba(0, 0, 0, 0.048),
@@ -56,7 +56,13 @@ const FormContainer = styled(MDBCol)`
 `
 
 const InputsWrapper = styled(MDBContainer)`
-    display: flex;
+    ${respondTo.xsmall`
+        display: block;
+    `}
+
+    ${respondTo.small`
+        display: flex;
+    `}
 `
 
 const Input = styled(MDBInput)`
@@ -71,7 +77,7 @@ const DivButton = styled.div`
         margin-top: 1.5rem;
     `}
 
-    ${respondTo.medium`
+    ${respondTo.small`
         margin-top: 0.5rem;
     `}
 `
