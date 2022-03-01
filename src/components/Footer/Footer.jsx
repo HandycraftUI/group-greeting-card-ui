@@ -11,7 +11,6 @@ import { respondTo } from '../../style-config/respond-to'
 const FooterWrapper = styled.div`
     background-color: ${({ theme }) => theme.palette.navbar.primary};
     color: ${({ theme }) => theme.palette.white};
-    padding: 1rem 2rem;
     width: 100%;
     left: 0;
     bottom: 0;
@@ -25,8 +24,7 @@ const FooterWrapper = styled.div`
     `}
 `
 
-const FooterItems = styled(MDBContainer)`
-     
+const FooterItems = styled(MDBContainer)`  
     ${respondTo.xsmall`
         display: block;
     `} 
@@ -185,7 +183,7 @@ const Google = styled(GrGoogle)`
 const Footer = () => {
     const theme = useTheme()
     return (
-        <FooterWrapper theme={theme}>
+        <FooterWrapper className='py-3 px-4' theme={theme}>
             <FooterItems>
                 <MDBContainer>
                     <Title>GroupGreeting</Title>
