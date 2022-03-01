@@ -69,7 +69,7 @@ const DropdownToggle = styled(MDBDropdownToggle)`
     }
 `
 
-const list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+const list = new Array(20).fill(0).map((item, index) => <TemplateCard item={item} key={index} />)
 
 const TemplateCards = () => {
     const theme = useTheme()

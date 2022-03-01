@@ -30,7 +30,7 @@ const routeConfig = (isLoggedIn) => [
     },
     {
         path: '/auth/change-password',
-        element: !isLoggedIn ? <ChangePassword /> : <Navigate to='/' />
+        element: isLoggedIn ? <ChangePassword /> : <Navigate to='/' />
     },
     {
         path: '/auth/forgotten-password',
