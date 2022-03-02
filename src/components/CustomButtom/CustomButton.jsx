@@ -43,10 +43,12 @@ const Button = styled(MDBBtn)`
     ${({ theme, variant }) => variant === 'outline-primary' && {
         backgroundColor: theme.palette.secondary,
         color: theme.palette.white,
+        border: `2px solid ${theme.palette.secondary}`,
     }};
     ${({ theme, variant }) => variant === 'outline-secondary' && {
         backgroundColor: theme.palette.secondary,
         color: theme.palette.white,
+        border: `2px solid ${theme.palette.secondary}`,
     }};
     }
 `
