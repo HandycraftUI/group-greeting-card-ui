@@ -41,9 +41,9 @@ const Button = styled(MDBBtn)`
         border: `2px solid ${theme.palette.secondary}`,
     }};
     ${({ theme, variant }) => variant === 'outline-primary' && {
-        backgroundColor: theme.palette.secondary,
+        backgroundColor: theme.palette.tertiary,
         color: theme.palette.white,
-        border: `2px solid ${theme.palette.secondary}`,
+        border: `2px solid ${theme.palette.tertiary}`,
     }};
     ${({ theme, variant }) => variant === 'outline-secondary' && {
         backgroundColor: theme.palette.secondary,
