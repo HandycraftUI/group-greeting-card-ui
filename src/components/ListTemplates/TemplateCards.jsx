@@ -15,12 +15,10 @@ import { respondTo } from '../../style-config/respond-to'
 
 const TitleDiv = styled(MDBContainer)`
     ${respondTo.xsmall`
-        display: inline;
         text-align: center;
     `}
 
     ${respondTo.medium`
-        display: flex;
         padding: 1rem 0;
     `}
 `
@@ -76,7 +74,7 @@ const TemplateCards = () => {
 
     return (
         <MDBContainer>
-            <TitleDiv>
+            <TitleDiv className='d-inline d-md-flex'>
                 <MDBContainer>
                     <Title>Our Greeting Cards</Title>
                 </MDBContainer>
