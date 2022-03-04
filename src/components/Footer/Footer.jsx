@@ -24,16 +24,6 @@ const FooterWrapper = styled.div`
     `}
 `
 
-const FooterItems = styled(MDBContainer)`  
-    ${respondTo.xsmall`
-        display: block;
-    `} 
-
-    ${respondTo.small`
-        display: flex;
-    `}
-`
-
 const LinksContainer = styled(MDBContainer)`
     width: 30%;
 
@@ -184,7 +174,7 @@ const Footer = () => {
     const theme = useTheme()
     return (
         <FooterWrapper className='py-3 px-4' theme={theme}>
-            <FooterItems>
+            <MDBContainer className='d-block d-sm-flex'>
                 <MDBContainer>
                     <Title>GroupGreeting</Title>
                     <Paragraph>Sending appreciation cards at any time.</Paragraph>
@@ -206,7 +196,7 @@ const Footer = () => {
                         </li>
                     </LinksList>
                 </LinksContainer>
-            </FooterItems>
+            </MDBContainer>
 
             <MediaContainer>
                 <MDBContainer>
