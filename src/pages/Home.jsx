@@ -15,6 +15,7 @@ const FirstSectionWrapper = styled.div`
     ${respondTo.medium`
         display: flex;
         margin-top: 1rem;
+        padding: 1.2rem;
     `}
 `
 
@@ -112,13 +113,71 @@ const Image = styled.img`
     `}
 `
 
-const Card = styled(MDBContainer)`
+const SecondContainer = styled.div`
+    ${respondTo.medium`
+        display: flex;
+        padding: 0 5%;
+    `}
+
+    ${respondTo.large`
+        padding: 0 10%;
+    `}
+
+    ${respondTo.xlarge`
+        padding: 0 15%;
+    `}
+`
+
+const CardContainer = styled(MDBContainer)`
+`
+
+const Card = styled.div`
     text-align: center;
     border: 3px solid ${({ theme }) => theme.palette.tertiary};
+
+    ${respondTo.xsmall`
+        margin: 0 auto;
+        width: 80%
+    `}
+
+    ${respondTo.small`
+        width: 70%;
+    `}
+
+    ${respondTo.medium`
+        width: 100%;
+        height: 100%;
+    `}
+`
+
+const H2 = styled.h2`
+    ${respondTo.xsmall`
+        font-size: 20px;
+    `}
+`
+
+const ImageIcon = styled.img`
+    ${respondTo.xsmall`
+        width: 100px;
+        height: 100px;
+    `}
+
+    ${respondTo.xsmall`
+        width: 120px;
+        height: 120px;
+    `}
 `
 
 const ParagraphContainer = styled(MDBContainer)`
-    padding: 0 3rem;
+    padding: 0 2rem;
+
+    ${respondTo.xsmall`
+        font-size: 14px;
+    `}
+
+    ${respondTo.small`
+        font-size: 16px;
+    `}
 `
 
 const Home = () => {
@@ -155,32 +214,38 @@ const Home = () => {
                 </ImageDiv>
             </FirstSectionWrapper>
 
-            <MDBContainer className='mt-5 d-block d-sm-flex py-3' theme={theme}>
-                <Card className='py-3 me-3' theme={theme}>
-                    <h5>1</h5>
-                    <img src="https://storage.googleapis.com/groupgreeting/assets/images/graphics/dusk/svg/thumbnails.svg" />
-                    <h2>Choose a Card</h2>
-                    <ParagraphContainer>
-                        <p>Select a card model for any occation including Birthdays, Farewell and many more.</p>
-                    </ParagraphContainer>
-                </Card>
-                <Card className='py-3 me-3' theme={theme}>
-                    <h5>2</h5>
-                    <img src="https://storage.googleapis.com/groupgreeting/assets/images/graphics/dusk/svg/email.svg" />
-                    <h2>Ask People to Sign</h2>
-                    <ParagraphContainer>
-                        <p>Send the card link to friends so they cant also sign the card.</p>
-                    </ParagraphContainer>
-                </Card>
-                <Card className='py-3 me-3' theme={theme}>
-                    <h5>3</h5>
-                    <img src="https://storage.googleapis.com/groupgreeting/assets/images/graphics/dusk/svg/approval.svg " />
-                    <h2>Card is Sent</h2>
-                    <ParagraphContainer>
-                        <p>The card is sent to the recipient via email at the time and date selected.</p>
-                    </ParagraphContainer>
-                </Card>
-            </MDBContainer>
+            <SecondContainer className='py-4' theme={theme}>
+                <CardContainer className='mb-3 px-2'>
+                    <Card theme={theme}>
+                        <h5>1</h5>
+                        <ImageIcon src="https://storage.googleapis.com/groupgreeting/assets/images/graphics/dusk/svg/thumbnails.svg" />
+                        <H2>Choose a Card</H2>
+                        <ParagraphContainer>
+                            <p>Select a card model for any occation including Birthdays, Farewell and many more.</p>
+                        </ParagraphContainer>
+                    </Card>
+                </CardContainer>
+                <CardContainer className='mb-3 px-2'>
+                    <Card theme={theme}>
+                        <h5>2</h5>
+                        <ImageIcon src="https://storage.googleapis.com/groupgreeting/assets/images/graphics/dusk/svg/email.svg" />
+                        <H2>Ask People to Sign</H2>
+                        <ParagraphContainer>
+                            <p>Send the card link to friends so they cant also sign the card.</p>
+                        </ParagraphContainer>
+                    </Card>
+                </CardContainer>
+                <CardContainer className='mb-3 px-2'>
+                    <Card theme={theme}>
+                        <h5>3</h5>
+                        <ImageIcon src="https://storage.googleapis.com/groupgreeting/assets/images/graphics/dusk/svg/approval.svg " />
+                        <H2>Card is Sent</H2>
+                        <ParagraphContainer>
+                            <p>The card is sent to the recipient via email at the time and date selected.</p>
+                        </ParagraphContainer>
+                    </Card>
+                </CardContainer>
+            </SecondContainer>
         </>
     )
 }

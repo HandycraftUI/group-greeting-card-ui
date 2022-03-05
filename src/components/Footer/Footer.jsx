@@ -12,16 +12,10 @@ const FooterWrapper = styled.div`
     background-color: ${({ theme }) => theme.palette.navbar.primary};
     color: ${({ theme }) => theme.palette.white};
     width: 100%;
+    top: 0;
     left: 0;
-    bottom: 0;
-
-    ${respondTo.xsmall`
-        position: relative;
-    `}
-
-    ${respondTo.small`
-        position: absolute;
-    `}
+    margin-top: 2.7rem;
+    position: relative;
 `
 
 const LinksContainer = styled(MDBContainer)`
