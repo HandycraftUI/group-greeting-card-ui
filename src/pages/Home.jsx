@@ -180,6 +180,15 @@ const ParagraphContainer = styled(MDBContainer)`
     `}
 `
 
+const FeaturesSection = styled(MDBContainer)`
+    display: flex;
+    margin-top: 2rem;
+`
+
+const H1 = styled.h1`
+    text-align: center;
+`
+
 const Home = () => {
     const theme = useTheme()
 
@@ -246,6 +255,32 @@ const Home = () => {
                     </Card>
                 </CardContainer>
             </SecondContainer>
+
+            <MDBContainer>
+                <MDBContainer>
+                    <H1>Each card is packed with features:</H1>
+                </MDBContainer>
+
+                <FeaturesSection>
+                    <MDBContainer>
+                        <Image src="https://storage.googleapis.com/groupgreeting/assets/images/graphics/spotlight/group-greeting-card-sample.jpg" />
+                    </MDBContainer>
+                    <MDBContainer>
+                        <MDBContainer>
+                            <h3>Multiple people can sign the card</h3>
+                            <p>Unlimited signatures, unlimited pages - you’ll never run out of room.</p>
+                        </MDBContainer>
+                        <MDBContainer>
+                            <h3>Add photos and stickers</h3>
+                            <p>Signers can add a photo for a personal touch, or add as many emoji stickers to get the message across.</p>
+                        </MDBContainer>
+                        <MDBContainer>
+                            <h3>Style your signature your way</h3>
+                            <p>Choose from different fonts, change the color, and rotate in any direction.</p>
+                        </MDBContainer>
+                    </MDBContainer>
+                </FeaturesSection>
+            </MDBContainer>
         </>
     )
 }
