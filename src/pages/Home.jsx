@@ -93,8 +93,8 @@ const ImageDiv = styled(MDBContainer)`
 const Image = styled.img`
    
     ${respondTo.xsmall`
-        width: 320px;
-        height: 220px;
+        width: 300px;
+        height: 200px;
     `}
 
     ${respondTo.small`
@@ -180,13 +180,71 @@ const ParagraphContainer = styled(MDBContainer)`
     `}
 `
 
-const FeaturesSection = styled(MDBContainer)`
-    display: flex;
-    margin-top: 2rem;
+const FeaturesSection = styled.div`
+    margin: 2rem 2rem 0 2rem;
+
+    ${respondTo.xsmall`
+        display: block;
+    `}
+
+    ${respondTo.medium`
+        display: flex;
+    `}
 `
 
 const H1 = styled.h1`
+    font-weight: bold;
     text-align: center;
+
+    ${respondTo.small`
+        white-space: nowrap;
+    `}
+`
+const InformationContainer = styled(MDBContainer)`
+    ${respondTo.xsmall`
+        margin-top: 1.5rem;
+    `}
+
+    ${respondTo.large`
+        width: 60%;
+    `}
+`
+const Paragraph = styled.p`
+    ${respondTo.small`
+        font-size: 14px;
+    `}
+
+    ${respondTo.medium`
+        font-size: 16px;
+    `}
+
+    ${respondTo.large`
+        font-size: 18px;
+    `}
+
+    ${respondTo.xlarge`
+        font-size: 20px;
+    `} 
+`
+
+const H3 = styled.h3`
+    font-weight: bold;
+
+    ${respondTo.small`
+        font-size: 16px;
+    `}
+
+    ${respondTo.medium`
+        font-size: 18px;
+    `}
+
+    ${respondTo.large`
+        font-size: 20px;
+    `}
+
+    ${respondTo.xlarge`
+        font-size: 24px;
+    `}
 `
 
 const Home = () => {
@@ -256,31 +314,31 @@ const Home = () => {
                 </CardContainer>
             </SecondContainer>
 
-            <MDBContainer>
+            <div>
                 <MDBContainer>
                     <H1>Each card is packed with features:</H1>
                 </MDBContainer>
 
                 <FeaturesSection>
-                    <MDBContainer>
+                    <ImageDiv>
                         <Image src="https://storage.googleapis.com/groupgreeting/assets/images/graphics/spotlight/group-greeting-card-sample.jpg" />
-                    </MDBContainer>
-                    <MDBContainer>
+                    </ImageDiv>
+                    <InformationContainer>
                         <MDBContainer>
-                            <h3>Multiple people can sign the card</h3>
-                            <p>Unlimited signatures, unlimited pages - you’ll never run out of room.</p>
+                            <H3>Multiple people can sign the card</H3>
+                            <Paragraph>Unlimited signatures, unlimited pages - you’ll never run out of room.</Paragraph>
                         </MDBContainer>
                         <MDBContainer>
-                            <h3>Add photos and stickers</h3>
-                            <p>Signers can add a photo for a personal touch, or add as many emoji stickers to get the message across.</p>
+                            <H3>Add photos and stickers</H3>
+                            <Paragraph>Signers can add a photo for a personal touch, or add as many emoji stickers to get the message across.</Paragraph>
                         </MDBContainer>
                         <MDBContainer>
-                            <h3>Style your signature your way</h3>
-                            <p>Choose from different fonts, change the color, and rotate in any direction.</p>
+                            <H3>Style your signature your way</H3>
+                            <Paragraph>Choose from different fonts, change the color, and rotate in any direction.</Paragraph>
                         </MDBContainer>
-                    </MDBContainer>
+                    </InformationContainer>
                 </FeaturesSection>
-            </MDBContainer>
+            </div>
         </>
     )
 }
