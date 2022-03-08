@@ -92,7 +92,6 @@ const ImageDiv = styled(MDBContainer)`
 `
 
 const Image = styled.img`
-   
     ${respondTo.xsmall`
         width: 300px;
         height: 200px;
@@ -182,13 +181,14 @@ const ParagraphContainer = styled(MDBContainer)`
 `
 
 const FeaturesSection = styled.div`
-    margin: 2rem 2rem 0 2rem;
+    margin: 2rem 0 0 0;
 
     ${respondTo.xsmall`
         display: block;
     `}
 
     ${respondTo.medium`
+        margin: 2rem 2rem 0 2rem;
         display: flex;
     `}
 `
@@ -259,10 +259,21 @@ const OccationCardTextContainer = styled(MDBContainer)`
     text-align: center;
 `
 
-const OccationCardContainer = styled(MDBContainer)`
-   text-align: center;
-   margin: 0.5rem 0;
-   width: 33%;
+const OccationCardContainer = styled.div`
+    margin: 0.5rem 0;
+    text-align: center;
+
+   ${respondTo.xsmall`
+       width: 100%;
+   `}
+
+   ${respondTo.small`
+       width: 50%;
+   `}
+
+    ${respondTo.medium`
+       width: 33%;
+   `}
 `
 
 const OccationCardDiv = styled(MDBContainer)`
@@ -270,11 +281,24 @@ const OccationCardDiv = styled(MDBContainer)`
 `
 
 const OccationCardImage = styled.img`
-    width: 300px;
-    height: 420px;
+
+    ${respondTo.xsmall`
+        width: 160px;
+        height: 240px;
+    `}
+    
+    ${respondTo.medium`
+        width: 200px;
+        height: 320px;
+    `}
+    
+    ${respondTo.large`
+        width: 280px;
+        height: 400px;
+    `}
 `
 
-const OccationButtonDiv = styled(MDBContainer)`
+const OccationButtonDiv = styled.div`
     text-align: center;
 `
 
