@@ -267,7 +267,7 @@ const OccationCardContainer = styled.div`
 `
 
 const OccationCardDiv = styled.div`
-   margin: 0.5rem;
+   margin: 1rem;
    position: relative;
 `
 
