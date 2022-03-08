@@ -1,6 +1,7 @@
 import React from 'react'
 import { MDBContainer } from 'mdb-react-ui-kit'
 import styled from 'styled-components'
+import { useSelector } from 'react-redux'
 
 import CustomButton from '../components/CustomButtom/CustomButton'
 import { respondTo } from '../style-config/respond-to'
@@ -200,6 +201,7 @@ const H1 = styled.h1`
         white-space: nowrap;
     `}
 `
+
 const InformationContainer = styled(MDBContainer)`
     ${respondTo.xsmall`
         margin-top: 1.5rem;
@@ -209,6 +211,7 @@ const InformationContainer = styled(MDBContainer)`
         width: 60%;
     `}
 `
+
 const Paragraph = styled.p`
     ${respondTo.small`
         font-size: 14px;
@@ -247,8 +250,47 @@ const H3 = styled.h3`
     `}
 `
 
+const FourthSection = styled.div`
+    padding: 2rem 0;
+    background-color: #EFF2F7;
+`
+
+const OccationCardTextContainer = styled(MDBContainer)`
+    text-align: center;
+`
+
+const OccationCardContainer = styled(MDBContainer)`
+   text-align: center;
+   margin: 0.5rem 0;
+   width: 33%;
+`
+
+const OccationCardDiv = styled(MDBContainer)`
+   margin: 0.5rem 0;
+`
+
+const OccationCardImage = styled.img`
+    width: 300px;
+    height: 420px;
+`
+
+const OccationButtonDiv = styled(MDBContainer)`
+    text-align: center;
+`
+
 const Home = () => {
     const theme = useTheme()
+    const { cardImage } = useSelector(state => state.card)
+
+    const list = new Array(6).fill(0).map((item, index) => {
+        return (
+            <OccationCardContainer key={index} item={item}>
+                <OccationCardDiv>
+                    <OccationCardImage src={cardImage} />
+                </OccationCardDiv>
+            </OccationCardContainer>
+        )
+    })
 
     return (
         <>
@@ -314,7 +356,7 @@ const Home = () => {
                 </CardContainer>
             </SecondContainer>
 
-            <div>
+            <div className='py-4'>
                 <MDBContainer>
                     <H1>Each card is packed with features:</H1>
                 </MDBContainer>
@@ -339,6 +381,21 @@ const Home = () => {
                     </InformationContainer>
                 </FeaturesSection>
             </div>
+
+            <FourthSection>
+                <OccationCardTextContainer>
+                    <H1>The perfect card for every occasion!</H1>
+                    <Paragraph>See a group card example from several categories:</Paragraph>
+                </OccationCardTextContainer>
+                <MDBContainer className='d-flex flex-wrap justify-content-center mt-4'>
+                    {list}
+                </MDBContainer>
+                <OccationButtonDiv className='mt-3'>
+                    <CustomButton variant='primary'>
+                        See all cards
+                    </CustomButton>
+                </OccationButtonDiv>
+            </FourthSection>
         </>
     )
 }
