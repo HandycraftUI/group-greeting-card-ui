@@ -260,28 +260,18 @@ const OccationCardTextContainer = styled(MDBContainer)`
 `
 
 const OccationCardContainer = styled.div`
-    margin: 0.5rem 0;
-    text-align: center;
-
-   ${respondTo.xsmall`
-       width: 100%;
-   `}
-
-   ${respondTo.small`
-       width: 50%;
-   `}
-
-    ${respondTo.medium`
-       width: 33%;
-   `}
+    :hover{
+        transform: translateY(-1rem);
+        transition: transform 0.25s ease-in;
+    }
 `
 
-const OccationCardDiv = styled(MDBContainer)`
-   margin: 0.5rem 0;
+const OccationCardDiv = styled.div`
+   margin: 0.5rem;
+   position: relative;
 `
 
 const OccationCardImage = styled.img`
-
     ${respondTo.xsmall`
         width: 160px;
         height: 240px;
@@ -295,6 +285,56 @@ const OccationCardImage = styled.img`
     ${respondTo.large`
         width: 280px;
         height: 400px;
+    `}
+
+    ${respondTo.xlarge`
+        width: 310px;
+        height: 430px;
+    `}
+`
+
+const OccationImageOverlay = styled.div`
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    border-radius: 3px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.25s;
+
+    > * {
+        transform: translateY(40px);
+        transition: transform 0.25s;
+    }
+
+    :hover {
+        opacity: 1;
+    }
+
+    :hover > * {
+        transform: translateY(0);
+    }
+
+    ${respondTo.xsmall`
+        width: 160px;
+    `}
+    
+    ${respondTo.medium`
+        width: 200px;
+    `}
+    
+    ${respondTo.large`
+        width: 280px;
+    `}
+
+    ${respondTo.xlarge`
+        width: 310px;
     `}
 `
 
@@ -311,6 +351,11 @@ const Home = () => {
             <OccationCardContainer key={index} item={item}>
                 <OccationCardDiv>
                     <OccationCardImage src={cardImage} />
+                    <OccationImageOverlay>
+                        <div>
+                            <Paragraph>Card Category</Paragraph>
+                        </div>
+                    </OccationImageOverlay>
                 </OccationCardDiv>
             </OccationCardContainer>
         )
@@ -411,8 +456,10 @@ const Home = () => {
                     <H1>The perfect card for every occasion!</H1>
                     <Paragraph>See a group card example from several categories:</Paragraph>
                 </OccationCardTextContainer>
-                <MDBContainer className='d-flex flex-wrap justify-content-center mt-4'>
-                    {list}
+                <MDBContainer className='m-auto'>
+                    <div className='d-flex flex-wrap justify-content-center'>
+                        {list}
+                    </div>
                 </MDBContainer>
                 <OccationButtonDiv className='mt-3'>
                     <CustomButton variant='primary'>
