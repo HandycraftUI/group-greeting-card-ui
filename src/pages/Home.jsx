@@ -3,6 +3,7 @@ import { MDBContainer } from 'mdb-react-ui-kit'
 import styled from 'styled-components'
 import { useSelector } from 'react-redux'
 import { BsCheckLg } from 'react-icons/bs'
+import { Link } from 'react-router-dom'
 
 import CustomButton from '../components/CustomButtom/CustomButton'
 import { respondTo } from '../style-config/respond-to'
@@ -476,9 +477,11 @@ const Home = () => {
                         <Paragraph>Create a group card in 60 seconds and be the office hero!</Paragraph>
                     </MDBContainer>
                     <MDBContainer className='mt-4'>
-                        <CustomButton variant='primary'>
-                            Start a New Group Card
-                        </CustomButton>
+                        <Link to='create-card'>
+                            <CustomButton variant='primary'>
+                                Start a New Group Card
+                            </CustomButton>
+                        </Link>
                     </MDBContainer>
                 </MDBContainer>
 
