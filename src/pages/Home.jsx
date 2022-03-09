@@ -183,7 +183,7 @@ const ParagraphContainer = styled(MDBContainer)`
 `
 
 const FeaturesSection = styled.div`
-    margin: 2rem 0 0 0;
+    margin-top: 2rem;
 
     ${respondTo.xsmall`
         display: block;
