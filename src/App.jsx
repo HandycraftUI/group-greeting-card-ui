@@ -18,7 +18,6 @@ const App = () => {
                 </>
             </Suspense>
             <Footer />
-
         </>
     )
 }
