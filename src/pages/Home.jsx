@@ -2,6 +2,7 @@ import React from 'react'
 import { MDBContainer } from 'mdb-react-ui-kit'
 import styled from 'styled-components'
 import { useSelector } from 'react-redux'
+import { BsCheckLg } from 'react-icons/bs'
 
 import CustomButton from '../components/CustomButtom/CustomButton'
 import { respondTo } from '../style-config/respond-to'
@@ -392,7 +393,7 @@ const Home = () => {
                 </ImageDiv>
             </FirstSectionWrapper>
 
-            <SecondContainer className='py-4' theme={theme}>
+            <SecondContainer className='py-4 mt-5' theme={theme}>
                 <CardContainer className='mb-3 px-2'>
                     <Card theme={theme}>
                         <h5>1</h5>
@@ -467,6 +468,47 @@ const Home = () => {
                     </CustomButton>
                 </OccationButtonDiv>
             </FourthSection>
+
+            <MDBContainer className='d-md-flex py-4'>
+                <MDBContainer className='p-4 text-center'>
+                    <MDBContainer>
+                        <H3>Employee appreciation starts here.</H3>
+                        <Paragraph>Create a group card in 60 seconds and be the office hero!</Paragraph>
+                    </MDBContainer>
+                    <MDBContainer className='mt-4'>
+                        <CustomButton variant='primary'>
+                            Start a New Group Card
+                        </CustomButton>
+                    </MDBContainer>
+                </MDBContainer>
+
+                <MDBContainer className='p-3'>
+                    <div className='d-flex'>
+                        <div>
+                            <BsCheckLg className='me-2' />
+                        </div>
+                        <p>You&apos;ll save time by not having to go to the store to pick up a card</p>
+                    </div>
+                    <div className='d-flex'>
+                        <div>
+                            <BsCheckLg className='me-2' />
+                        </div>
+                        <p>Remote employees will feel appreciated</p>
+                    </div>
+                    <div className='d-flex'>
+                        <div>
+                            <BsCheckLg className='me-2' />
+                        </div>
+                        <p>People won&apos;t run out of space to sign a card</p>
+                    </div>
+                    <div className='d-flex'>
+                        <div>
+                            <BsCheckLg className='me-2' />
+                        </div>
+                        <p>You&apos;ll know who has signed the card at any time</p>
+                    </div>
+                </MDBContainer>
+            </MDBContainer>
         </>
     )
 }
