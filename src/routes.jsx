@@ -10,6 +10,7 @@ const Home = lazy(() => import('./pages/Home'))
 const Editor = lazy(() => import('./pages/Editor/Editor'))
 const SetupCard = lazy(() => import('./components/SetupCard/SetupCard'))
 const TemplateCards = lazy(() => import('./components/ListTemplates/TemplateCards'))
+const Profile = lazy(() => import('./components/Profile/Profile'))
 
 const routeConfig = (isLoggedIn) => [
     {
@@ -43,6 +44,10 @@ const routeConfig = (isLoggedIn) => [
     {
         path: '/create-card',
         element: isLoggedIn ? <TemplateCards /> : <Navigate to='/auth/login' />
+    },
+    {
+        path: '/profile',
+        element: <Profile />
     }
 ]
 
