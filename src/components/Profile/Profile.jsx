@@ -1,11 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 import { MDBContainer, MDBInput } from 'mdb-react-ui-kit'
-import { MdOutlineSettings, MdModeEditOutline } from 'react-icons/md'
+import { MdOutlineSettings } from 'react-icons/md'
 import { useSelector } from 'react-redux'
 
 import CustomButton from '../CustomButtom/CustomButton'
 import useTheme from '../../hooks/use-theme'
+import { respondTo } from '../../style-config/respond-to'
 
 const Delimeter = styled(MDBContainer)`
    height: 3px;
@@ -17,6 +18,26 @@ const Image = styled.img`
    width: 400px;
    height: 360px;
    border-radius: 50%;
+
+   ${respondTo.xsmall`
+       width: 200px;
+       height: 180px;
+   `}
+
+    ${respondTo.small`
+       width: 240px;
+       height: 220px;
+   `}
+
+    ${respondTo.medium`
+       width: 280px;
+       height: 260px;
+   `}
+
+    ${respondTo.large`
+       width: 380px;
+       height: 360px;
+   `}
 `
 
 const Profile = () => {
@@ -31,7 +52,7 @@ const Profile = () => {
 
     return (
         <MDBContainer>
-            <MDBContainer className='d-flex py-5'>
+            <MDBContainer className='d-sm-block d-md-flex py-5'>
                 <MDBContainer className='text-center'>
                     <div>
                         <MDBContainer>
@@ -59,7 +80,7 @@ const Profile = () => {
                         <MDBInput label='vladimir2907@gmail.com' id='formControlDisabled' type='text' disabled />
                     </MDBContainer>
 
-                    <MDBContainer className='mb-4'>
+                    <MDBContainer className='mb-2 mb-md-2'>
                         <CustomButton variant='primary'>
                             Account Settings <MdOutlineSettings style={{ fontSize: '17px' }} />
                         </CustomButton>
@@ -71,9 +92,9 @@ const Profile = () => {
 
             <MDBContainer className='mt-4'>
                 <MDBContainer >
-                    <h2 className='ms-5'>Created Cards:</h2>
+                    <h2 className='text-center text-md-left'>Created Cards:</h2>
                 </MDBContainer>
-                <MDBContainer className='d-flex'>
+                <MDBContainer className='d-sm-block d-md-flex'>
                     {list}
                 </MDBContainer>
             </MDBContainer>
