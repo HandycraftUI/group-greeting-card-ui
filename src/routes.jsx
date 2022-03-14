@@ -47,7 +47,7 @@ const routeConfig = (isLoggedIn) => [
     },
     {
         path: '/profile',
-        element: <Profile />
+        element: isLoggedIn ? <Profile /> : <Navigate to='/auth/login' />
     }
 ]
 

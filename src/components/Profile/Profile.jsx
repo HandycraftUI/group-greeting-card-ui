@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { MDBContainer, MDBInput } from 'mdb-react-ui-kit'
 import { MdOutlineSettings } from 'react-icons/md'
 import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 import CustomButton from '../CustomButtom/CustomButton'
 import useTheme from '../../hooks/use-theme'
@@ -52,7 +53,7 @@ const Profile = () => {
 
     return (
         <MDBContainer>
-            <MDBContainer className='d-sm-block d-md-flex py-5'>
+            <MDBContainer className='d-sm-block d-md-flex py-5 mb-md-5'>
                 <MDBContainer className='text-center'>
                     <div>
                         <MDBContainer>
@@ -81,9 +82,12 @@ const Profile = () => {
                     </MDBContainer>
 
                     <MDBContainer className='mb-2 mb-md-2'>
-                        <CustomButton variant='primary'>
-                            Account Settings <MdOutlineSettings style={{ fontSize: '17px' }} />
-                        </CustomButton>
+                        <Link to='/user/settings'>
+                            <CustomButton variant='primary' icon={<MdOutlineSettings style={{ fontSize: '17px' }} />
+                            }>
+                                Account Settings
+                            </CustomButton>
+                        </Link>
                     </MDBContainer>
                 </MDBContainer>
             </MDBContainer>
