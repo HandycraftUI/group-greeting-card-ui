@@ -83,8 +83,7 @@ const Profile = () => {
 
                     <MDBContainer className='mb-2 mb-md-2'>
                         <Link to='/user/settings'>
-                            <CustomButton variant='primary' icon={<MdOutlineSettings style={{ fontSize: '17px' }} />
-                            }>
+                            <CustomButton variant='primary' icon={<MdOutlineSettings style={{ fontSize: '17px' }} />}>
                                 Account Settings
                             </CustomButton>
                         </Link>

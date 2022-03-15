@@ -183,7 +183,7 @@ const Footer = () => {
                             <Links theme={theme} to='/about'>About us</Links>
                         </li>
                         <li>
-                            <Links theme={theme} to='/profile'>Profile</Links>
+                            <Links theme={theme} to='/auth/profile'>Profile</Links>
                         </li>
                         <li>
                             <Links theme={theme} to='/create-card'>Greeting Cards</Links>
