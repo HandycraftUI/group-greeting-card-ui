@@ -44,6 +44,7 @@ const Image = styled.img`
 const Profile = () => {
     const theme = useTheme()
     const { cardImage } = useSelector(state => state.card)
+    const {firstName, lastName, name, email} = JSON.parse(localStorage.getItem('userData'))
 
     const list = new Array(3).fill(0).map((item, index) => (
         <MDBContainer key={index} className='text-center'>
@@ -61,24 +62,24 @@ const Profile = () => {
                         </MDBContainer>
                     </div>
                     <div className='mt-3'>
-                        <h3>Vladimir Metodiev</h3>
+                        <h3>{name}</h3>
                     </div>
                 </MDBContainer>
 
                 <MDBContainer className='mt-4'>
                     <MDBContainer className='mb-4'>
                         <h4>First Name:</h4>
-                        <MDBInput label='Vladimir' id='formControlDisabled' type='text' disabled />
+                        <MDBInput label={firstName} id='formControlDisabled' type='text' disabled />
                     </MDBContainer>
 
                     <MDBContainer className='mb-4'>
                         <h4>Last Name:</h4>
-                        <MDBInput label='Metodiev' id='formControlDisabled' type='text' disabled />
+                        <MDBInput label={lastName} id='formControlDisabled' type='text' disabled />
                     </MDBContainer>
 
                     <MDBContainer className='mb-4'>
                         <h4>Email:</h4>
-                        <MDBInput label='vladimir2907@gmail.com' id='formControlDisabled' type='text' disabled />
+                        <MDBInput label={email} id='formControlDisabled' type='text' disabled />
                     </MDBContainer>
 
                     <MDBContainer className='mb-2 mb-md-2'>
