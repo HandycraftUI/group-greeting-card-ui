@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom'
 import CustomButton from '../CustomButtom/CustomButton'
 import useTheme from '../../hooks/use-theme'
 import { respondTo } from '../../style-config/respond-to'
+import { PROFILE_PICTURE } from '../../constants/common'
 
 const Delimeter = styled(MDBContainer)`
    height: 3px;
@@ -41,10 +42,15 @@ const Image = styled.img`
    `}
 `
 
+const SettingsIcon = styled(MdOutlineSettings)`
+   font-size: 17px;
+`
+
 const Profile = () => {
     const theme = useTheme()
     const { cardImage } = useSelector(state => state.card)
-    const {firstName, lastName, name, email} = JSON.parse(localStorage.getItem('userData'))
+    const { firstName, lastName, name, email } = JSON.parse(localStorage.getItem('userData'))
+    const profileImage = PROFILE_PICTURE
 
     const list = new Array(3).fill(0).map((item, index) => (
         <MDBContainer key={index} className='text-center'>
@@ -58,7 +64,7 @@ const Profile = () => {
                 <MDBContainer className='text-center'>
                     <div>
                         <MDBContainer>
-                            <Image src="https://icon-library.com/images/no-profile-picture-icon/no-profile-picture-icon-2.jpg" />
+                            <Image src={profileImage} />
                         </MDBContainer>
                     </div>
                     <div className='mt-3'>
@@ -84,7 +90,7 @@ const Profile = () => {
 
                     <MDBContainer className='mb-2 mb-md-2'>
                         <Link to='/user/settings'>
-                            <CustomButton variant='primary' icon={<MdOutlineSettings style={{ fontSize: '17px' }} />}>
+                            <CustomButton variant='primary' icon={<SettingsIcon />}>
                                 Account Settings
                             </CustomButton>
                         </Link>
@@ -95,7 +101,7 @@ const Profile = () => {
             <Delimeter theme={theme} />
 
             <MDBContainer className='mt-4'>
-                <MDBContainer >
+                <MDBContainer>
                     <h2 className='text-center text-md-left'>Created Cards:</h2>
                 </MDBContainer>
                 <MDBContainer className='d-sm-block d-md-flex'>
