@@ -57,7 +57,7 @@ const CustomButton = ({ variant, children, onClick, type, icon }) => {
     const theme = useTheme()
 
     return (
-        <Button theme={theme} variant={variant} icon={icon} onClick={onClick} type={type}>
+        <Button theme={theme} variant={variant} onClick={onClick} type={type}>
             {children} {icon}
         </Button>
     )
