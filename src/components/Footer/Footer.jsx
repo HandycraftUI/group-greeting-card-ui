@@ -4,9 +4,11 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { RiFacebookBoxFill, RiLinkedinBoxFill } from 'react-icons/ri'
 import { GrInstagram, GrGoogle } from 'react-icons/gr'
+import { useSelector } from 'react-redux'
 
 import useTheme from '../../hooks/use-theme'
 import { respondTo } from '../../style-config/respond-to'
+import routes from '../../routes'
 
 const FooterWrapper = styled.div`
     background-color: ${({ theme }) => theme.palette.navbar.primary};
@@ -36,6 +38,7 @@ const LinksContainer = styled(MDBContainer)`
 
 const LinksList = styled.ul`
     list-style-type: none;
+    padding-left: 0;
 `
 
 const Links = styled(Link)`
@@ -166,6 +169,16 @@ const Google = styled(GrGoogle)`
 
 const Footer = () => {
     const theme = useTheme()
+    const { isAuth } = useSelector(store => store.user)
+
+    const list = routes(isAuth)
+        .filter(route => route.isVisibleInFooter)
+        .map((routes) => (
+            <li key={routes.text}>
+                <Links theme={theme} to={routes.path}>{routes.text}</Links>
+            </li>
+        ))
+
     return (
         <FooterWrapper className='py-3 px-4' theme={theme}>
             <MDBContainer className='d-block d-sm-flex'>
@@ -176,18 +189,7 @@ const Footer = () => {
                 <LinksContainer>
                     <Title>Company</Title>
                     <LinksList>
-                        <li>
-                            <Links theme={theme} to='/'>Home</Links>
-                        </li>
-                        <li>
-                            <Links theme={theme} to='/about'>About us</Links>
-                        </li>
-                        <li>
-                            <Links theme={theme} to='/auth/profile'>Profile</Links>
-                        </li>
-                        <li>
-                            <Links theme={theme} to='/create-card'>Greeting Cards</Links>
-                        </li>
+                        {list}
                     </LinksList>
                 </LinksContainer>
             </MDBContainer>

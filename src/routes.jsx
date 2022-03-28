@@ -15,15 +15,17 @@ const Profile = lazy(() => import('./components/Profile/Profile'))
 const routeConfig = (isLoggedIn) => [
     {
         path: '/',
-        element: <Home />
+        element: <Home />,
+        isVisibleInFooter: true,
+        text: 'Home'
     },
     {
         path: '/auth/login',
-        element: !isLoggedIn ? <Login /> : <Navigate to='/' />
+        element: !isLoggedIn ? <Login /> : <Navigate to='/' />,
     },
     {
         path: '/auth/register',
-        element: !isLoggedIn ? <Register /> : <Navigate to='/' />
+        element: !isLoggedIn ? <Register /> : <Navigate to='/' />,
     },
     {
         path: '/editor',
@@ -43,11 +45,21 @@ const routeConfig = (isLoggedIn) => [
     },
     {
         path: '/create-card',
-        element: isLoggedIn ? <TemplateCards /> : <Navigate to='/auth/login' />
+        element: isLoggedIn ? <TemplateCards /> : <Navigate to='/auth/login' />,
+        isVisibleInFooter: true,
+        text: 'Greeting Cards',
     },
     {
         path: '/auth/profile',
-        element: isLoggedIn ? <Profile /> : <Navigate to='/auth/login' />
+        element: isLoggedIn ? <Profile /> : <Navigate to='/auth/login' />,
+        isVisibleInFooter: true,
+        text: 'Profile',
+    },
+    {
+        path: '/aboutus',
+        element: <Home/>,
+        isVisibleInFooter: true,
+        text: 'About us',
     }
 ]
 
