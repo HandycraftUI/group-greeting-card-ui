@@ -1,5 +1,8 @@
 # Group Greeting Card
 
+![image](https://user-images.githubusercontent.com/33124382/160435746-63b90283-0a77-4910-8889-a3d5f0ad93cd.png)
+
+
 > The idea is simple, you can create a greeting card, share it with friends to add wishes and then sent it to the man to whom it belonged.
 You can choose from variety of ocassions: birthday, anniversary, farewell, retirement etc. You can sign the card, style your signature, add photos and stickers and then share it with friends. You can choose an email to whom the card will be sent and choose exact date and time for sending.
 
