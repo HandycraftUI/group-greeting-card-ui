@@ -41,7 +41,7 @@ const LinksList = styled.ul`
     padding-left: 0;
 `
 
-const Links = styled(Link)`
+const CustomLink = styled(Link)`
     color: ${({ theme }) => theme.palette.white};
     text-decoration: none;
 
@@ -175,7 +175,7 @@ const Footer = () => {
         .filter(route => route.isVisibleInFooter)
         .map((routes) => (
             <li key={routes.text}>
-                <Links theme={theme} to={routes.path}>{routes.text}</Links>
+                <CustomLink theme={theme} to={routes.path}>{routes.text}</CustomLink>
             </li>
         ))
 
@@ -200,24 +200,24 @@ const Footer = () => {
                 </MDBContainer>
                 <IconContainer>
                     <IconDiv>
-                        <Links to='/' theme={theme}>
+                        <CustomLink to='/' theme={theme}>
                             <Facebook />
-                        </Links>
+                        </CustomLink>
                     </IconDiv>
                     <IconDiv>
-                        <Links to='/' theme={theme}>
+                        <CustomLink to='/' theme={theme}>
                             <Instagram />
-                        </Links>
+                        </CustomLink>
                     </IconDiv>
                     <IconDiv>
-                        <Links to='/' theme={theme}>
+                        <CustomLink to='/' theme={theme}>
                             <LinkedIn />
-                        </Links>
+                        </CustomLink>
                     </IconDiv>
                     <IconDiv>
-                        <Links to='/' theme={theme}>
+                        <CustomLink to='/' theme={theme}>
                             <Google />
-                        </Links>
+                        </CustomLink>
                     </IconDiv>
                 </IconContainer>
             </MediaContainer>
